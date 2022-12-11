@@ -10,6 +10,15 @@ module.exports = {
     "@storybook/preset-create-react-app",
     "storybook-addon-react-router-v6",
     "@snek-at/storybook-addon-chakra-ui",
+    '@storybook/addon-postcss',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
   "framework": "@storybook/react",
   "core": {

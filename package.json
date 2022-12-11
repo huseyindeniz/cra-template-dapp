@@ -1,7 +1,7 @@
 {
   "name": "@huseyindeniz/cra-template-dapp",
-  "version": "0.0.1",
-  "description": "Dapp Starter Kit",
+  "version": "0.1.0",
+  "description": "dApp CRA Template",
   "main": "template.json",
   "files": [
     "template",
@@ -16,6 +16,8 @@
     "directory": "/"
   },
   "keywords": [
+    "cra-template",
+    "cra-template-typescript",
     "dapp",
     "web3",
     "ethers"
@@ -66,6 +68,7 @@
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
     "@storybook/addon-links": "^6.5.13",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-webpack5": "^6.5.13",
     "@storybook/manager-webpack5": "^6.5.13",
     "@storybook/node-logger": "^6.5.13",
@@ -85,12 +88,16 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "cypress": "^11.2.0",
     "i18next-parser": "^7.0.3",
+    "postcss": "^8.4.19",
     "prop-types": "^15.8.1",
     "redux-mock-store": "^1.5.4",
     "redux-saga-test-plan": "^4.0.6",
     "source-map-explorer": "^2.5.3",
     "storybook-addon-react-router-v6": "^0.2.1",
     "webpack": "^5.75.0"
+  },
+  "resolutions": {
+    "postcss": "8"
   },
   "scripts": {
     "start": "react-scripts start",
