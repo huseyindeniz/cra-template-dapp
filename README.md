@@ -69,7 +69,7 @@ TODO
 
 ## Contributions
 
-dApp CRA Template is an open-source project and we welcome contributions from the community. If you have any suggestions or bug reports, please [open an issue](./issues) or [submit a pull request](./pulls).
+dApp CRA Template is an open-source project and we welcome contributions from the community. If you have any suggestions, please use the [discussion](https://github.com/huseyindeniz/cra-template-dapp/discussions) tab. If you have any bug reports, please [open an issue](https://github.com/huseyindeniz/cra-template-dapp/issues) or [submit a pull request](https://github.com/huseyindeniz/cra-template-dapp/pulls).
 
 ## License
 
