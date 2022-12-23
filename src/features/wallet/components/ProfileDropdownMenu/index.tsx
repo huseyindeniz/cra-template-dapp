@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useToast } from "@chakra-ui/react";
 
@@ -8,10 +9,12 @@ import useActions from "../../useActions";
 
 export const ProfileDropdownMenu: React.FC = () => {
   const { i18n, t } = useTranslation("FeatureWallet");
+  const navigate = useNavigate();
   const toast = useToast();
   const actions = useActions();
   const account = useTypedSelector((state) => state.wallet.account);
-  const [explorerUrl, setExplorerUrl] = useState<string>("");
+  const [addressExplorerUrl, setAddressExplorerUrl] = useState<string>("");
+  const [networkLogoUrl, setNetworkLogoUrl] = useState<string>("");
   const [ensOrAddressTruncated, setensOrAddressTruncated] =
     useState<string>("");
   const currentNetwork = useTypedSelector(
@@ -20,7 +23,12 @@ export const ProfileDropdownMenu: React.FC = () => {
 
   useEffect(() => {
     if (currentNetwork) {
-      setExplorerUrl(currentNetwork.chain.blockExplorerUrls[0]);
+      setAddressExplorerUrl(
+        `${currentNetwork.blockExplorerUrls[0]}/${currentNetwork.addressExplorerUrl}`
+      );
+      setNetworkLogoUrl(
+        "assets/images/chains/" + currentNetwork?.chainId + ".png"
+      );
     }
   }, [currentNetwork]);
 
@@ -48,14 +56,20 @@ export const ProfileDropdownMenu: React.FC = () => {
     });
   };
 
+  const onDisconnectClick = () => {
+    actions.disconnectWallet();
+    navigate("/");
+  };
+
   return account && account.address && account.address !== "" ? (
     <DropdownMenu
       address={account.address}
       currentLangCode={i18n.resolvedLanguage}
       ensOrAddressTruncated={ensOrAddressTruncated ?? ""}
-      explorerUrl={explorerUrl}
+      networkLogoUrl={networkLogoUrl}
+      addressExplorerUrl={addressExplorerUrl}
       onCopyAddressClicked={onCopyClicked}
-      onDisconnectClicked={actions.disconnectWallet}
+      onDisconnectClicked={onDisconnectClick}
     />
   ) : null;
 };

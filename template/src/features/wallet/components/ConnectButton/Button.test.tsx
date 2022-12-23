@@ -1,13 +1,10 @@
-import { render, cleanup } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { composeStories } from "@storybook/testing-react";
 
 import * as stories from "./Button.stories";
 
-describe("Feature:Wallet", () => {
-  describe("Connect Button", () => {
-    afterEach(() => {
-      cleanup();
-    });
+describe("Feature: Wallet", () => {
+  describe("Component: ConnectButton/Button", () => {
     const { Default, Loading } = composeStories(stories);
     const onClickSpy = jest.fn();
     describe("when LoadingState is IDLE", () => {

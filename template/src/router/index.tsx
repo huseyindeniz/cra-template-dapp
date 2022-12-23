@@ -1,16 +1,25 @@
 import React from "react";
 import { RouteObject, useRoutes } from "react-router-dom";
 
-import WithProtectedRoute from "../../hoc/ProtectedRoute";
-import { i18nConfig } from "../../config/i18n";
-import { Pages } from "../../pages";
+import { i18nConfig } from "../config/i18n";
+import { usePages } from "../hooks/usePages";
 
-const Layout = React.lazy(() => import("../Layout"));
+const Layout = React.lazy(() => import("../components/Layout"));
 
-const UserPage = React.lazy(() => import("../../pages/User"));
-const NotFoundPage = React.lazy(() => import("../../pages/NotFound"));
+const UserPage = React.lazy(() =>
+  import(/* webpackChunkName: "UserPage" */ "../pages/User").then((module) => ({
+    default: module.UserPage,
+  }))
+);
+const NotFoundPage = React.lazy(() =>
+  import(/* webpackChunkName: "NotFoundPage" */ "../pages/NotFound").then(
+    (module) => ({ default: module.NotFoundPage })
+  )
+);
 
 export const Routes: React.FC = () => {
+  const { Pages } = usePages();
+
   const routeNotFound: RouteObject = {
     path: "*",
     element: <NotFoundPage />,
@@ -18,11 +27,7 @@ export const Routes: React.FC = () => {
 
   const routeUser: RouteObject = {
     path: "user",
-    element: (
-      <WithProtectedRoute>
-        <UserPage />
-      </WithProtectedRoute>
-    ),
+    element: <UserPage />,
   };
 
   const routeRootWithLang: RouteObject = {

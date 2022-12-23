@@ -46,13 +46,11 @@ class EthersWalletAPI implements IWalletApi {
     if (chainId) {
       // check if chainId is in the supported list
       console.debug("isSupported for:", chainId);
-      return SUPPORTED_NETWORKS.some(
-        (chain) => chain.chain.chainId === chainId
-      );
+      return SUPPORTED_NETWORKS.some((chain) => chain.chainId === chainId);
     } else {
       console.debug("isNetworkSupported", this._network);
       return SUPPORTED_NETWORKS.some(
-        (chain) => chain.chain.chainId === this._network?.chainId
+        (chain) => chain.chainId === this._network?.chainId
       );
     }
   };
@@ -73,13 +71,24 @@ class EthersWalletAPI implements IWalletApi {
     }
     await this._provider?.ready;
     console.debug("0x" + networkId.toString(16));
-    await this._provider
-      ?.send("wallet_switchEthereumChain", [
+    try {
+      await this._provider?.send("wallet_switchEthereumChain", [
         { chainId: "0x" + networkId.toString(16) },
-      ])
-      .catch((error: any) => {
-        console.error(error);
-      });
+      ]);
+    } catch (error: any) {
+      const networkDetails = SUPPORTED_NETWORKS.find(
+        (chain) => chain.chainId === networkId
+      );
+      await this._provider?.send("wallet_addEthereumChain", [
+        {
+          chainId: "0x" + networkId.toString(16),
+          rpcUrls: networkDetails?.rpcUrls,
+          chainName: networkDetails?.chainName,
+          nativeCurrency: networkDetails?.nativeCurrency,
+          blockExplorerUrls: networkDetails?.blockExplorerUrls,
+        },
+      ]);
+    }
     return this.loadNetwork();
   };
 
@@ -154,7 +163,7 @@ class EthersWalletAPI implements IWalletApi {
 
   public getNetwork = () => {
     return SUPPORTED_NETWORKS.find(
-      (n) => n.chain.chainId === this._network?.chainId
+      (chain) => chain.chainId === this._network?.chainId
     );
   };
 

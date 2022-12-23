@@ -13,6 +13,7 @@ import {
   HStack,
   VStack,
   Link,
+  Image,
 } from "@chakra-ui/react";
 import { FaExternalLinkAlt } from "@react-icons/all-files/fa/FaExternalLinkAlt";
 import { IoIosLogOut } from "@react-icons/all-files/io/IoIosLogOut";
@@ -24,7 +25,8 @@ import { Identicon } from "./Identicon";
 export interface DropdownMenuProps {
   address: string;
   ensOrAddressTruncated: string;
-  explorerUrl: string | undefined;
+  networkLogoUrl: string;
+  addressExplorerUrl: string | undefined;
   currentLangCode: string;
   onCopyAddressClicked: () => void;
   onDisconnectClicked: () => void;
@@ -33,7 +35,8 @@ export interface DropdownMenuProps {
 export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   address,
   ensOrAddressTruncated,
-  explorerUrl,
+  networkLogoUrl,
+  addressExplorerUrl,
   currentLangCode,
   onCopyAddressClicked,
   onDisconnectClicked,
@@ -52,6 +55,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         ml={2}
       >
         <HStack>
+          <Image width={"16px"} objectFit="cover" src={networkLogoUrl} />
           <Text color="white" fontSize="md" fontWeight="medium" mr="2">
             {ensOrAddressTruncated}
           </Text>
@@ -83,7 +87,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         </MenuItem>
         <MenuItem
           as={Link}
-          href={explorerUrl + address}
+          href={`${addressExplorerUrl}/${address}`}
           isExternal
           _hover={{
             textDecoration: "none",

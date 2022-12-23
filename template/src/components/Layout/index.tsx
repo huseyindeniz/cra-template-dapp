@@ -18,13 +18,13 @@ import "../../config/i18n";
 import { LangCode } from "../../config/types";
 import useTypedSelector from "../../hooks/useTypedSelector";
 import { WalletStateType } from "../../features/wallet/types";
-import { mainMenuItems, footerMenuItems } from "../../pages";
 import { ErrorFallback } from "./ErrorFallback";
-import { Loading } from "../Loading";
-import { SiteMeta } from "../SiteMeta";
+import { Loading } from "../UI/Loading";
+import { SiteMeta } from "./SiteMeta";
 import { Copyright } from "./Copyright";
 import { SocialMenu } from "./SocialMenu";
 import { socialLinks } from "../../config/socialLinks";
+import { usePages } from "../../hooks/usePages";
 
 const Header = React.lazy(() =>
   import("./Header").then((module) => ({ default: module.Header }))
@@ -52,6 +52,7 @@ const myErrorHandler = (error: Error, info: { componentStack: string }) => {
 const Layout: React.FC<WithTranslation> = () => {
   const location = useLocation();
   const { i18n, t } = useTranslation("Layout");
+  const { mainMenuItems, footerMenuItems } = usePages();
   const walletState = useTypedSelector((state) => state.wallet.state);
   const isAuthenticated = walletState === WalletStateType.AUTHENTICATED;
   const currentLangCode = (i18n.resolvedLanguage as LangCode) ?? LangCode.EN_US;

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Routes } from "./components/Routes";
+import { Routes } from "./router";
 import { theme } from "./config/Theme";
 import store from "./store";
 

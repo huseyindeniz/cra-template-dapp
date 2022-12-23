@@ -28,11 +28,13 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
   });
   const [stepState, setStepState] =
     useState<"error" | "loading" | undefined>(undefined);
-  const defaultNetwork = DEFAULT_NETWORK.chain.chainId;
+  const defaultNetwork = DEFAULT_NETWORK.chainId;
   const supportedNetworks = SUPPORTED_NETWORKS.map((network) => {
     return {
-      id: network.chain.chainId,
-      name: network.chain.chainName,
+      id: network.chainId,
+      name: network.chainName,
+      isTestChain: network.isTestChain,
+      isLocalChain: network.isLocalChain,
     };
   });
 
@@ -128,17 +130,17 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
 
   return (
     <Modal
-      CheckWalletContent={
+      checkWalletContent={
         <StepCheckWallet stepState={walletState} onCancel={handleDisconnect} />
       }
-      CheckUnlockContent={
+      checkUnlockContent={
         <StepCheckUnlock
           onUnlock={actions.unlockWallet}
           stepState={walletState}
           errorMessage={error}
         />
       }
-      CheckNetworkContent={
+      checkNetworkContent={
         <StepCheckNetwork
           supportedNetworks={supportedNetworks}
           defaultNetwork={defaultNetwork}
@@ -147,7 +149,7 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
           errorMessage={error}
         />
       }
-      CheckSignContent={
+      checkSignContent={
         <StepCheckSign
           onSign={actions.signIn}
           onDisconnect={handleDisconnect}

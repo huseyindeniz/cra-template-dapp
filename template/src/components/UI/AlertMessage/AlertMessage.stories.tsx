@@ -1,7 +1,7 @@
 // ConnectButton.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { AlertMessage } from "./";
+import { AlertMessage } from ".";
 
 export default {
   title: "Components/AlertMessage",

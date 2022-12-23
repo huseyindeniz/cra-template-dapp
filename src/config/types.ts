@@ -18,12 +18,13 @@ export type I18NConfig = {
 
 export type MenuType = {
   id: string;
-  path: string;
-  menuLabel: string;
-  isShownInMainMenu: boolean;
-  isShownInFooter: boolean;
-  isProtected: boolean;
+  path?: string;
+  menuLabel?: string;
+  isShownInMainMenu?: boolean;
+  isShownInFooter?: boolean;
+  isProtected?: boolean;
 };
+
 export type PageType = RouteObject & MenuType;
 
 export type SocialLinkName =
@@ -34,6 +35,7 @@ export type SocialLinkName =
   | "GitHub"
   | "Discord"
   | "Telegram";
+
 export type SocialLink = {
   name: SocialLinkName;
   link: string;

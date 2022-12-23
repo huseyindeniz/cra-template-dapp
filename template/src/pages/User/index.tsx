@@ -1,19 +1,22 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Box, Container, Stack } from "@chakra-ui/react";
-import Header from "./Header";
 
-const UserPage: React.FC = () => {
+import { withProtectedRoute } from "../../hoc/withProtectedRoute";
+import { Header } from "./Header";
+
+export const UserPage: React.FC = withProtectedRoute(() => {
   const { t } = useTranslation("PageUser");
-
   return (
     <Box>
       <Container maxW={"7xl"} py={2} as={Stack} spacing={2}>
         <Header />
-        <Box>{t("Current Balance and Block Information")}</Box>
+        <Box>
+          {t(
+            "As an example, you can put current user's latest transactions here..."
+          )}
+        </Box>
       </Container>
     </Box>
   );
-};
-
-export default UserPage;
+});

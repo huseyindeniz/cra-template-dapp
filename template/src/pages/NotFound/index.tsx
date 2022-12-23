@@ -13,7 +13,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 
-const NotFoundPage: React.FC = () => {
+export const NotFoundPage: React.FC = () => {
   const { t } = useTranslation("PageNotFound");
   return (
     <Box>
@@ -70,5 +70,3 @@ const NotFoundPage: React.FC = () => {
     </Box>
   );
 };
-
-export default NotFoundPage;

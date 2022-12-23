@@ -31,12 +31,12 @@ function* updateEnsWithAPI(walletApi: IWalletApi) {
 
 // Ethereum Event Handlers
 function* handleEventAccountsChanged(walletApi: IWalletApi) {
-  const chan: EventChannel<string[]> = yield call(
+  const channel: EventChannel<string[]> = yield call(
     walletApi.listenAccountChange
   );
   try {
     while (true) {
-      let accounts: string[] = yield take(chan);
+      let accounts: string[] = yield take(channel);
       console.debug(`accountsChanged: ${accounts[0]}`);
       yield put(actions.disconnectWallet());
       yield call(walletApi.handleAccountChange);
@@ -47,15 +47,17 @@ function* handleEventAccountsChanged(walletApi: IWalletApi) {
     }
   } finally {
     console.debug("accountsChanged terminated");
-    chan.close();
+    channel.close();
   }
 }
 
 function* handleEventNetworkChanged(walletApi: IWalletApi) {
-  const chan: EventChannel<string> = yield call(walletApi.listenNetworkChange);
+  const channel: EventChannel<string> = yield call(
+    walletApi.listenNetworkChange
+  );
   try {
     while (true) {
-      let chainId: string = yield take(chan);
+      let chainId: string = yield take(channel);
       console.debug("networkChanged: " + chainId);
       yield put(actions.disconnectWallet());
       yield call(walletApi.handleNetworkChange);
@@ -66,6 +68,6 @@ function* handleEventNetworkChanged(walletApi: IWalletApi) {
     }
   } finally {
     console.debug("networkChanged terminated");
-    chan.close();
+    channel.close();
   }
 }

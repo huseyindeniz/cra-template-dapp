@@ -17,7 +17,6 @@ import useActions from "../../features/wallet/useActions";
 export const HomePage: React.FC = () => {
   const { t, i18n } = useTranslation("PageHome");
   const actions = useActions();
-  const account = useTypedSelector((state) => state.wallet.account);
   const loadingState = useTypedSelector((state) => state.wallet.loading);
 
   const handleOnClick = () => {
@@ -30,8 +29,8 @@ export const HomePage: React.FC = () => {
         <Stack
           as={Box}
           textAlign={"center"}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
+          spacing={{ base: 2, md: 4 }}
+          py={{ base: 20, md: 32 }}
         >
           <Heading
             fontWeight={600}
@@ -62,35 +61,19 @@ export const HomePage: React.FC = () => {
             alignSelf={"center"}
             position={"relative"}
           >
-            {account ? (
-              <Button
-                as={RouterLink}
-                to={"/" + i18n.language + "/myraffles"}
-                colorScheme={"blue"}
-                bg={"blue.400"}
-                rounded={"full"}
-                px={6}
-                _hover={{
-                  bg: "blue.500",
-                }}
-              >
-                {t("Get Started")}
-              </Button>
-            ) : (
-              <Button
-                isLoading={loadingState === LoadingStatusType.PENDING}
-                onClick={handleOnClick}
-                colorScheme={"blue"}
-                bg={"blue.400"}
-                rounded={"full"}
-                px={6}
-                _hover={{
-                  bg: "blue.500",
-                }}
-              >
-                {t("Get Started")}
-              </Button>
-            )}
+            <Button
+              isLoading={loadingState === LoadingStatusType.PENDING}
+              onClick={handleOnClick}
+              colorScheme={"blue"}
+              bg={"blue.400"}
+              rounded={"full"}
+              px={6}
+              _hover={{
+                bg: "blue.500",
+              }}
+            >
+              {t("Get Started")}
+            </Button>
             <Button
               as={RouterLink}
               to={"/" + i18n.language + "/help"}

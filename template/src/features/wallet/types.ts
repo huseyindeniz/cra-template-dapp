@@ -48,7 +48,7 @@ export type AccountType = {
   ens: string | null;
 };
 
-export type ChainType = {
+export type ChainInfoType = {
   chainId: number;
   chainName: string;
   nativeCurrency: {
@@ -58,14 +58,11 @@ export type ChainType = {
   };
   rpcUrls: string[];
   blockExplorerUrls: string[];
-};
-
-export type ChainInfoType = {
-  chain: ChainType;
+  addressExplorerUrl: string | null;
+  transactionExplorerUrl: string | null;
+  multicallAddress: string | null;
   isTestChain: boolean;
   isLocalChain: boolean;
-  multicallAddress: string | null;
-  transactionExplorerUrl: string | null;
 };
 
 export type BlockInfoType = {

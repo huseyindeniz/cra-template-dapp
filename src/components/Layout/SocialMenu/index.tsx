@@ -95,7 +95,7 @@ export interface SocialMenuProps {
   items: SocialLink[];
 }
 
-export const SocialMenu: React.FC<SocialMenuProps> = ({ items }) => {
+export const SocialMenu: React.FC<SocialMenuProps> = React.memo(({ items }) => {
   return (
     <>
       {items &&
@@ -106,4 +106,4 @@ export const SocialMenu: React.FC<SocialMenuProps> = ({ items }) => {
         ))}
     </>
   );
-};
+});

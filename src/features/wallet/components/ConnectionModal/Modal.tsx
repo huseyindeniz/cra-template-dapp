@@ -19,10 +19,10 @@ export interface ConnectionModalProps {
   isOpen: boolean;
   activeStep: number;
   stepState: "loading" | "error" | undefined;
-  CheckWalletContent: React.ReactNode;
-  CheckUnlockContent: React.ReactNode;
-  CheckNetworkContent: React.ReactNode;
-  CheckSignContent: React.ReactNode;
+  checkWalletContent: React.ReactNode;
+  checkUnlockContent: React.ReactNode;
+  checkNetworkContent: React.ReactNode;
+  checkSignContent: React.ReactNode;
   onDisconnect: () => void;
 }
 
@@ -30,10 +30,10 @@ export const Modal: React.FC<ConnectionModalProps> = ({
   isOpen,
   activeStep,
   stepState,
-  CheckWalletContent,
-  CheckUnlockContent,
-  CheckNetworkContent,
-  CheckSignContent,
+  checkWalletContent,
+  checkUnlockContent,
+  checkNetworkContent,
+  checkSignContent,
   onDisconnect,
 }) => {
   const { t } = useTranslation("FeatureWallet");
@@ -69,7 +69,7 @@ export const Modal: React.FC<ConnectionModalProps> = ({
               )}
               icon={MdExtension}
             >
-              {CheckWalletContent}
+              {checkWalletContent}
             </Step>
             <Step
               width="100%"
@@ -78,7 +78,7 @@ export const Modal: React.FC<ConnectionModalProps> = ({
               description={t("The Metamask wallet needs to be unlocked.")}
               icon={IoMdUnlock}
             >
-              {CheckUnlockContent}
+              {checkUnlockContent}
             </Step>
             <Step
               width="100%"
@@ -89,7 +89,7 @@ export const Modal: React.FC<ConnectionModalProps> = ({
               )}
               icon={GiChoice}
             >
-              {CheckNetworkContent}
+              {checkNetworkContent}
             </Step>
             <Step
               width="100%"
@@ -100,7 +100,7 @@ export const Modal: React.FC<ConnectionModalProps> = ({
               )}
               icon={FaFileSignature}
             >
-              {CheckSignContent}
+              {checkSignContent}
             </Step>
           </Steps>
         </ModalBody>

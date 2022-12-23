@@ -8,7 +8,7 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
-import { PageMeta } from "../../components/PageMeta";
+import { PageMeta } from "../../components/UI/PageMeta";
 import { useLocation, useHref } from "react-router-dom";
 
 export const AboutPage: React.FC = () => {
@@ -25,7 +25,7 @@ export const AboutPage: React.FC = () => {
         url={url}
       />
       <Box>
-        <Container maxW={"7xl"} py={2} as={Stack} spacing={12}>
+        <Container maxW={"7xl"} py={2} as={Stack} spacing={0}>
           <Stack spacing={0} align={"center"}>
             <Heading>{title}</Heading>
             <Divider />
@@ -55,17 +55,6 @@ export const AboutPage: React.FC = () => {
               <ListItem>React Count Down Circle Timer</ListItem>
               <ListItem>React Cookie Consent</ListItem>
               <ListItem>Redux Toolkit with Redux Saga</ListItem>
-            </List>
-            <Heading>Preconfigured Testing Infrastructure</Heading>
-            <List>
-              <ListItem>Unit Tests: jest</ListItem>
-              <ListItem>
-                Component Unit Tests: React Testing Library + Storybook
-              </ListItem>
-              <ListItem>
-                Integration Tests: React Testing Library + Storybook
-              </ListItem>
-              <ListItem>E2E Tests: Cypress + Synpress + Cucumber</ListItem>
             </List>
           </Box>
         </Container>

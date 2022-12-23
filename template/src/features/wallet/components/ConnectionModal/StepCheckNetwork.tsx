@@ -19,6 +19,8 @@ export interface StepCheckNetworkProps {
   supportedNetworks: {
     id: number;
     name: string;
+    isTestChain: boolean;
+    isLocalChain: boolean;
   }[];
   defaultNetwork: number;
   stepState: WalletStateType;
@@ -138,9 +140,16 @@ export const StepCheckNetwork: React.FC<StepCheckNetworkProps> = ({
               }
             >
               {supportedNetworks.map((network) => {
+                let networkName = network.name;
+                networkName = network.isLocalChain
+                  ? `(Local) ${networkName}`
+                  : networkName;
+                networkName = network.isTestChain
+                  ? `(TestNet) ${networkName}`
+                  : networkName;
                 return (
                   <option key={network.id} value={network.id}>
-                    {network.name}
+                    {networkName}
                   </option>
                 );
               })}

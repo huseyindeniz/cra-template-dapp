@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Box, HStack, IconButton, Tag, VStack } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Tag } from "@chakra-ui/react";
 import { MdRefresh } from "@react-icons/all-files/md/MdRefresh";
 
 import useTypedSelector from "../../../../hooks/useTypedSelector";
@@ -20,8 +20,8 @@ export const BlockInfo: React.FC = () => {
 
   useEffect(() => {
     if (currentNetwork) {
+      actions.latestBlock();
       const interval = setInterval(() => {
-        console.log("get latest block");
         actions.latestBlock();
       }, 15000);
       return () => clearInterval(interval);
@@ -29,34 +29,32 @@ export const BlockInfo: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentNetwork]);
 
-  useEffect(() => {
-    actions.latestBlock();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
-    <HStack m={2}>
+    <>
       {blockInfo && (
-        <VStack shadow={"md"} p={2}>
-          <Box fontSize={"md"}>
-            <Tag>{t("Block")}</Tag> {blockInfo.blockNumber}
+        <Flex>
+          <Box fontSize={"xs"} mr={1}>
+            <Tag>
+              {t("Block")}: {blockInfo.blockNumber}
+            </Tag>
           </Box>
-          <Box fontSize={"md"}>
-            <Tag>{t("Balance")}</Tag> {blockInfo.signerAccountBalance}{" "}
-            {currentNetwork?.chain.nativeCurrency.symbol}
+          <Box fontSize={"xs"} mr={1}>
+            <Tag>
+              {t("Balance")}:{" "}
+              {parseFloat(blockInfo.signerAccountBalance).toFixed(2)}{" "}
+              {currentNetwork?.nativeCurrency.symbol}
+            </Tag>
           </Box>
-        </VStack>
+          <IconButton
+            isLoading={blockInfoLoading === LoadingStatusType.PENDING}
+            icon={<MdRefresh />}
+            variant={"outline"}
+            size={"xs"}
+            aria-label="refresh"
+            onClick={() => actions.latestBlock()}
+          />
+        </Flex>
       )}
-      <Box>
-        <IconButton
-          isLoading={blockInfoLoading === LoadingStatusType.PENDING}
-          icon={<MdRefresh />}
-          variant={"outline"}
-          size={"xs"}
-          aria-label="refresh"
-          onClick={() => actions.latestBlock()}
-        />
-      </Box>
-    </HStack>
+    </>
   );
 };

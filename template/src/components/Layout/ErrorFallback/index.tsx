@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Box } from "@chakra-ui/react";
-import { AlertMessage } from "../../AlertMessage";
+import { AlertMessage } from "../../UI/AlertMessage";
 
 export interface ErrorFallbackProps {
   error: Error;
