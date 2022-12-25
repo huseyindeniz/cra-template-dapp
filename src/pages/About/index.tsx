@@ -7,6 +7,7 @@ import {
   Stack,
   List,
   ListItem,
+  VStack,
 } from "@chakra-ui/react";
 import { PageMeta } from "../../components/UI/PageMeta";
 import { useLocation, useHref } from "react-router-dom";
@@ -30,10 +31,37 @@ export const AboutPage: React.FC = () => {
             <Heading>{title}</Heading>
             <Divider />
           </Stack>
-          <Box>
-            <Heading>Features</Heading>
+          <VStack spacing={4}>
+            <Box>
+              A create-react-app template specifically designed for
+              decentralized application (dApp) development.
+            </Box>
+            <Box>
+              If you're building a dApp, you have a few different options for
+              setting up your frontend project. While a next generation react
+              based framework may seem like a popular choice, it can actually
+              have some limitations and challenges that make it less than ideal
+              for dApp development. These include: <br />
+              - Lack of support for complex client-side logic or interactivity.
+              <br />- Time-consuming configuration and setup process for
+              dApp-specific technologies such as Ethereum and Web3. - Extra
+              overhead and complexity that can make it difficult to maintain and
+              scale your dApp. On the other hand, dApp CRA Template is designed
+              specifically for decentralized application development, and offers
+              a more flexible and customizable foundation for building dApps. It
+              uses the same underlying technology (React) as this type of
+              framework, but without the constraints and limitations. With dApp
+              CRA Template, you can take full advantage of the capabilities of
+              React to build fast, scalable, and user-friendly dApps. Plus, it
+              is easier to integrate with decentralized protocols and
+              technologies, and allows you to host your dApp on decentralized
+              servers for maximum security and decentralization.
+            </Box>
+            <Heading size="md">Features</Heading>
             <List>
-              <ListItem>Wallet</ListItem>
+              <ListItem>Authentication with Metamask Wallet</ListItem>
+              <ListItem>Internationalization (i18Next)</ListItem>
+              <ListItem>Dark Theme Support (Chakra-UI)</ListItem>
             </List>
             <Heading>Preconfigured Web 3 Packages</Heading>
             <List>
@@ -56,7 +84,7 @@ export const AboutPage: React.FC = () => {
               <ListItem>React Cookie Consent</ListItem>
               <ListItem>Redux Toolkit with Redux Saga</ListItem>
             </List>
-          </Box>
+          </VStack>
         </Container>
       </Box>
     </>

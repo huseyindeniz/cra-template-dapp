@@ -13,7 +13,6 @@ import {
   HStack,
   VStack,
   Link,
-  Image,
 } from "@chakra-ui/react";
 import { FaExternalLinkAlt } from "@react-icons/all-files/fa/FaExternalLinkAlt";
 import { IoIosLogOut } from "@react-icons/all-files/io/IoIosLogOut";
@@ -21,11 +20,13 @@ import { MdContentCopy } from "@react-icons/all-files/md/MdContentCopy";
 import { MdDashboard } from "@react-icons/all-files/md/MdDashboard";
 
 import { Identicon } from "./Identicon";
+import { ChainInfoType } from "../../types";
+import { NetworkLogo } from "../NetworkLogo";
 
 export interface DropdownMenuProps {
   address: string;
   ensOrAddressTruncated: string;
-  networkLogoUrl: string;
+  currentNetwork: ChainInfoType | null;
   addressExplorerUrl: string | undefined;
   currentLangCode: string;
   onCopyAddressClicked: () => void;
@@ -35,7 +36,7 @@ export interface DropdownMenuProps {
 export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   address,
   ensOrAddressTruncated,
-  networkLogoUrl,
+  currentNetwork,
   addressExplorerUrl,
   currentLangCode,
   onCopyAddressClicked,
@@ -55,7 +56,12 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         ml={2}
       >
         <HStack>
-          <Image width={"16px"} objectFit="cover" src={networkLogoUrl} />
+          {currentNetwork && (
+            <NetworkLogo
+              networkId={currentNetwork?.chainId}
+              networkName={currentNetwork?.chainName}
+            />
+          )}
           <Text color="white" fontSize="md" fontWeight="medium" mr="2">
             {ensOrAddressTruncated}
           </Text>

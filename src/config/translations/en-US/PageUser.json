@@ -1,7 +1,6 @@
 {
   "Block": "Block",
   "Balance": "Balance",
-  "Address copied.": "Address copied.",
-  "The address of your account has been copied to the clipboard.": "The address of your account has been copied to the clipboard.",
-  "Current Balance and Block Information": "Current Balance and Block Information"
+  "User Dashboard": "User Dashboard",
+  "As an example, you can put current user's latest transactions here...": "As an example, you can put current user's latest transactions here..."
 }

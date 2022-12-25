@@ -14,7 +14,6 @@ export const ProfileDropdownMenu: React.FC = () => {
   const actions = useActions();
   const account = useTypedSelector((state) => state.wallet.account);
   const [addressExplorerUrl, setAddressExplorerUrl] = useState<string>("");
-  const [networkLogoUrl, setNetworkLogoUrl] = useState<string>("");
   const [ensOrAddressTruncated, setensOrAddressTruncated] =
     useState<string>("");
   const currentNetwork = useTypedSelector(
@@ -25,9 +24,6 @@ export const ProfileDropdownMenu: React.FC = () => {
     if (currentNetwork) {
       setAddressExplorerUrl(
         `${currentNetwork.blockExplorerUrls[0]}/${currentNetwork.addressExplorerUrl}`
-      );
-      setNetworkLogoUrl(
-        "assets/images/chains/" + currentNetwork?.chainId + ".png"
       );
     }
   }, [currentNetwork]);
@@ -66,7 +62,7 @@ export const ProfileDropdownMenu: React.FC = () => {
       address={account.address}
       currentLangCode={i18n.resolvedLanguage}
       ensOrAddressTruncated={ensOrAddressTruncated ?? ""}
-      networkLogoUrl={networkLogoUrl}
+      currentNetwork={currentNetwork}
       addressExplorerUrl={addressExplorerUrl}
       onCopyAddressClicked={onCopyClicked}
       onDisconnectClicked={onDisconnectClick}

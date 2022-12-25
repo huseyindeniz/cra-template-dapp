@@ -14,6 +14,14 @@ import {
 
 import { SupportedLang } from "../../../config/types";
 
+import imageTrFlag from "../../../assets/images/flags/tr.webp";
+import imageUsFlag from "../../../assets/images/flags/us.webp";
+
+const imagesFlag: Record<string, string> = {
+  tr: imageTrFlag,
+  us: imageUsFlag,
+};
+
 export interface LangModalProps {
   onClose: () => void;
   onChange: () => void;
@@ -48,7 +56,7 @@ export const LangModal: React.FC<LangModalProps> = ({
               {supportedLanguages.map((l) => (
                 <Radio key={l.code} value={l.code}>
                   <Image
-                    src={`assets/images/flags/${l.code.slice(-2)}.svg`}
+                    src={imagesFlag[l.code.slice(-2).toLowerCase()]}
                     style={{
                       margin: "0.4em",
                       width: "1.6em",

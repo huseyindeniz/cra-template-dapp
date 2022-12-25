@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { FaExternalLinkAlt } from "@react-icons/all-files/fa/FaExternalLinkAlt";
 
-import metamaskLogo from "../../assets/mm-logo.svg";
+import imageMetamaskLogo from "../../assets/images/mm-logo.webp";
 import { WalletStateType } from "../../types";
 
 export interface StepCheckWalletProps {
@@ -32,7 +32,7 @@ export const StepCheckWallet: React.FC<StepCheckWalletProps> = ({
     <VStack>
       <Box>
         <Alert status="warning">
-          <Image width={"25%"} src={metamaskLogo} alt="Metamask" m={2} />
+          <Image width={"25%"} src={imageMetamaskLogo} alt="Metamask" m={2} />
           <Text fontSize={"xs"}>
             {t(
               "The Metamask wallet extension is not detected in your browser."

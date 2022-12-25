@@ -26,6 +26,8 @@ import { SocialMenu } from "./SocialMenu";
 import { socialLinks } from "../../config/socialLinks";
 import { usePages } from "../../hooks/usePages";
 
+import imageSiteLogo from "../../assets/images/logo.webp";
+
 const Header = React.lazy(() =>
   import("./Header").then((module) => ({ default: module.Header }))
 );
@@ -58,14 +60,14 @@ const Layout: React.FC<WithTranslation> = () => {
   const currentLangCode = (i18n.resolvedLanguage as LangCode) ?? LangCode.EN_US;
   const siteName = t("SITE_NAME");
   const siteDescription = t("SITE_DESCRIPTION");
-  const siteLogoUrl = "/assets/images/logo.webp";
+
   return (
     <HelmetProvider>
       <SiteMeta siteName={siteName} siteDescription={siteDescription} />
       <Box minH={"100vh"} flexDirection={"column"} display={"flex"}>
         <Header
           siteName={siteName}
-          siteLogoUrl={siteLogoUrl}
+          siteLogoUrl={imageSiteLogo}
           isAuthenticated={isAuthenticated}
           currentLangCode={currentLangCode}
           headerMenuItems={mainMenuItems}
@@ -92,7 +94,7 @@ const Layout: React.FC<WithTranslation> = () => {
         </Box>
         <Footer
           siteName={siteName}
-          siteLogoUrl={siteLogoUrl}
+          siteLogoUrl={imageSiteLogo}
           isAuthenticated={isAuthenticated}
           currentLangCode={currentLangCode}
           footerMenuItems={footerMenuItems}

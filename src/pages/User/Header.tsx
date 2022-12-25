@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Heading, Divider, Text, Image, HStack, Flex } from "@chakra-ui/react";
+import { Heading, Divider, Text, HStack, Flex } from "@chakra-ui/react";
 
 import { BlockInfo } from "../../features/wallet/components/BlockInfo";
+import { NetworkLogo } from "../../features/wallet/components/NetworkLogo";
 
 import useTypedSelector from "../../hooks/useTypedSelector";
 import useActions from "../../features/wallet/useActions";
@@ -33,11 +34,12 @@ export const Header: React.FC = () => {
           <Divider />
           <Flex alignItems={"center"} justifyContent={"space-between"}>
             <HStack mr={1}>
-              <Image
-                width={"24px"}
-                objectFit="cover"
-                src={"assets/images/chains/" + currentNetwork?.chainId + ".png"}
-              />
+              {currentNetwork && (
+                <NetworkLogo
+                  networkId={currentNetwork?.chainId}
+                  networkName={currentNetwork?.chainName}
+                />
+              )}
               <Text fontSize={"xs"}>{currentNetwork?.chainName}</Text>
             </HStack>
             <BlockInfo />

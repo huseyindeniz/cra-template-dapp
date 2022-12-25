@@ -12,6 +12,8 @@ import {
   Center,
   Link,
 } from "@chakra-ui/react";
+import imageBackToHomePage from "../../assets/images/notfound/backToTheHomepage.webp";
+import imageDelorean from "../../assets/images/notfound/delorean.webp";
 
 export const NotFoundPage: React.FC = () => {
   const { t } = useTranslation("PageNotFound");
@@ -26,16 +28,11 @@ export const NotFoundPage: React.FC = () => {
           <VStack bgColor={"blackAlpha.800"}>
             <Image
               width={"50%"}
-              src={"/assets/images/notfound/backToTheHomepage.png"}
+              src={imageBackToHomePage}
               alt="not found"
               m={2}
             />
-            <Image
-              width={"50%"}
-              src={"/assets/images/notfound/delorean.png"}
-              alt="not found"
-              m={2}
-            />
+            <Image width={"50%"} src={imageDelorean} alt="not found" m={2} />
           </VStack>
         </Center>
         <Center>

@@ -4,7 +4,9 @@ import { useTranslation } from "react-i18next";
 import { MenuType, PageType } from "../config/types";
 
 const HomePage = React.lazy(() =>
-  import("../pages/Home").then((module) => ({ default: module.HomePage }))
+  import(/* webpackChunkName: "HomePage" */ "../pages/Home").then((module) => ({
+    default: module.HomePage,
+  }))
 );
 const AboutPage = React.lazy(() =>
   import(/* webpackChunkName: "AboutPage" */ "../pages/About").then(
@@ -12,6 +14,14 @@ const AboutPage = React.lazy(() =>
       default: module.AboutPage,
     })
   )
+);
+
+const DocumentationPage = React.lazy(() =>
+  import(
+    /* webpackChunkName: "DocumentationPage" */ "../pages/Documentation"
+  ).then((module) => ({
+    default: module.DocumentationPage,
+  }))
 );
 
 export const usePages = () => {
@@ -37,7 +47,17 @@ export const usePages = () => {
     isProtected: false,
   };
 
-  const Pages: PageType[] = [Home, About];
+  const Documentation: PageType = {
+    id: "documentation",
+    path: "documentation",
+    element: <DocumentationPage />,
+    menuLabel: t("Documentation", { ns: "Menu" }),
+    isShownInMainMenu: true,
+    isShownInFooter: true,
+    isProtected: false,
+  };
+
+  const Pages: PageType[] = [Home, About, Documentation];
 
   const mainMenuItems: MenuType[] = Pages.filter((m) => m.isShownInMainMenu);
 

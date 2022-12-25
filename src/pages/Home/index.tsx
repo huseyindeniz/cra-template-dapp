@@ -10,18 +10,10 @@ import {
   Button,
   Tag,
 } from "@chakra-ui/react";
-import useTypedSelector from "../../hooks/useTypedSelector";
-import { LoadingStatusType } from "../../features/wallet/types";
-import useActions from "../../features/wallet/useActions";
+import { Modal } from "./Modal";
 
 export const HomePage: React.FC = () => {
   const { t, i18n } = useTranslation("PageHome");
-  const actions = useActions();
-  const loadingState = useTypedSelector((state) => state.wallet.loading);
-
-  const handleOnClick = () => {
-    actions.connectWallet();
-  };
 
   return (
     <>
@@ -34,11 +26,12 @@ export const HomePage: React.FC = () => {
         >
           <Heading
             fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+            fontSize={{ base: "1xl", sm: "2xl", md: "3xl" }}
             lineHeight={"110%"}
             textAlign={"center"}
           >
-            {t("quick entry to the world of Web3")} <br />
+            {t("experience the full power of React for dApp development")}{" "}
+            <br />
             <Text as={"span"} color={"blue.400"}>
               {t("dApp CRA Template")}
             </Text>
@@ -61,22 +54,10 @@ export const HomePage: React.FC = () => {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Button
-              isLoading={loadingState === LoadingStatusType.PENDING}
-              onClick={handleOnClick}
-              colorScheme={"blue"}
-              bg={"blue.400"}
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "blue.500",
-              }}
-            >
-              {t("Get Started")}
-            </Button>
+            <Modal />
             <Button
               as={RouterLink}
-              to={"/" + i18n.language + "/help"}
+              to={"/" + i18n.language + "/about"}
               variant={"link"}
               colorScheme={"blue"}
               size={"sm"}
