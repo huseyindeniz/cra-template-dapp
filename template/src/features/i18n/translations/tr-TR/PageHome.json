@@ -1,0 +1,9 @@
+{
+  "Hello World": "Merhaba Dünya",
+  "dApp CRA Template": "dApp CRA Şablonu",
+  "dApp CRA Template is a create-react-app template specifically designed for decentralized application (dApp) development.": "dApp CRA Şablonu, merkeziyetsiz uygulama (dApp) geliştirme için özel olarak tasarlanmış bir create-react-app şablonudur.",
+  "experience the full power of React for dApp development": "dApp geliştirme için React'in tüm gücünü deneyimleyin",
+  "Edit {{path}} and save to reload.": "{{path}} dosyasını düzenleyip kaydedin",
+  "Learn React": "React'ı öğren",
+  "Learn dApp CRA Template": "dApp CRA Şablonu'nu öğren"
+}
