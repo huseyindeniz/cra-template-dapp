@@ -33,23 +33,24 @@ export const BlockInfo: React.FC = () => {
     <>
       {blockInfo && (
         <Flex>
-          <Box fontSize={"xs"} mr={1}>
+          <Box fontSize="xs" mr={1}>
             <Tag>
               {t("Block")}: {blockInfo.blockNumber}
             </Tag>
           </Box>
-          <Box fontSize={"xs"} mr={1}>
+          <Box fontSize="xs" mr={1}>
             <Tag>
-              {t("Balance")}:{" "}
-              {parseFloat(blockInfo.signerAccountBalance).toFixed(2)}{" "}
-              {currentNetwork?.nativeCurrency.symbol}
+              {t("Balance")}
+              {`: ${parseFloat(blockInfo.signerAccountBalance).toFixed(2)} ${
+                currentNetwork?.nativeCurrency.symbol
+              }`}
             </Tag>
           </Box>
           <IconButton
             isLoading={blockInfoLoading === LoadingStatusType.PENDING}
             icon={<MdRefresh />}
-            variant={"outline"}
-            size={"xs"}
+            variant="outline"
+            size="xs"
             aria-label="refresh"
             onClick={() => actions.latestBlock()}
           />

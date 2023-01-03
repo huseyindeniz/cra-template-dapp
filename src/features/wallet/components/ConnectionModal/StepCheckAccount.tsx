@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Box, VStack, Button, Text, Progress } from "@chakra-ui/react";
-import { AlertMessage } from "../../../ui";
+import { AlertMessage } from "../../../ui/components/AlertMessage";
 
 import { WalletAccountStateType } from "../../types";
 
@@ -22,7 +22,7 @@ export const StepCheckAccount: React.FC<StepCheckAccountProps> = ({
     return (
       <Box w="full">
         <AlertMessage status="warning" title={t("Unexpected Error")}>
-          <Text fontSize={"xs"}>
+          <Text fontSize="xs">
             {t("An error has occured during the wallet status check.")}
             <br /> {t("Please try again later.")}
             <br />
@@ -37,7 +37,7 @@ export const StepCheckAccount: React.FC<StepCheckAccountProps> = ({
     return (
       <Box w="full">
         <AlertMessage status="warning" title={t("Wallet Is Locked")}>
-          <Text fontSize={"xs"}>
+          <Text fontSize="xs">
             {t("Please unlock your wallet if you want to continue.")}
           </Text>
         </AlertMessage>
@@ -48,8 +48,8 @@ export const StepCheckAccount: React.FC<StepCheckAccountProps> = ({
   const UnlockRequested = () => {
     return (
       <Box w="full">
-        <Progress size="xs" isIndeterminate colorScheme={"yellow"} />
-        <Text fontSize={"xs"}>
+        <Progress size="xs" isIndeterminate colorScheme="yellow" />
+        <Text fontSize="xs">
           {t("Waiting for the unlock wallet request to be accepted.")}
           <br />
           {t("Please check your Metamask wallet.")}
@@ -62,7 +62,7 @@ export const StepCheckAccount: React.FC<StepCheckAccountProps> = ({
     return (
       <Box w="full">
         <AlertMessage status="warning" title={t("Unlock Rejected")}>
-          <Text fontSize={"xs"}>
+          <Text fontSize="xs">
             {t("You rejected the unlock wallet request.")}
             <br />
             {t("Please try again if you want to continue.")}
@@ -76,7 +76,7 @@ export const StepCheckAccount: React.FC<StepCheckAccountProps> = ({
     return (
       <Box w="full">
         <AlertMessage status="warning" title={t("Unexpected Error")}>
-          <Text fontSize={"xs"}>
+          <Text fontSize="xs">
             {t("An error has occured during the unlock wallet check.")}
             <br /> {t("Please try again later.")}
             <br />
@@ -111,8 +111,8 @@ export const StepCheckAccount: React.FC<StepCheckAccountProps> = ({
         return (
           <Box>
             <Button
-              variant={"solid"}
-              colorScheme={"yellow"}
+              variant="solid"
+              colorScheme="yellow"
               onClick={() => onUnlock()}
             >
               {t("Unlock Wallet")}

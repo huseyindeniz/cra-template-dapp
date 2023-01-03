@@ -43,7 +43,7 @@ export const Modal: React.FC<ConnectionModalProps> = ({
       closeOnOverlayClick={false}
       isOpen={isOpen}
       onClose={() => onDisconnect()}
-      size={"xl"}
+      size="xl"
       preserveScrollBarGap={true}
     >
       <ModalOverlay />
@@ -58,12 +58,12 @@ export const Modal: React.FC<ConnectionModalProps> = ({
             orientation="vertical"
             activeStep={activeStep}
             state={stepState}
-            colorScheme={"whatsapp"}
+            colorScheme="whatsapp"
           >
             <Step
               width="100%"
               label={t("Check Metamask Extension")}
-              key={"installation"}
+              key="installation"
               description={
                 t(
                   "The Metamask wallet extension needs to be installed."
@@ -76,7 +76,7 @@ export const Modal: React.FC<ConnectionModalProps> = ({
             <Step
               width="100%"
               label={t("Check Metamask Status")}
-              key={"unlock"}
+              key="unlock"
               description={
                 t("The Metamask wallet needs to be unlocked.") as string
               }
@@ -87,7 +87,7 @@ export const Modal: React.FC<ConnectionModalProps> = ({
             <Step
               width="100%"
               label={t("Check Metamask Network")}
-              key={"network"}
+              key="network"
               description={
                 t(
                   "A supported network needs to be selected in the Metamask wallet."
@@ -100,7 +100,7 @@ export const Modal: React.FC<ConnectionModalProps> = ({
             <Step
               width="100%"
               label={t("Check Metamask Signature")}
-              key={"signin"}
+              key="signin"
               description={
                 t(
                   "The login request needs to be signed in the Metamask wallet."

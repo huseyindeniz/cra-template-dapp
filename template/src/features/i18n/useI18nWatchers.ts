@@ -42,7 +42,7 @@ export const useI18nWatcher = () => {
       lang !== "" &&
       i18nConfig.supportedLanguages.find((l) => l.code === lang) === undefined
     ) {
-      navigate("not-found");
+      navigate(`${i18nConfig.fallbackLang.code}/not-found`);
     }
     // eslint-disable-next-line
   }, [lang]);

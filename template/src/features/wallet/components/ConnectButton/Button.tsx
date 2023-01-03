@@ -13,12 +13,12 @@ export const Button: React.FC<ButtonProps> = ({ onClick, isLoading }) => {
   return (
     <ChakraButton
       ml={2}
-      variant={"solid"}
+      variant="solid"
       isLoading={isLoading}
-      colorScheme={"yellow"}
+      colorScheme="yellow"
       leftIcon={<FaWallet />}
       onClick={() => onClick()}
-      role={"button"}
+      role="button"
     >
       {t("Connect")}
     </ChakraButton>

@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading, Divider, Text, HStack, Flex } from "@chakra-ui/react";
 
-import { BlockInfo, NetworkLogo, useActions } from "../../features/wallet";
+import { useActions } from "../../features/wallet/useActions";
+import { BlockInfo } from "../../features/wallet/components/BlockInfo";
+import { NetworkLogo } from "../../features/wallet/components/NetworkLogo";
 
 import useTypedSelector from "../../hooks/useTypedSelector";
 
@@ -26,11 +28,11 @@ export const Header: React.FC = () => {
     <>
       {account && (
         <>
-          <Heading size={"xs"} textAlign="center">
+          <Heading size="xs" textAlign="center">
             {t("User Dashboard")}
           </Heading>
           <Divider />
-          <Flex alignItems={"center"} justifyContent={"space-between"}>
+          <Flex alignItems="center" justifyContent="space-between">
             <HStack mr={1}>
               {currentNetwork && (
                 <NetworkLogo
@@ -38,7 +40,7 @@ export const Header: React.FC = () => {
                   networkName={currentNetwork?.chainName}
                 />
               )}
-              <Text fontSize={"xs"}>{currentNetwork?.chainName}</Text>
+              <Text fontSize="xs">{currentNetwork?.chainName}</Text>
             </HStack>
             <BlockInfo />
           </Flex>

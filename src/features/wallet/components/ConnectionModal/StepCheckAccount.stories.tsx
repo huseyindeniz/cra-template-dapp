@@ -42,7 +42,7 @@ AccountDetectionFailed.args = {
   checkAccountContent: (
     <StepCheckAccount
       onUnlock={() => null}
-      errorMessage={"mock error code"}
+      errorMessage="mock error code"
       stepState={WalletAccountStateType.ACCOUNT_DETECTION_FAILED}
     />
   ),
@@ -81,7 +81,7 @@ UnlockFailed.args = {
   checkAccountContent: (
     <StepCheckAccount
       onUnlock={() => null}
-      errorMessage={"mock error code"}
+      errorMessage="mock error code"
       stepState={WalletAccountStateType.UNLOCK_FAILED}
     />
   ),

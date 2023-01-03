@@ -36,7 +36,7 @@ export const NetworkLogo: React.FC<NetworkLogoProps> = ({
 }) => {
   return (
     <Image
-      boxSize={"24px"}
+      boxSize="24px"
       objectFit="cover"
       src={imagesNetwork[networkId]}
       alt={networkName}

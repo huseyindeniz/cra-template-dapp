@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Box, VStack, Button, Text, Progress, Select } from "@chakra-ui/react";
-import { AlertMessage } from "../../../ui";
+import { AlertMessage } from "../../../ui/components/AlertMessage";
 
 import { WalletNetworkStateType } from "../../types";
 
@@ -33,7 +33,7 @@ export const StepCheckNetwork: React.FC<StepCheckNetworkProps> = ({
     return (
       <Box w="full">
         <AlertMessage status="warning" title={t("Unexpected Error")}>
-          <Text fontSize={"xs"}>
+          <Text fontSize="xs">
             {t("An error has occured during the network check.")}
             <br /> {t("Please try again later.")}
             <br />
@@ -48,7 +48,7 @@ export const StepCheckNetwork: React.FC<StepCheckNetworkProps> = ({
     return (
       <Box w="full">
         <AlertMessage status="warning" title={t("Unsupported Network")}>
-          <Text fontSize={"xs"}>
+          <Text fontSize="xs">
             {t("Current network is not supported by this app.")}
             <br />
             {t(
@@ -63,8 +63,8 @@ export const StepCheckNetwork: React.FC<StepCheckNetworkProps> = ({
   const NetworkSwitchRequested = () => {
     return (
       <Box w="full">
-        <Progress size="xs" isIndeterminate colorScheme={"yellow"} />
-        <Text fontSize={"xs"}>
+        <Progress size="xs" isIndeterminate colorScheme="yellow" />
+        <Text fontSize="xs">
           {t("Waiting for the network switch request to be accepted.")}
           <br /> {t("Please check your Metamask wallet.")}
         </Text>
@@ -76,7 +76,7 @@ export const StepCheckNetwork: React.FC<StepCheckNetworkProps> = ({
     return (
       <Box w="full">
         <AlertMessage status="warning" title={t("Switch Rejected")}>
-          <Text fontSize={"xs"}>
+          <Text fontSize="xs">
             {t("You rejected the network switch request.")}
             <br /> {t("Please try again if you want to continue.")}
           </Text>
@@ -89,7 +89,7 @@ export const StepCheckNetwork: React.FC<StepCheckNetworkProps> = ({
     return (
       <Box w="full">
         <AlertMessage status="warning" title={t("Unexpected Error")}>
-          <Text fontSize={"xs"}>
+          <Text fontSize="xs">
             {t("An error has occured during the network switch request.")}
             <br /> {t("Please try again later.")}
             <br />
@@ -124,7 +124,7 @@ export const StepCheckNetwork: React.FC<StepCheckNetworkProps> = ({
         return (
           <VStack spacing={2}>
             <Select
-              size={"md"}
+              size="md"
               defaultValue={defaultNetwork}
               onChange={(event) =>
                 setSelectedNetwork(parseInt(event.target.value))
@@ -147,8 +147,8 @@ export const StepCheckNetwork: React.FC<StepCheckNetworkProps> = ({
             </Select>
             <Box>
               <Button
-                variant={"solid"}
-                colorScheme={"yellow"}
+                variant="solid"
+                colorScheme="yellow"
                 onClick={() => onSwitchNetwork(selectedNetwork)}
               >
                 {t("Switch Network")}

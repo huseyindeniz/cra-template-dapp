@@ -17,7 +17,7 @@ export const WalletLoading: React.FC = () => {
       closeOnOverlayClick={false}
       isOpen={true}
       onClose={() => null}
-      size={"xl"}
+      size="xl"
       preserveScrollBarGap={true}
     >
       <ModalOverlay />

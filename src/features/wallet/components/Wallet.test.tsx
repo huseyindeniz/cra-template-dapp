@@ -1,8 +1,8 @@
 import { render, cleanup } from "@testing-library/react";
-import { Wallet } from ".";
+import { Wallet } from "./Wallet";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
-import { initialState } from "./slices";
+import { initialState } from "../slices";
 
 jest.mock("react-i18next", () => ({
   // this mock makes sure any components using the translate hook can use it without a warning being shown

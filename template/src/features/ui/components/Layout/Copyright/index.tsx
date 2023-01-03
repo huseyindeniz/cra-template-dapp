@@ -13,14 +13,14 @@ export const Copyright: React.FC = React.memo(() => {
     "https://github.com/huseyindeniz/cra-template-dapp";
 
   return (
-    <Box color={"grey"}>
+    <Box color="gray">
       <Button
         as={Link}
         href={copyrightUrl}
         rel="noopener noreferrer"
         isExternal
-        variant={"ghost"}
-        size={"xs"}
+        variant="ghost"
+        size="xs"
         rightIcon={<FaExternalLinkAlt />}
       >
         {copyrightLabel}

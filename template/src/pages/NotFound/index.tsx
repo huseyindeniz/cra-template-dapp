@@ -14,25 +14,28 @@ import {
 } from "@chakra-ui/react";
 import imageBackToHomePage from "./assets/images/backToTheHomepage.webp";
 import imageDelorean from "./assets/images/delorean.webp";
+import { usePageLink } from "../usePageLink";
 
 export const NotFoundPage: React.FC = () => {
   const { t } = useTranslation("PageNotFound");
+  const homeLink = usePageLink("/");
+
   return (
     <Box>
-      <Container maxW={"7xl"} py={2} as={Stack} spacing={12}>
-        <Stack spacing={0} align={"center"}>
+      <Container maxW="7xl" py={2} as={Stack} spacing={12}>
+        <Stack spacing={0} align="center">
           <Heading>{t("404 Page Not Found")}</Heading>
           <Divider />
         </Stack>
         <Center>
-          <VStack bgColor={"blackAlpha.800"}>
+          <VStack bgColor="blackAlpha.800">
             <Image
-              width={"50%"}
+              width="50%"
               src={imageBackToHomePage}
               alt="not found"
               m={2}
             />
-            <Image width={"50%"} src={imageDelorean} alt="not found" m={2} />
+            <Image width="50%" src={imageDelorean} alt="not found" m={2} />
           </VStack>
         </Center>
         <Center>
@@ -41,22 +44,22 @@ export const NotFoundPage: React.FC = () => {
             <Box>
               <Link
                 as={RouterLink}
-                to={"/"}
-                border={"1px"}
-                borderColor={"gray.200"}
-                borderRadius={"md"}
+                to={homeLink}
+                border="1px"
+                borderColor="gray.200"
+                borderRadius="md"
                 p={1}
                 m={1}
               >
                 {t("Yes")}
               </Link>
               <Link
-                border={"1px"}
-                borderColor={"gray.200"}
-                borderRadius={"md"}
+                border="1px"
+                borderColor="gray.200"
+                borderRadius="md"
                 p={1}
                 m={1}
-                href={"https://www.youtube.com/watch?v=M230r6CLZUA"}
+                href="https://www.youtube.com/watch?v=M230r6CLZUA"
               >
                 {t("No")}
               </Link>

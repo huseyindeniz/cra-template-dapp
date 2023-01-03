@@ -14,7 +14,7 @@ import {
 import { FaExternalLinkAlt } from "@react-icons/all-files/fa/FaExternalLinkAlt";
 
 import logo from "./assets/images/logo.svg";
-import { PageMeta } from "../../features/ui";
+import { PageMeta } from "../../features/ui/components/PageMeta";
 
 export const HomePage: React.FC = () => {
   const { t } = useTranslation("PageHome");
@@ -47,10 +47,10 @@ export const HomePage: React.FC = () => {
       `}
       </style>
       <PageMeta title={title} description={description} url="" />
-      <Container maxW={"3xl"}>
+      <Container maxW="3xl">
         <Stack
           as={Box}
-          textAlign={"center"}
+          textAlign="center"
           spacing={{ base: 2, md: 4 }}
           py={{ base: 10, md: 16 }}
         >
@@ -58,18 +58,18 @@ export const HomePage: React.FC = () => {
           <Heading
             fontWeight={600}
             fontSize={{ base: "1xl", sm: "2xl", md: "3xl" }}
-            lineHeight={"110%"}
-            textAlign={"center"}
+            lineHeight="110%"
+            textAlign="center"
           >
-            {t("experience the full power of React for dApp development")}{" "}
+            {t("experience the full power of React for dApp development")}
             <br />
-            <Text as={"span"} color={"blue.400"}>
+            <Text as="span" color="blue.400">
               {title}
             </Text>
           </Heading>
           <Text>{description}</Text>
           <Text>
-            <Tag size={"lg"} colorScheme="orange">
+            <Tag size="lg" colorScheme="orange">
               {t("Edit {{path}} and save to reload.", {
                 path: "src/pages/Home/index.tsx",
                 interpolation: { escapeValue: false },
@@ -77,30 +77,30 @@ export const HomePage: React.FC = () => {
             </Tag>
           </Text>
           <Stack
-            direction={"column"}
+            direction="column"
             spacing={3}
-            align={"center"}
-            alignSelf={"center"}
-            position={"relative"}
+            align="center"
+            alignSelf="center"
+            position="relative"
           >
             <Button
               as={Link}
-              href={"https://reactjs.org"}
+              href="https://reactjs.org"
               rel="noopener noreferrer"
               isExternal
-              variant={"ghost"}
-              size={"xs"}
+              variant="ghost"
+              size="xs"
               rightIcon={<FaExternalLinkAlt />}
             >
               {t("Learn React")}
             </Button>
             <Button
               as={Link}
-              href={"https://github.com/huseyindeniz/cra-template-dapp"}
+              href="https://github.com/huseyindeniz/cra-template-dapp"
               rel="noopener noreferrer"
               isExternal
-              variant={"ghost"}
-              size={"xs"}
+              variant="ghost"
+              size="xs"
               rightIcon={<FaExternalLinkAlt />}
             >
               {t("Learn dApp CRA Template")}

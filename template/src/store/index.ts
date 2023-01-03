@@ -5,7 +5,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import { enableMapSet } from "immer";
 
 import { EthersWalletAPI } from "../services/Ethers/WalletAPI";
-import { watchWalletSaga /*announceWalletLoaded*/ } from "../features/wallet";
+import {
+  watchWalletSaga /*announceWalletLoaded*/,
+} from "../features/wallet/sagas";
 
 import RootReducer from "./rootReducer";
 

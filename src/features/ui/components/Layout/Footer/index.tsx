@@ -32,25 +32,25 @@ export const Footer: React.FC<FooterProps> = ({
     >
       <Container
         as={Stack}
-        maxW={"6xl"}
+        maxW="6xl"
         py={4}
         spacing={4}
-        justify={"center"}
-        align={"center"}
+        justify="center"
+        align="center"
       >
         <Box>
           <Link as={RouterLink} to={homeMenuItem.path ?? ""}>
             <Avatar src={siteLogoUrl} name={siteName} />
           </Link>
         </Box>
-        <Stack direction={"row"} spacing={6}>
+        <Stack direction="row" spacing={6}>
           <FooterMenu />
         </Stack>
       </Container>
       <Divider />
       <Container
         as={Stack}
-        maxW={"6xl"}
+        maxW="6xl"
         py={4}
         direction={{ base: "column", md: "row" }}
         spacing={4}

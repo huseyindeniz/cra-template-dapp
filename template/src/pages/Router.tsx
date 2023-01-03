@@ -1,7 +1,7 @@
 import React from "react";
 import { RouteObject, useRoutes } from "react-router-dom";
 
-import { i18nConfig } from "../features/i18n";
+import { i18nConfig } from "../features/i18n/config";
 import { usePages } from "./usePages";
 
 const HashRouter = React.lazy(() =>
@@ -21,7 +21,9 @@ const BrowserRouter = React.lazy(() =>
 );
 
 const Layout = React.lazy(() =>
-  import(/* webpackChunkName: "Layout" */ "../features/ui").then((module) => ({
+  import(
+    /* webpackChunkName: "Layout" */ "../features/ui/components/Layout"
+  ).then((module) => ({
     default: module.Layout,
   }))
 );
@@ -40,28 +42,45 @@ const Routes: React.FC = () => {
     element: <NotFoundPage />,
   };
 
-  const FakeNotFound: RouteObject = {
-    path: "not-found",
-    element: <NotFoundPage />,
-  };
-
   const PagesWithLang = Pages.map((p) => {
-    return {
-      ...p,
-      path: `/:${i18nConfig.urlParam}/${p.path}`,
-    };
+    if (p.children) {
+      return {
+        ...p,
+        path: `/:${i18nConfig.urlParam}/${p.path}`,
+        children: p.children.map((c) => {
+          if (c.index) {
+            return c;
+          } else {
+            return {
+              ...c,
+              path: `/:${i18nConfig.urlParam}${c.path}`,
+            };
+          }
+        }),
+      };
+    } else {
+      return {
+        ...p,
+        path: `/:${i18nConfig.urlParam}/${p.path}`,
+      };
+    }
   });
+
+  const UserWithLang = {
+    ...User,
+    path: `/:${i18nConfig.urlParam}/${User.path}`,
+  };
 
   const routeRootWithLang: RouteObject = {
     path: `/:${i18nConfig.urlParam}`,
-    children: [Home, ...PagesWithLang, NotFound],
+    children: [Home, UserWithLang, ...PagesWithLang, NotFound],
   };
 
   const routeRoot: RouteObject = {
     id: "root",
     path: "/",
     element: <Layout />,
-    children: [Home, ...Pages, User, FakeNotFound, routeRootWithLang],
+    children: [Home, User, ...Pages, routeRootWithLang],
   };
   return useRoutes([routeRoot]);
 };

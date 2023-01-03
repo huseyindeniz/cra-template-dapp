@@ -3,7 +3,7 @@ import { Button, useDisclosure } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
-import { i18nConfig } from "../..";
+import { i18nConfig } from "../../config";
 import { useI18nWatcher } from "../../useI18nWatchers";
 import { useChangeLanguage } from "../../useChangeLanguage";
 
@@ -25,12 +25,12 @@ export const LangMenu: React.FC = () => {
   const { onOpen, onClose, isOpen } = useDisclosure();
 
   const loadingButton = (
-    <Button onClick={onOpen} variant={"outline"} isLoading></Button>
+    <Button onClick={onOpen} variant="outline" isLoading></Button>
   );
   return i18nConfig.supportedLanguages.length > 1 ? (
     <React.Suspense fallback={loadingButton}>
       <>
-        <Button onClick={onOpen} variant={"outline"}>
+        <Button onClick={onOpen} variant="outline">
           {i18n.resolvedLanguage}
         </Button>
         <LangModal

@@ -19,11 +19,11 @@ export const AlertMessage: React.FC<AlertMessageProps> = ({
   return (
     <Alert
       status={status}
-      rounded={"md"}
-      boxShadow={"md"}
+      rounded="md"
+      boxShadow="md"
       flexDirection="column"
-      fontSize={"sm"}
-      textAlign={"center"}
+      fontSize="sm"
+      textAlign="center"
     >
       <AlertIcon />
       <AlertTitle>{title}</AlertTitle>

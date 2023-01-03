@@ -36,7 +36,7 @@ export const ScrollToTopButton: React.FC = () => {
         </style>
         <Box position="fixed" bottom="50px" right={["16px", "16px"]} zIndex={1}>
           <IconButton
-            variant={"outline"}
+            variant="outline"
             icon={<IoChevronUp />}
             aria-label={t("Go To Top")}
             size="lg"

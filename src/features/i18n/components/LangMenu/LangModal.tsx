@@ -12,7 +12,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 
-import { SupportedLang } from "../..";
+import { SupportedLang } from "../../types";
 
 import imageTrFlag from "../../assets/images/flags/tr.webp";
 import imageUsFlag from "../../assets/images/flags/us.webp";

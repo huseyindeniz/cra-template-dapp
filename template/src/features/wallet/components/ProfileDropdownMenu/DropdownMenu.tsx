@@ -47,12 +47,12 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
     <Menu placement="bottom-end">
       <MenuButton
         as={Button}
-        cursor={"pointer"}
+        cursor="pointer"
         bg="gray.800"
         _hover={{
           backgroundColor: "gray.700",
         }}
-        variant={"outline"}
+        variant="outline"
         ml={2}
       >
         <HStack>
@@ -68,7 +68,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
           <Identicon size={16} account={address} />
         </HStack>
       </MenuButton>
-      <MenuList alignItems={"center"} m={0}>
+      <MenuList alignItems="center" m={0}>
         <VStack align="center">
           <Box>
             <Identicon size={64} account={address} />

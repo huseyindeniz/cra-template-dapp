@@ -7,14 +7,14 @@ import {
   Heading,
   Divider,
 } from "@chakra-ui/react";
-import { AlertMessage } from "../../../ui";
+import { AlertMessage } from "../../../ui/components/AlertMessage";
 
 export const WalletProtectionWarning: React.FC = () => {
   const { t } = useTranslation("FeatureWallet");
   return (
     <Box>
-      <Container maxW={"7xl"} py={2} as={Stack} spacing={12}>
-        <Stack spacing={0} align={"center"}>
+      <Container maxW="7xl" py={2} as={Stack} spacing={12}>
+        <Stack spacing={0} align="center">
           <Heading mb={2}>{t("401 Unauthorized")}</Heading>
           <Divider />
         </Stack>

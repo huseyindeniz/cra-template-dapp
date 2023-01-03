@@ -10,7 +10,7 @@ import {
   CircularProgress,
   CircularProgressLabel,
 } from "@chakra-ui/react";
-import { AlertMessage } from "../../../ui";
+import { AlertMessage } from "../../../ui/components/AlertMessage";
 
 import { WalletSignStateType } from "../../types";
 
@@ -34,7 +34,7 @@ export const StepCheckSign: React.FC<StepCheckSignProps> = ({
   const NotSigned = () => {
     return (
       <Box w="full">
-        <AlertMessage status="warning" title={"Sign Required"}>
+        <AlertMessage status="warning" title={t("Sign Required")}>
           {t(
             "In order to use this app, you need to sign the login request in your wallet."
           )}
@@ -45,10 +45,10 @@ export const StepCheckSign: React.FC<StepCheckSignProps> = ({
   const SignRequested = () => {
     return (
       <Box w="full">
-        <CircularProgress value={(100 * signCounter) / 60} color={"yellow.400"}>
+        <CircularProgress value={(100 * signCounter) / 60} color="yellow.400">
           <CircularProgressLabel>{signCounter}s</CircularProgressLabel>
         </CircularProgress>
-        <Text fontSize={"xs"}>
+        <Text fontSize="xs">
           {t("Waiting for the login request to be signed.")}
           <br />
           {t("Please check your Metamask wallet.")}
@@ -59,7 +59,7 @@ export const StepCheckSign: React.FC<StepCheckSignProps> = ({
   const SignRejected = () => {
     return (
       <Box w="full">
-        <AlertMessage status="warning" title={"Sign Rejected"}>
+        <AlertMessage status="warning" title={t("Sign Rejected")}>
           {t("You rejected the sign request.")}
           <br /> {t("Please try again if you want to continue.")}
         </AlertMessage>
@@ -69,7 +69,7 @@ export const StepCheckSign: React.FC<StepCheckSignProps> = ({
   const SignTimedOut = () => {
     return (
       <Box w="full">
-        <AlertMessage status="warning" title={"Sign Timed Out"}>
+        <AlertMessage status="warning" title={t("Sign Timed Out")}>
           {t("You didn't respond to the sign request in time.")}
           <br /> {t("Please try again if you want to continue.")}
         </AlertMessage>
@@ -79,7 +79,7 @@ export const StepCheckSign: React.FC<StepCheckSignProps> = ({
   const SignFailed = () => {
     return (
       <Box w="full">
-        <AlertMessage status="warning" title={"Unexpected Error"}>
+        <AlertMessage status="warning" title={t("Unexpected Error")}>
           {t("An error has occured during the sign check.")}
           <br /> {t("Please try again later.")}
           <br />
@@ -91,12 +91,12 @@ export const StepCheckSign: React.FC<StepCheckSignProps> = ({
   const Signed = () => {
     return (
       <Box w="full">
-        <AlertMessage status="success" title={"Signed In"}>
+        <AlertMessage status="success" title={t("Signed In")}>
           {t("You have successfully signed the login request.")}
           <br />
           {t("Redirecting to app...")}
         </AlertMessage>
-        <Progress size="xs" colorScheme={"green"} isIndeterminate />
+        <Progress size="xs" colorScheme="green" isIndeterminate />
       </Box>
     );
   };
@@ -128,13 +128,13 @@ export const StepCheckSign: React.FC<StepCheckSignProps> = ({
         return (
           <Box>
             <Button
-              variant={"solid"}
-              colorScheme={"yellow"}
+              variant="solid"
+              colorScheme="yellow"
               onClick={() => onSign(signMessage)}
             >
               {t("Sign In")}
             </Button>
-            <Button ml={1} variant={"outline"} onClick={() => onDisconnect()}>
+            <Button ml={1} variant="outline" onClick={() => onDisconnect()}>
               {t("Cancel")}
             </Button>
           </Box>

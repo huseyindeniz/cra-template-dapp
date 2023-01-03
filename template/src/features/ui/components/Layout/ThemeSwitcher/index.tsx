@@ -10,7 +10,7 @@ export const ThemeSwitcher: React.FC = () => {
   return (
     <IconButton
       onClick={toggleColorMode}
-      variant={"outline"}
+      variant="outline"
       icon={colorMode === "light" ? <IoMdMoon /> : <IoMdSunny />}
       aria-label={t("Toggle Color Mode")}
     />

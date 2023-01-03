@@ -57,7 +57,7 @@ NetworkDetectionFailed.args = {
       supportedNetworks={supportedNetworks}
       defaultNetwork={defaultNetwork}
       onSwitchNetwork={() => null}
-      errorMessage={"mock error code"}
+      errorMessage="mock error code"
       stepState={WalletNetworkStateType.NETWORK_DETECTION_FAILED}
     />
   ),
@@ -102,7 +102,7 @@ NetworkSwitchFailed.args = {
       supportedNetworks={supportedNetworks}
       defaultNetwork={defaultNetwork}
       onSwitchNetwork={() => null}
-      errorMessage={"mock error code"}
+      errorMessage="mock error code"
       stepState={WalletNetworkStateType.NETWORK_SWITCH_FAILED}
     />
   ),

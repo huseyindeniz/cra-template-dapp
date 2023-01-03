@@ -61,7 +61,7 @@ SignFailed.args = {
       signCounter={0}
       onSign={() => null}
       onDisconnect={() => null}
-      errorMessage={"mock error code"}
+      errorMessage="mock error code"
       stepState={WalletSignStateType.SIGN_FAILED}
     />
   ),

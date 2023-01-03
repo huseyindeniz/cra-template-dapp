@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { RouteObject } from "react-router-dom";
-import { i18nConfig } from "../features/i18n";
-import { useWalletAuthentication } from "../features/wallet";
+import { i18nConfig } from "../features/i18n/config";
+import { useWalletAuthentication } from "../features/wallet/hooks/useWalletAuthentication";
 
 import { MenuType, PageType } from "./types";
 
@@ -12,11 +12,7 @@ const HomePage = React.lazy(() =>
   }))
 );
 
-const AboutPage = React.lazy(() =>
-  import(/* webpackChunkName: "AboutPage" */ "./About").then((module) => ({
-    default: module.AboutPage,
-  }))
-);
+// ADD YOUR PAGES HERE
 
 const UserPage = React.lazy(() =>
   import(/* webpackChunkName: "UserPage" */ "./User").then((module) => ({
@@ -33,23 +29,13 @@ export const usePages = () => {
   // you should redirect all requests to index.html in your server config
   const isHashRouter = true;
 
-  // ADD YOUR PAGES
+  // ADD YOUR PAGE ROUTES
 
-  // Home Page
+  // Home Route
   const Home: PageType = {
     index: true,
     element: <HomePage />,
     menuLabel: t("Home", { ns: "Menu" }),
-    isShownInMainMenu: true,
-    isShownInFooter: true,
-    isProtected: false,
-  };
-
-  // About Page
-  const About: PageType = {
-    path: "about",
-    element: <AboutPage />,
-    menuLabel: t("About", { ns: "Menu" }),
     isShownInMainMenu: true,
     isShownInFooter: true,
     isProtected: false,
@@ -62,7 +48,7 @@ export const usePages = () => {
   };
 
   // do not forget add your pages into this array
-  const Pages: PageType[] = [About];
+  const Pages: PageType[] = [];
 
   // DO NOT CHANGE THE REST
   const homeMenuItem: MenuType = {

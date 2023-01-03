@@ -22,7 +22,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({ onClick }) => {
             to={link.path ?? ""}
             px={2}
             py={1}
-            rounded={"md"}
+            rounded="md"
             _hover={{
               textDecoration: "none",
               bg: bgColor,
