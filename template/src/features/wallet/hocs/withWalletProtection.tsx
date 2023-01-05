@@ -1,5 +1,5 @@
 import React from "react";
-import { WalletProtectionWarning } from "../components/WalletProtectionWarning";
+import { WalletProtectionWarning } from "../components/WalletProtectionWarning/WalletProtectionWarning";
 import { useWalletAuthentication } from "../hooks/useWalletAuthentication";
 
 export const withWalletProtection = (

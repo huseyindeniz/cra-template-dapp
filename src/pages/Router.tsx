@@ -22,14 +22,14 @@ const BrowserRouter = React.lazy(() =>
 
 const Layout = React.lazy(() =>
   import(
-    /* webpackChunkName: "Layout" */ "../features/ui/components/Layout"
+    /* webpackChunkName: "Layout" */ "../features/ui/components/Layout/Layout"
   ).then((module) => ({
     default: module.Layout,
   }))
 );
 
 const NotFoundPage = React.lazy(() =>
-  import(/* webpackChunkName: "NotFoundPage" */ "./NotFound").then(
+  import(/* webpackChunkName: "NotFoundPage" */ "./NotFound/NoteFound").then(
     (module) => ({ default: module.NotFoundPage })
   )
 );

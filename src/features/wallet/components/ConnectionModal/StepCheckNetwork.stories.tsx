@@ -17,7 +17,7 @@ const supportedNetworks = SUPPORTED_NETWORKS.map((network) => {
 const defaultNetwork = DEFAULT_NETWORK.chainId;
 
 export default {
-  title: "Wallet/Modal/CheckNetwork",
+  title: "wallet/Modal/CheckNetwork",
   component: Modal,
   args: {
     isOpen: true,

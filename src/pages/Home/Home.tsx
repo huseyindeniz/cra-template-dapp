@@ -14,7 +14,7 @@ import {
 import { FaExternalLinkAlt } from "@react-icons/all-files/fa/FaExternalLinkAlt";
 
 import logo from "./assets/images/logo.svg";
-import { PageMeta } from "../../features/ui/components/PageMeta";
+import { PageMeta } from "../../features/ui/components/PageMeta/PageMeta";
 
 export const HomePage: React.FC = () => {
   const { t } = useTranslation("PageHome");
@@ -71,7 +71,7 @@ export const HomePage: React.FC = () => {
           <Text>
             <Tag size="lg" colorScheme="orange">
               {t("Edit {{path}} and save to reload.", {
-                path: "src/pages/Home/index.tsx",
+                path: "src/pages/Home/Home.tsx",
                 interpolation: { escapeValue: false },
               })}
             </Tag>

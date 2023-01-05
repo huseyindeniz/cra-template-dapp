@@ -7,7 +7,7 @@ import {
   Heading,
   Divider,
 } from "@chakra-ui/react";
-import { AlertMessage } from "../../../ui/components/AlertMessage";
+import { AlertMessage } from "../../../ui/components/AlertMessage/AlertMessage";
 
 export const WalletProtectionWarning: React.FC = () => {
   const { t } = useTranslation("FeatureWallet");

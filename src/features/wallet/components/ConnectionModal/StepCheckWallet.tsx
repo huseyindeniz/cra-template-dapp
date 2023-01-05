@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Box, Link, Image, VStack, Button, Text } from "@chakra-ui/react";
 import { FaExternalLinkAlt } from "@react-icons/all-files/fa/FaExternalLinkAlt";
 
-import { AlertMessage } from "../../../ui/components/AlertMessage";
+import { AlertMessage } from "../../../ui/components/AlertMessage/AlertMessage";
 import imageMetamaskLogo from "../../assets/images/mm-logo.webp";
 import { WalletInitStateType } from "../../types";
 

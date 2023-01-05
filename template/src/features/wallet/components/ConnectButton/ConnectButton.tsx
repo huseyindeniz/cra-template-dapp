@@ -9,7 +9,7 @@ import { WalletLoading } from "./WalletLoading";
 
 const ConnectionModal = React.lazy(() =>
   import(
-    /* webpackChunkName: "../ConnectionModal" */ "../ConnectionModal"
+    /* webpackChunkName: "../ConnectionModal" */ "../ConnectionModal/ConnectionModal"
   ).then((module) => ({
     default: module.ConnectionModal,
   }))

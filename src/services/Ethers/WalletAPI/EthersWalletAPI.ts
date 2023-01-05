@@ -1,14 +1,14 @@
 import { ethers } from "ethers";
 import { eventChannel, EventChannel } from "redux-saga";
-import { IWalletApi, AccountType } from "../../../features/wallet/types";
+import { IWalletAPI, AccountType } from "../../../features/wallet/types";
 import { SUPPORTED_NETWORKS } from "../../../features/wallet/config";
 
 enum MetamaskRPCErrors {
   ACTION_REJECTED = "ACTION_REJECTED",
 }
 
-export class EthersWalletAPI implements IWalletApi {
-  private static _instance: IWalletApi | null = null;
+export class EthersWalletAPI implements IWalletAPI {
+  private static _instance: IWalletAPI | null = null;
   private _isUnlocked: boolean = false;
   private _isSigned: boolean = false;
   private _signerAddress: string | null = null;
@@ -19,7 +19,7 @@ export class EthersWalletAPI implements IWalletApi {
 
   private constructor() {}
 
-  public static getInstance(): IWalletApi {
+  public static getInstance(): IWalletAPI {
     if (this._instance === null) {
       console.debug("ethers init");
       this._instance = new EthersWalletAPI();

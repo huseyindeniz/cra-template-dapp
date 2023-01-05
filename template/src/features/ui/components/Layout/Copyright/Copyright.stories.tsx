@@ -1,9 +1,9 @@
 // ConnectButton.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Copyright } from ".";
+import { Copyright } from "./Copyright";
 export default {
-  title: "Layout/Copyright",
+  title: "ui/Components/Layout/Copyright",
   component: Copyright,
 } as ComponentMeta<typeof Copyright>;
 

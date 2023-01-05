@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ConnectButton } from "./ConnectButton";
-import { ProfileDropdownMenu } from "./ProfileDropdownMenu";
+import { ConnectButton } from "./ConnectButton/ConnectButton";
+import { ProfileDropdownMenu } from "./ProfileDropdownMenu/ProfileDropdownMenu";
 
 import { useWalletAuthentication } from "../hooks/useWalletAuthentication";
 

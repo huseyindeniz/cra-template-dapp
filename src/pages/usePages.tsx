@@ -7,7 +7,7 @@ import { useWalletAuthentication } from "../features/wallet/hooks/useWalletAuthe
 import { MenuType, PageType } from "./types";
 
 const HomePage = React.lazy(() =>
-  import(/* webpackChunkName: "HomePage" */ "./Home").then((module) => ({
+  import(/* webpackChunkName: "HomePage" */ "./Home/Home").then((module) => ({
     default: module.HomePage,
   }))
 );
@@ -15,7 +15,7 @@ const HomePage = React.lazy(() =>
 // ADD YOUR PAGES HERE
 
 const UserPage = React.lazy(() =>
-  import(/* webpackChunkName: "UserPage" */ "./User").then((module) => ({
+  import(/* webpackChunkName: "UserPage" */ "./User/User").then((module) => ({
     default: module.UserPage,
   }))
 );

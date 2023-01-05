@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Box, VStack, Button, Text, Progress, Select } from "@chakra-ui/react";
-import { AlertMessage } from "../../../ui/components/AlertMessage";
+import { AlertMessage } from "../../../ui/components/AlertMessage/AlertMessage";
 
 import { WalletNetworkStateType } from "../../types";
 

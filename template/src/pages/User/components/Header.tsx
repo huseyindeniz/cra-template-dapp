@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Heading, Divider, Text, HStack, Flex } from "@chakra-ui/react";
 
-import { useActions } from "../../features/wallet/useActions";
-import { BlockInfo } from "../../features/wallet/components/BlockInfo";
-import { NetworkLogo } from "../../features/wallet/components/NetworkLogo";
+import { useActions } from "../../../features/wallet/useActions";
+import { BlockInfo } from "../../../features/wallet/components/BlockInfo/BlockInfo";
+import { NetworkLogo } from "../../../features/wallet/components/NetworkLogo/NetworkLogo";
 
-import useTypedSelector from "../../hooks/useTypedSelector";
+import useTypedSelector from "../../../hooks/useTypedSelector";
 
 export const Header: React.FC = () => {
   const { t } = useTranslation("PageUser");

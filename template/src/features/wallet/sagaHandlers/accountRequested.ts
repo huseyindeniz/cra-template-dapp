@@ -7,7 +7,7 @@ import {
   WalletGlobalStateType,
   IWalletAccountApi,
 } from "../types";
-import { RootState } from "../../../store";
+import { RootState } from "../../../store/store";
 import { SlowDown } from "./utils";
 
 export function* HandleStateAccountRequested(

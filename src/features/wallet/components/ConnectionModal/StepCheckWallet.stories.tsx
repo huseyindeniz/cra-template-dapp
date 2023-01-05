@@ -6,7 +6,7 @@ import { Modal } from "./Modal";
 import { StepCheckWallet } from "./StepCheckWallet";
 
 export default {
-  title: "Wallet/Modal/CheckWallet",
+  title: "wallet/Modal/CheckWallet",
   component: Modal,
   args: {
     isOpen: true,

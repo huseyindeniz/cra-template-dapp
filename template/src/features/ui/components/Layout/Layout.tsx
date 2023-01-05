@@ -5,36 +5,36 @@ import { HelmetProvider } from "react-helmet-async";
 import { ErrorBoundary } from "react-error-boundary";
 import { Box, ScaleFade, Stack, VStack, Progress } from "@chakra-ui/react";
 
-import { ErrorFallback } from "./ErrorFallback";
-import { SiteMeta } from "./SiteMeta";
-import { Copyright } from "./Copyright";
-import { SocialMenu } from "./SocialMenu";
+import { ErrorFallback } from "./ErrorFallback/ErrorFallback";
+import { SiteMeta } from "./SiteMeta/SiteMeta";
+import { Copyright } from "./Copyright/Copyright";
+import { SocialMenu } from "./SocialMenu/SocialMenu";
 
 import imageSiteLogo from "../../assets/images/logo.webp";
 
 const Header = React.lazy(() =>
-  import(/* webpackChunkName: "Header" */ "./Header").then((module) => ({
+  import(/* webpackChunkName: "Header" */ "./Header/Header").then((module) => ({
     default: module.Header,
   }))
 );
 const Footer = React.lazy(() =>
-  import(/* webpackChunkName: "Footer" */ "./Footer").then((module) => ({
+  import(/* webpackChunkName: "Footer" */ "./Footer/Footer").then((module) => ({
     default: module.Footer,
   }))
 );
 const ScrollToTopButton = React.lazy(() =>
   import(
-    /* webpackChunkName: "ScrollToTopButton" */ "./ScrollToTopButton"
+    /* webpackChunkName: "ScrollToTopButton" */ "./ScrollToTopButton/ScrollToTopButton"
   ).then((module) => ({
     default: module.ScrollToTopButton,
   }))
 );
 const CookieConsent = React.lazy(() =>
-  import(/* webpackChunkName: "CookieConsent" */ "./CookieConsent").then(
-    (module) => ({
-      default: module.CookieConsent,
-    })
-  )
+  import(
+    /* webpackChunkName: "CookieConsent" */ "./CookieConsent/CookieConsent"
+  ).then((module) => ({
+    default: module.CookieConsent,
+  }))
 );
 
 const myErrorHandler = (error: Error, info: { componentStack: string }) => {

@@ -1,24 +1,28 @@
 import { put, takeLatest, call } from "redux-saga/effects";
 
-import { IWalletApi, LoadingStatusType, WalletStateType } from "./types";
+import { IWalletAPI, LoadingStatusType, WalletStateType } from "./types";
 
 import * as actions from "./actions";
 import * as slicesActions from "./slices";
+import { HandleStateWalletRequested } from "./sagaHandlers/walletRequested";
 import {
-  HandleStateWalletRequested,
   HandleStateAccountRequested,
   HandleStateUnlockRequested,
+} from "./sagaHandlers/accountRequested";
+import {
   HandleStateNetworkRequested,
   HandleStateNetworkSwitchRequested,
+} from "./sagaHandlers/networkRequested";
+import {
   HandleStateNotSigned,
   HandleStateSignRequested,
-  HandleStateUserAuthenticated,
-  HandleStateDisconnectRequested,
-  HandleStateBlockRequested,
-} from "./sagaHandlers";
+} from "./sagaHandlers/signRequested";
+import { HandleStateUserAuthenticated } from "./sagaHandlers/userAuthenticated";
+import { HandleStateDisconnectRequested } from "./sagaHandlers/disconnectRequested";
+import { HandleStateBlockRequested } from "./sagaHandlers/blockRequested";
 
 // ACTION EFFECTS
-function* ActionEffectConnectWallet(walletApi: IWalletApi) {
+function* ActionEffectConnectWallet(walletApi: IWalletAPI) {
   yield put(slicesActions.setLoading(LoadingStatusType.PENDING));
   yield put(slicesActions.setWalletState(WalletStateType.CHECKING_WALLET));
   const initResult: boolean = yield call(HandleStateWalletRequested, walletApi);
@@ -43,7 +47,7 @@ function* ActionEffectConnectWallet(walletApi: IWalletApi) {
   yield put(slicesActions.setLoading(LoadingStatusType.IDLE));
 }
 
-function* ActionEffectUnlockWallet(walletApi: IWalletApi) {
+function* ActionEffectUnlockWallet(walletApi: IWalletAPI) {
   yield put(slicesActions.setLoading(LoadingStatusType.PENDING));
   yield put(slicesActions.setWalletState(WalletStateType.CHECKING_ACCOUNT));
   const unlockResult: boolean = yield call(
@@ -65,7 +69,7 @@ function* ActionEffectUnlockWallet(walletApi: IWalletApi) {
 }
 
 function* ActionEffectSwitchNetwork(
-  walletApi: IWalletApi,
+  walletApi: IWalletAPI,
   action: ReturnType<typeof actions.switchNetwork>
 ) {
   yield put(slicesActions.setLoading(LoadingStatusType.PENDING));
@@ -83,7 +87,7 @@ function* ActionEffectSwitchNetwork(
 }
 
 function* ActionEffectSignIn(
-  walletApi: IWalletApi,
+  walletApi: IWalletAPI,
   action: ReturnType<typeof actions.signIn>
 ) {
   yield put(slicesActions.setLoading(LoadingStatusType.PENDING));
@@ -100,19 +104,19 @@ function* ActionEffectSignIn(
   yield put(slicesActions.setLoading(LoadingStatusType.IDLE));
 }
 
-function* ActionEffectDisconnectWallet(walletApi: IWalletApi) {
+function* ActionEffectDisconnectWallet(walletApi: IWalletAPI) {
   yield put(slicesActions.setLoading(LoadingStatusType.PENDING));
   yield call(HandleStateDisconnectRequested, walletApi);
   yield put(slicesActions.setLoading(LoadingStatusType.IDLE));
 }
 
-function* ActionEffectLatestBlock(walletApi: IWalletApi) {
+function* ActionEffectLatestBlock(walletApi: IWalletAPI) {
   yield put(slicesActions.setBlockInfoLoading(LoadingStatusType.PENDING));
   yield call(HandleStateBlockRequested, walletApi);
   yield put(slicesActions.setBlockInfoLoading(LoadingStatusType.IDLE));
 }
 
-export function* watchWalletSaga(walletApi: IWalletApi) {
+export function* watchWalletSaga(walletApi: IWalletAPI) {
   yield takeLatest(
     actions.connectWallet.type,
     ActionEffectConnectWallet,

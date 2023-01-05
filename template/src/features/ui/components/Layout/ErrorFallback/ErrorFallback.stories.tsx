@@ -1,10 +1,10 @@
 // ConnectButton.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ErrorFallback } from ".";
+import { ErrorFallback } from "./ErrorFallback";
 
 export default {
-  title: "Layout/ErrorFallback",
+  title: "ui/Components/Layout/ErrorFallback",
   component: ErrorFallback,
 } as ComponentMeta<typeof ErrorFallback>;
 

@@ -10,7 +10,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 
-import { FooterMenu } from "../FooterMenu";
+import { FooterMenu } from "../FooterMenu/FooterMenu";
 import { usePages } from "../../../../../pages/usePages";
 
 export interface FooterProps {

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Box, Container, Stack } from "@chakra-ui/react";
 
 import { withWalletProtection } from "../../features/wallet/hocs/withWalletProtection";
-import { Header } from "./Header";
+import { Header } from "./components/Header";
 
 export const UserPage: React.FC = withWalletProtection(() => {
   const { t } = useTranslation("PageUser");

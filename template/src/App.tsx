@@ -1,10 +1,10 @@
 import * as React from "react";
 
 import "./features/i18n/i18n";
-import { theme } from "./features/ui/components/Layout/Theme";
+import { theme } from "./features/ui/components/Layout/Theme/theme";
 
 import { Router } from "./pages/Router";
-import store from "./store";
+import store from "./store/store";
 
 const Provider = React.lazy(() =>
   import(/* webpackChunkName: "Redux" */ "react-redux").then((module) => ({

@@ -15,10 +15,10 @@ import { IoEllipsisVertical } from "@react-icons/all-files/io5/IoEllipsisVertica
 import { IoClose } from "@react-icons/all-files/io5/IoClose";
 import { useTranslation } from "react-i18next";
 
-import { LangMenu } from "../../../../i18n/components/LangMenu";
-import { MainMenu } from "../MainMenu";
-import { ProfileMenu } from "../ProfileMenu";
-import { ThemeSwitcher } from "../ThemeSwitcher";
+import { LangMenu } from "../../../../i18n/components/LangMenu/LangMenu";
+import { MainMenu } from "../MainMenu/MainMenu";
+import { ProfileMenu } from "../ProfileMenu/ProfileMenu";
+import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher";
 import { usePages } from "../../../../../pages/usePages";
 
 export interface HeaderProps {

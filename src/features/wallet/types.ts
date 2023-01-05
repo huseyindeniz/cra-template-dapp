@@ -146,7 +146,7 @@ export interface IWalletProviderApi {
   getSigner(): string | null;
 }
 
-export interface IWalletApi
+export interface IWalletAPI
   extends IWalletInitApi,
     IWalletAccountApi,
     IWalletNetworkApi,

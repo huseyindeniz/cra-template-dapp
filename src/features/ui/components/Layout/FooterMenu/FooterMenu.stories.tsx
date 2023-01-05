@@ -2,11 +2,11 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { withRouter } from "storybook-addon-react-router-v6";
 
-import { FooterMenu } from ".";
+import { FooterMenu } from "./FooterMenu";
 import { MenuType } from "../../../../../pages/types";
 
 export default {
-  title: "Layout/FooterMenu",
+  title: "ui/Components/Layout/FooterMenu",
   component: FooterMenu,
   decorators: [withRouter],
 } as ComponentMeta<typeof FooterMenu>;

@@ -10,7 +10,7 @@ import {
   CircularProgress,
   CircularProgressLabel,
 } from "@chakra-ui/react";
-import { AlertMessage } from "../../../ui/components/AlertMessage";
+import { AlertMessage } from "../../../ui/components/AlertMessage/AlertMessage";
 
 import { WalletSignStateType } from "../../types";
 

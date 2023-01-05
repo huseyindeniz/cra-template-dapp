@@ -4,7 +4,7 @@ import { all, fork } from "redux-saga/effects";
 import { configureStore } from "@reduxjs/toolkit";
 import { enableMapSet } from "immer";
 
-import { EthersWalletAPI } from "../services/Ethers/WalletAPI";
+import { EthersWalletAPI } from "../services/Ethers/WalletAPI/EthersWalletAPI";
 import {
   watchWalletSaga /*announceWalletLoaded*/,
 } from "../features/wallet/sagas";

@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { LangModal } from "./LangModal";
 
 export default {
-  title: "Layout/LangModal",
+  title: "i18n/LangModal",
   component: LangModal,
   args: {
     defaultValue: "en-US",

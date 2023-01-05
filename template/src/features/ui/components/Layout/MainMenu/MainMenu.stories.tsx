@@ -2,16 +2,16 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { withRouter } from "storybook-addon-react-router-v6";
 
-import { MainMenu } from ".";
-import { MenuType } from "../../../../../pages/types";
+import { MainMenu } from "./MainMenu";
+//import { MenuType } from "../../../../../pages/types";
 
 export default {
-  title: "Layout/MainMenu",
+  title: "ui/Components/Layout/MainMenu",
   component: MainMenu,
   decorators: [withRouter],
 } as ComponentMeta<typeof MainMenu>;
 
-const mockPublicMenuItem1: MenuType = {
+/* const mockPublicMenuItem1: MenuType = {
   isProtected: false,
   isShownInFooter: false,
   isShownInMainMenu: true,
@@ -39,7 +39,7 @@ const mockMenu = [
   mockPublicMenuItem1,
   mockPrivateMenuItem1,
   mockFooterOnlyMenuItem1,
-];
+]; */
 
 export const Default: ComponentStory<typeof MainMenu> = (args) => (
   <MainMenu {...args} />

@@ -21,7 +21,7 @@ import { MdDashboard } from "@react-icons/all-files/md/MdDashboard";
 
 import { Identicon } from "./Identicon";
 import { ChainInfoType } from "../../types";
-import { NetworkLogo } from "../NetworkLogo";
+import { NetworkLogo } from "../NetworkLogo/NetworkLogo";
 import { usePages } from "../../../../pages/usePages";
 
 export interface DropdownMenuProps {

@@ -10,7 +10,7 @@ import {
   WalletSignStateType,
   IWalletSignApi,
 } from "../types";
-import { RootState } from "../../../store";
+import { RootState } from "../../../store/store";
 import { SIGN_TIMEOUT_IN_SEC } from "../config";
 import { SlowDown } from "./utils";
 

@@ -1,10 +1,10 @@
 // ConnectButton.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ThemeSwitcher } from ".";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export default {
-  title: "Layout/ThemeSwitcher",
+  title: "ui/Components/Layout/ThemeSwitcher",
   component: ThemeSwitcher,
   args: {},
 } as ComponentMeta<typeof ThemeSwitcher>;

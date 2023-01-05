@@ -1,10 +1,10 @@
 // ConnectButton.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { WalletProtectionWarning } from ".";
+import { WalletProtectionWarning } from "./WalletProtectionWarning";
 
 export default {
-  title: "Components/WalletProtectionWarning",
+  title: "wallet/WalletProtectionWarning",
   component: WalletProtectionWarning,
 } as ComponentMeta<typeof WalletProtectionWarning>;
 

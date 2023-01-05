@@ -1,10 +1,10 @@
 // ConnectButton.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { SocialMenu } from "./";
+import { SocialMenu } from "./SocialMenu";
 
 export default {
-  title: "Layout/SocialMenu",
+  title: "ui/Components/Layout/SocialMenu",
   component: SocialMenu,
   args: {
     items: [

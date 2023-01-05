@@ -5,7 +5,7 @@ import configureStore from "redux-mock-store";
 import { LoadingStatusType } from "../../types";
 import { connectWallet } from "../../actions";
 
-import { ConnectButton } from ".";
+import { ConnectButton } from "./ConnectButton";
 
 const mockStore = configureStore([]);
 describe.skip("Feature: Wallet", () => {
