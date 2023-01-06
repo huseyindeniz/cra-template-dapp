@@ -1,18 +1,18 @@
-import { ChainInfoType } from "../types";
+import { ChainInfoType } from '../types';
 
 export const EthereumMainnetChain: ChainInfoType = {
   chainId: 1,
-  chainName: "Ethereum Mainnet",
+  chainName: 'Ethereum Mainnet',
   nativeCurrency: {
-    name: "Ethereum",
-    symbol: "ETH",
+    name: 'Ethereum',
+    symbol: 'ETH',
     decimals: 18,
   },
-  rpcUrls: ["https://mainnet.infura.io/v3/"],
-  blockExplorerUrls: ["https://etherscan.io"],
-  addressExplorerUrl: "address",
-  transactionExplorerUrl: "tx",
-  multicallAddress: "0xeefba1e63905ef1d7acba5a8513c70307c1ce441",
+  rpcUrls: ['https://mainnet.infura.io/v3/'],
+  blockExplorerUrls: ['https://etherscan.io'],
+  addressExplorerUrl: 'address',
+  transactionExplorerUrl: 'tx',
+  multicallAddress: '0xeefba1e63905ef1d7acba5a8513c70307c1ce441',
   isTestChain: false,
   isLocalChain: false,
 };

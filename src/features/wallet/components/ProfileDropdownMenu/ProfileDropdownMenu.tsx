@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { useToast } from "@chakra-ui/react";
+import { useToast } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
-import { DropdownMenu } from "./DropdownMenu";
-import useTypedSelector from "../../../../hooks/useTypedSelector";
-import { useActions } from "../../useActions";
+import useTypedSelector from '../../../../hooks/useTypedSelector';
+import { useActions } from '../../useActions';
+
+import { DropdownMenu } from './DropdownMenu';
 
 export const ProfileDropdownMenu: React.FC = () => {
-  const { t } = useTranslation("FeatureWallet");
+  const { t } = useTranslation('FeatureWallet');
   const navigate = useNavigate();
   const toast = useToast();
   const actions = useActions();
-  const account = useTypedSelector((state) => state.wallet.account);
-  const currentNetwork = useTypedSelector(
-    (state) => state.wallet.currentNetwork
-  );
+  const account = useTypedSelector(state => state.wallet.account);
+  const currentNetwork = useTypedSelector(state => state.wallet.currentNetwork);
 
-  const [addressExplorerUrl, setAddressExplorerUrl] = useState<string>("");
+  const [addressExplorerUrl, setAddressExplorerUrl] = useState<string>('');
   const [ensOrAddressTruncated, setensOrAddressTruncated] =
-    useState<string>("");
+    useState<string>('');
 
   useEffect(() => {
     if (currentNetwork) {
@@ -32,36 +31,36 @@ export const ProfileDropdownMenu: React.FC = () => {
   useEffect(() => {
     if (account) {
       const ensOrAddress: string =
-        account.ens && account.ens !== "" ? account.ens : account.shortAddress;
+        account.ens && account.ens !== '' ? account.ens : account.shortAddress;
       setensOrAddressTruncated(
         ensOrAddress && ensOrAddress.length > 20
-          ? ensOrAddress?.slice(0, 4) + "..." + ensOrAddress?.slice(-6)
+          ? ensOrAddress?.slice(0, 4) + '...' + ensOrAddress?.slice(-6)
           : ensOrAddress
       );
     }
   }, [account]);
 
   const onCopyClicked = () => {
-    navigator.clipboard.writeText(account?.address ?? "");
+    navigator.clipboard.writeText(account?.address ?? '');
     toast({
-      title: t("Address copied."),
+      title: t('Address copied.'),
       description: t(
-        "The address of your account has been copied to the clipboard."
+        'The address of your account has been copied to the clipboard.'
       ),
-      status: "info",
+      status: 'info',
       isClosable: true,
     });
   };
 
   const onDisconnectClick = () => {
     actions.disconnectWallet();
-    navigate("/");
+    navigate('/');
   };
 
-  return account && account.address && account.address !== "" ? (
+  return account && account.address && account.address !== '' ? (
     <DropdownMenu
       address={account.address}
-      ensOrAddressTruncated={ensOrAddressTruncated ?? ""}
+      ensOrAddressTruncated={ensOrAddressTruncated ?? ''}
       currentNetwork={currentNetwork}
       addressExplorerUrl={addressExplorerUrl}
       onCopyAddressClicked={onCopyClicked}

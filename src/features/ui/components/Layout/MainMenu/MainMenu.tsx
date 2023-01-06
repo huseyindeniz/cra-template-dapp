@@ -1,16 +1,16 @@
-import React from "react";
-import { NavLink as RouterLink } from "react-router-dom";
-import { Link, useColorModeValue } from "@chakra-ui/react";
+import { Link, useColorModeValue } from '@chakra-ui/react';
+import React from 'react';
+import { NavLink as RouterLink } from 'react-router-dom';
 
-import { usePages } from "../../../../../pages/usePages";
+import { usePages } from '../../../../../pages/usePages';
 
 export interface MainMenuProps {
   onClick: () => void;
 }
 
 export const MainMenu: React.FC<MainMenuProps> = ({ onClick }) => {
-  const bgColor = useColorModeValue("gray.200", "gray.700");
-  const activeMenuColor = useColorModeValue("blue.900", "blue.100");
+  const bgColor = useColorModeValue('gray.200', 'gray.700');
+  const activeMenuColor = useColorModeValue('blue.900', 'blue.100');
   const { mainMenuItems } = usePages();
   return (
     <>
@@ -19,17 +19,17 @@ export const MainMenu: React.FC<MainMenuProps> = ({ onClick }) => {
           <Link
             key={index}
             as={RouterLink}
-            to={link.path ?? ""}
+            to={link.path ?? ''}
             px={2}
             py={1}
             rounded="md"
             _hover={{
-              textDecoration: "none",
+              textDecoration: 'none',
               bg: bgColor,
             }}
             _activeLink={{
               color: activeMenuColor,
-              fontWeight: "bold",
+              fontWeight: 'bold',
             }}
             onClick={onClick}
           >

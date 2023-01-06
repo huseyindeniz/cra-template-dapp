@@ -1,6 +1,3 @@
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import {
   Box,
   Text,
@@ -13,16 +10,20 @@ import {
   HStack,
   VStack,
   Link,
-} from "@chakra-ui/react";
-import { FaExternalLinkAlt } from "@react-icons/all-files/fa/FaExternalLinkAlt";
-import { IoIosLogOut } from "@react-icons/all-files/io/IoIosLogOut";
-import { MdContentCopy } from "@react-icons/all-files/md/MdContentCopy";
-import { MdDashboard } from "@react-icons/all-files/md/MdDashboard";
+} from '@chakra-ui/react';
+import { FaExternalLinkAlt } from '@react-icons/all-files/fa/FaExternalLinkAlt';
+import { IoIosLogOut } from '@react-icons/all-files/io/IoIosLogOut';
+import { MdContentCopy } from '@react-icons/all-files/md/MdContentCopy';
+import { MdDashboard } from '@react-icons/all-files/md/MdDashboard';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link as RouterLink } from 'react-router-dom';
 
-import { Identicon } from "./Identicon";
-import { ChainInfoType } from "../../types";
-import { NetworkLogo } from "../NetworkLogo/NetworkLogo";
-import { usePages } from "../../../../pages/usePages";
+import { usePages } from '../../../../pages/usePages';
+import { ChainInfoType } from '../../types';
+import { NetworkLogo } from '../NetworkLogo/NetworkLogo';
+
+import { Identicon } from './Identicon';
 
 export interface DropdownMenuProps {
   address: string;
@@ -41,7 +42,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   onCopyAddressClicked,
   onDisconnectClicked,
 }) => {
-  const { t } = useTranslation("FeatureWallet");
+  const { t } = useTranslation('FeatureWallet');
   const { userPageLink } = usePages();
   return (
     <Menu placement="bottom-end">
@@ -50,7 +51,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         cursor="pointer"
         bg="gray.800"
         _hover={{
-          backgroundColor: "gray.700",
+          backgroundColor: 'gray.700',
         }}
         variant="outline"
         ml={2}
@@ -80,30 +81,30 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         <MenuDivider />
         {userPageLink && (
           <MenuItem icon={<MdDashboard />} as={RouterLink} to={userPageLink}>
-            {t("Dashboard")}
+            {t('Dashboard')}
           </MenuItem>
         )}
         <MenuItem
           icon={<MdContentCopy />}
           onClick={() => onCopyAddressClicked()}
         >
-          {t("Copy Address")}
+          {t('Copy Address')}
         </MenuItem>
         <MenuItem
           as={Link}
           href={`${addressExplorerUrl}/${address}`}
           isExternal
           _hover={{
-            textDecoration: "none",
-            border: "none",
+            textDecoration: 'none',
+            border: 'none',
           }}
           icon={<FaExternalLinkAlt />}
         >
-          {t("View on Explorer")}
+          {t('View on Explorer')}
         </MenuItem>
         <MenuDivider />
         <MenuItem icon={<IoIosLogOut />} onClick={() => onDisconnectClicked()}>
-          {t("Disconnect")}
+          {t('Disconnect')}
         </MenuItem>
       </MenuList>
     </Menu>

@@ -1,6 +1,7 @@
-import React from "react";
-import { WalletProtectionWarning } from "../components/WalletProtectionWarning/WalletProtectionWarning";
-import { useWalletAuthentication } from "../hooks/useWalletAuthentication";
+import React from 'react';
+
+import { WalletProtectionWarning } from '../components/WalletProtectionWarning/WalletProtectionWarning';
+import { useWalletAuthentication } from '../hooks/useWalletAuthentication';
 
 export const withWalletProtection = (
   ChildWithProps: React.ComponentType<any | string>,

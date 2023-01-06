@@ -1,38 +1,38 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { useLocation, Outlet } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
-import { ErrorBoundary } from "react-error-boundary";
-import { Box, ScaleFade, Stack, VStack, Progress } from "@chakra-ui/react";
+import { Box, ScaleFade, Stack, VStack, Progress } from '@chakra-ui/react';
+import React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { HelmetProvider } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import { useLocation, Outlet } from 'react-router-dom';
 
-import { ErrorFallback } from "./ErrorFallback/ErrorFallback";
-import { SiteMeta } from "./SiteMeta/SiteMeta";
-import { Copyright } from "./Copyright/Copyright";
-import { SocialMenu } from "./SocialMenu/SocialMenu";
+import imageSiteLogo from '../../assets/images/logo.webp';
 
-import imageSiteLogo from "../../assets/images/logo.webp";
+import { Copyright } from './Copyright/Copyright';
+import { ErrorFallback } from './ErrorFallback/ErrorFallback';
+import { SiteMeta } from './SiteMeta/SiteMeta';
+import { SocialMenu } from './SocialMenu/SocialMenu';
 
 const Header = React.lazy(() =>
-  import(/* webpackChunkName: "Header" */ "./Header/Header").then((module) => ({
+  import(/* webpackChunkName: "Header" */ './Header/Header').then(module => ({
     default: module.Header,
   }))
 );
 const Footer = React.lazy(() =>
-  import(/* webpackChunkName: "Footer" */ "./Footer/Footer").then((module) => ({
+  import(/* webpackChunkName: "Footer" */ './Footer/Footer').then(module => ({
     default: module.Footer,
   }))
 );
 const ScrollToTopButton = React.lazy(() =>
   import(
-    /* webpackChunkName: "ScrollToTopButton" */ "./ScrollToTopButton/ScrollToTopButton"
-  ).then((module) => ({
+    /* webpackChunkName: "ScrollToTopButton" */ './ScrollToTopButton/ScrollToTopButton'
+  ).then(module => ({
     default: module.ScrollToTopButton,
   }))
 );
 const CookieConsent = React.lazy(() =>
   import(
-    /* webpackChunkName: "CookieConsent" */ "./CookieConsent/CookieConsent"
-  ).then((module) => ({
+    /* webpackChunkName: "CookieConsent" */ './CookieConsent/CookieConsent'
+  ).then(module => ({
     default: module.CookieConsent,
   }))
 );
@@ -45,14 +45,14 @@ const myErrorHandler = (error: Error, info: { componentStack: string }) => {
 
 export const Layout: React.FC = () => {
   const location = useLocation();
-  const { t } = useTranslation("Layout");
-  const siteName = t("SITE_NAME");
-  const siteDescription = t("SITE_DESCRIPTION");
+  const { t } = useTranslation('Layout');
+  const siteName = t('SITE_NAME');
+  const siteDescription = t('SITE_DESCRIPTION');
   const PageLoading = () => {
     return (
       <VStack mt="10">
-        <Box fontSize={"xs"}>
-          {t("Please wait while the requested page is loading...")}
+        <Box fontSize={'xs'}>
+          {t('Please wait while the requested page is loading...')}
         </Box>
         <Box w="sm">
           <Progress size="xs" isIndeterminate />

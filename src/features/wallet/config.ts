@@ -1,15 +1,14 @@
-import { ChainInfoType } from "./types";
-
-import { AvalancheChain } from "./chains/avalanche";
-import { AvalancheTestChain } from "./chains/avalancheTest";
-import { GanacheChain } from "./chains/ganache";
-import { BinanceSmartChain } from "./chains/bsc";
-import { BSCTestChain } from "./chains/bscTest";
-import { PolygonChain } from "./chains/polygon";
-import { PolygonMumbaiChain } from "./chains/polygonMumbai";
-import { HardhatChain } from "./chains/hardhat";
-import { GoerliTestChain } from "./chains/goerliTest";
-import { EthereumMainnetChain } from "./chains/ethereum";
+import { AvalancheChain } from './chains/avalanche';
+import { AvalancheTestChain } from './chains/avalancheTest';
+import { BinanceSmartChain } from './chains/bsc';
+import { BSCTestChain } from './chains/bscTest';
+import { EthereumMainnetChain } from './chains/ethereum';
+import { GanacheChain } from './chains/ganache';
+import { GoerliTestChain } from './chains/goerliTest';
+import { HardhatChain } from './chains/hardhat';
+import { PolygonChain } from './chains/polygon';
+import { PolygonMumbaiChain } from './chains/polygonMumbai';
+import { ChainInfoType } from './types';
 
 export const SUPPORTED_NETWORKS: ChainInfoType[] = [
   AvalancheChain,

@@ -1,16 +1,17 @@
-import * as React from "react";
-import { render, RenderOptions } from "@testing-library/react";
-import { ChakraProvider, theme } from "@chakra-ui/react";
-import i18n from "i18next";
-import { initReactI18next, I18nextProvider } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
+import { ChakraProvider, theme } from '@chakra-ui/react';
+import { render, RenderOptions } from '@testing-library/react';
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import * as React from 'react';
+import { initReactI18next, I18nextProvider } from 'react-i18next';
 
+// eslint-disable-next-line import/no-named-as-default-member
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     debug: false,
-    fallbackLng: "en",
+    fallbackLng: 'en',
     keySeparator: false,
     nonExplicitSupportedLngs: true,
     returnEmptyString: false,

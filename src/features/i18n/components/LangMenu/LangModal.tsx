@@ -10,12 +10,11 @@ import {
   Radio,
   RadioGroup,
   Stack,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
-import { SupportedLang } from "../../types";
-
-import imageTrFlag from "../../assets/images/flags/tr.webp";
-import imageUsFlag from "../../assets/images/flags/us.webp";
+import imageTrFlag from '../../assets/images/flags/tr.webp';
+import imageUsFlag from '../../assets/images/flags/us.webp';
+import { SupportedLang } from '../../types';
 
 const imagesFlag: Record<string, string> = {
   tr: imageTrFlag,
@@ -53,15 +52,15 @@ export const LangModal: React.FC<LangModalProps> = ({
             onClick={() => null}
           >
             <Stack>
-              {supportedLanguages.map((l) => (
+              {supportedLanguages.map(l => (
                 <Radio key={l.code} value={l.code}>
                   <Image
                     src={imagesFlag[l.code.slice(-2).toLowerCase()]}
                     style={{
-                      margin: "0.4em",
-                      width: "1.6em",
-                      display: "inline-block",
-                      verticalAlign: "middle",
+                      margin: '0.4em',
+                      width: '1.6em',
+                      display: 'inline-block',
+                      verticalAlign: 'middle',
                     }}
                   />
                   {l.label}

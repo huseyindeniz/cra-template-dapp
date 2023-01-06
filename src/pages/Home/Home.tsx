@@ -1,5 +1,3 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
 import {
   Container,
   Stack,
@@ -10,17 +8,20 @@ import {
   Link,
   Tag,
   Image,
-} from "@chakra-ui/react";
-import { FaExternalLinkAlt } from "@react-icons/all-files/fa/FaExternalLinkAlt";
+} from '@chakra-ui/react';
+import { FaExternalLinkAlt } from '@react-icons/all-files/fa/FaExternalLinkAlt';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import logo from "./assets/images/logo.svg";
-import { PageMeta } from "../../features/ui/components/PageMeta/PageMeta";
+import { PageMeta } from '../../features/ui/components/PageMeta/PageMeta';
+
+import logo from './assets/images/logo.svg';
 
 export const HomePage: React.FC = () => {
-  const { t } = useTranslation("PageHome");
-  const title: string = t("dApp CRA Template");
+  const { t } = useTranslation('PageHome');
+  const title: string = t('dApp CRA Template');
   const description: string = t(
-    "dApp CRA Template is a create-react-app template specifically designed for decentralized application (dApp) development."
+    'dApp CRA Template is a create-react-app template specifically designed for decentralized application (dApp) development.'
   );
   return (
     <>
@@ -57,11 +58,11 @@ export const HomePage: React.FC = () => {
           <Image src={logo} className="App-logo" />
           <Heading
             fontWeight={600}
-            fontSize={{ base: "1xl", sm: "2xl", md: "3xl" }}
+            fontSize={{ base: '1xl', sm: '2xl', md: '3xl' }}
             lineHeight="110%"
             textAlign="center"
           >
-            {t("experience the full power of React for dApp development")}
+            {t('experience the full power of React for dApp development')}
             <br />
             <Text as="span" color="blue.400">
               {title}
@@ -70,8 +71,8 @@ export const HomePage: React.FC = () => {
           <Text>{description}</Text>
           <Text>
             <Tag size="lg" colorScheme="orange">
-              {t("Edit {{path}} and save to reload.", {
-                path: "src/pages/Home/Home.tsx",
+              {t('Edit {{path}} and save to reload.', {
+                path: 'src/pages/Home/Home.tsx',
                 interpolation: { escapeValue: false },
               })}
             </Tag>
@@ -92,7 +93,7 @@ export const HomePage: React.FC = () => {
               size="xs"
               rightIcon={<FaExternalLinkAlt />}
             >
-              {t("Learn React")}
+              {t('Learn React')}
             </Button>
             <Button
               as={Link}
@@ -103,7 +104,7 @@ export const HomePage: React.FC = () => {
               size="xs"
               rightIcon={<FaExternalLinkAlt />}
             >
-              {t("Learn dApp CRA Template")}
+              {t('Learn dApp CRA Template')}
             </Button>
           </Stack>
         </Stack>

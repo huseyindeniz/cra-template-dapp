@@ -1,13 +1,13 @@
-import React, { ReactNode } from "react";
-import { chakra, useColorModeValue, VisuallyHidden } from "@chakra-ui/react";
+import { chakra, useColorModeValue, VisuallyHidden } from '@chakra-ui/react';
+import React, { ReactNode } from 'react';
 
 const FaGithub = React.lazy(() =>
-  import("@react-icons/all-files/fa/FaGithub").then((module) => ({
+  import('@react-icons/all-files/fa/FaGithub').then(module => ({
     default: module.FaGithub,
   }))
 );
 const FaLinkedin = React.lazy(() =>
-  import("@react-icons/all-files/fa/FaLinkedin").then((module) => ({
+  import('@react-icons/all-files/fa/FaLinkedin').then(module => ({
     default: module.FaLinkedin,
   }))
 );
@@ -23,7 +23,7 @@ const SocialButton = ({
 }) => {
   return (
     <chakra.button
-      bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
+      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
       rounded="full"
       w={8}
       h={8}
@@ -36,7 +36,7 @@ const SocialButton = ({
       justifyContent="center"
       transition="background 0.3s ease"
       _hover={{
-        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
+        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
       }}
     >
       <VisuallyHidden>{label}</VisuallyHidden>

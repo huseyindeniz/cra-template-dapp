@@ -1,6 +1,7 @@
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import { i18nConfig } from "./config";
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+
+import { i18nConfig } from './config';
 
 export const useChangeLanguage = (currentUrl: string, currentLang: string) => {
   const { i18n } = useTranslation();
@@ -14,7 +15,7 @@ export const useChangeLanguage = (currentUrl: string, currentLang: string) => {
       redirectUrl = `/${targetLang}${currentUrl}`;
     } else if (targetLang === i18nConfig.fallbackLang.code) {
       // If the target language is the default language, remove the current language code from the URL
-      redirectUrl = currentUrl.replace(`/${currentLang}`, "");
+      redirectUrl = currentUrl.replace(`/${currentLang}`, '');
     } else {
       // If the target language is different from both the current language and the default language, replace the current language code with the target language code
       redirectUrl = currentUrl.replace(`/${currentLang}`, `/${targetLang}`);

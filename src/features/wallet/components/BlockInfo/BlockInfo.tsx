@@ -1,22 +1,20 @@
-import React, { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { Box, Flex, IconButton, Tag } from "@chakra-ui/react";
-import { MdRefresh } from "@react-icons/all-files/md/MdRefresh";
+import { Box, Flex, IconButton, Tag } from '@chakra-ui/react';
+import { MdRefresh } from '@react-icons/all-files/md/MdRefresh';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import useTypedSelector from "../../../../hooks/useTypedSelector";
-import { useActions } from "../../useActions";
-import { LoadingStatusType } from "../../types";
+import useTypedSelector from '../../../../hooks/useTypedSelector';
+import { LoadingStatusType } from '../../types';
+import { useActions } from '../../useActions';
 
 export const BlockInfo: React.FC = () => {
-  const { t } = useTranslation("PageUser");
+  const { t } = useTranslation('PageUser');
   const actions = useActions();
-  const currentNetwork = useTypedSelector(
-    (state) => state.wallet.currentNetwork
-  );
+  const currentNetwork = useTypedSelector(state => state.wallet.currentNetwork);
   const blockInfoLoading = useTypedSelector(
-    (state) => state.wallet.blockInfoLoading
+    state => state.wallet.blockInfoLoading
   );
-  const blockInfo = useTypedSelector((state) => state.wallet.blockInfo);
+  const blockInfo = useTypedSelector(state => state.wallet.blockInfo);
 
   useEffect(() => {
     if (currentNetwork) {
@@ -35,12 +33,12 @@ export const BlockInfo: React.FC = () => {
         <Flex>
           <Box fontSize="xs" mr={1}>
             <Tag>
-              {t("Block")}: {blockInfo.blockNumber}
+              {t('Block')}: {blockInfo.blockNumber}
             </Tag>
           </Box>
           <Box fontSize="xs" mr={1}>
             <Tag>
-              {t("Balance")}
+              {t('Balance')}
               {`: ${parseFloat(blockInfo.signerAccountBalance).toFixed(2)} ${
                 currentNetwork?.nativeCurrency.symbol
               }`}

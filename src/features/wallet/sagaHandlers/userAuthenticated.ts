@@ -1,9 +1,9 @@
-import { put, take, spawn, call } from "redux-saga/effects";
-import { EventChannel, END } from "redux-saga";
+import { EventChannel, END } from 'redux-saga';
+import { put, take, spawn, call } from 'redux-saga/effects';
 
-import * as actions from "../actions";
-import * as slicesActions from "../slices";
-import { IWalletAuthenticatedApi } from "../types";
+import * as actions from '../actions';
+import * as slicesActions from '../slices';
+import { IWalletAuthenticatedApi } from '../types';
 
 export function* HandleStateUserAuthenticated(
   walletAuthenticatedApi: IWalletAuthenticatedApi
@@ -51,7 +51,7 @@ function* handleEventAccountsChanged(
       break;
     }
   } finally {
-    console.debug("accountsChanged terminated");
+    console.debug('accountsChanged terminated');
     channel.close();
   }
 }
@@ -65,7 +65,7 @@ function* handleEventNetworkChanged(
   try {
     while (true) {
       let chainId: string = yield take(channel);
-      console.debug("networkChanged: " + chainId);
+      console.debug('networkChanged: ' + chainId);
       yield put(actions.disconnectWallet());
       yield call(walletAuthenticatedApi.handleNetworkChange);
       yield put(actions.connectWallet());
@@ -74,7 +74,7 @@ function* handleEventNetworkChanged(
       break;
     }
   } finally {
-    console.debug("networkChanged terminated");
+    console.debug('networkChanged terminated');
     channel.close();
   }
 }

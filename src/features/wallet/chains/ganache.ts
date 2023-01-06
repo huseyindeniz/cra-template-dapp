@@ -1,18 +1,18 @@
-import { ChainInfoType } from "../types";
+import { ChainInfoType } from '../types';
 
 export const GanacheChain: ChainInfoType = {
   chainId: 1337,
-  chainName: "Ganache",
+  chainName: 'Ganache',
   nativeCurrency: {
-    name: "Ganache ETH",
-    symbol: "ETH",
+    name: 'Ganache ETH',
+    symbol: 'ETH',
     decimals: 18,
   },
-  rpcUrls: ["http://localhost:7545"],
+  rpcUrls: ['http://localhost:7545'],
   blockExplorerUrls: [],
-  addressExplorerUrl: "",
-  transactionExplorerUrl: "",
-  multicallAddress: "",
+  addressExplorerUrl: '',
+  transactionExplorerUrl: '',
+  multicallAddress: '',
   isTestChain: true,
   isLocalChain: true,
 };

@@ -1,22 +1,22 @@
-import React from "react";
-import { Button, useDisclosure } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { Button, useDisclosure } from '@chakra-ui/react';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
-import { i18nConfig } from "../../config";
-import { useI18nWatcher } from "../../useI18nWatchers";
-import { useChangeLanguage } from "../../useChangeLanguage";
+import { i18nConfig } from '../../config';
+import { useChangeLanguage } from '../../useChangeLanguage';
+import { useI18nWatcher } from '../../useI18nWatchers';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const LangModal = React.lazy(() =>
-  import(/* webpackChunkName: "LangModal" */ "./LangModal").then((module) => ({
+  import(/* webpackChunkName: "LangModal" */ './LangModal').then(module => ({
     default: module.LangModal,
   }))
 );
 
 export const LangMenu: React.FC = () => {
   const location = useLocation();
-  const { i18n } = useTranslation("Layout");
+  const { i18n } = useTranslation('Layout');
   useI18nWatcher();
   const { changeLanguage } = useChangeLanguage(
     location.pathname,

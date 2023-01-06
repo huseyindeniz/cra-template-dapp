@@ -1,12 +1,12 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { withRouter } from 'storybook-addon-react-router-v6';
 
-import { MainMenu } from "./MainMenu";
+import { MainMenu } from './MainMenu';
 //import { MenuType } from "../../../../../pages/types";
 
 export default {
-  title: "ui/Components/Layout/MainMenu",
+  title: 'ui/Components/Layout/MainMenu',
   component: MainMenu,
   decorators: [withRouter],
 } as ComponentMeta<typeof MainMenu>;
@@ -41,7 +41,7 @@ const mockMenu = [
   mockFooterOnlyMenuItem1,
 ]; */
 
-export const Default: ComponentStory<typeof MainMenu> = (args) => (
+export const Default: ComponentStory<typeof MainMenu> = args => (
   <MainMenu {...args} />
 );
 

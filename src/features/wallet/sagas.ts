@@ -1,25 +1,24 @@
-import { put, takeLatest, call } from "redux-saga/effects";
+import { put, takeLatest, call } from 'redux-saga/effects';
 
-import { IWalletAPI, LoadingStatusType, WalletStateType } from "./types";
-
-import * as actions from "./actions";
-import * as slicesActions from "./slices";
-import { HandleStateWalletRequested } from "./sagaHandlers/walletRequested";
+import * as actions from './actions';
 import {
   HandleStateAccountRequested,
   HandleStateUnlockRequested,
-} from "./sagaHandlers/accountRequested";
+} from './sagaHandlers/accountRequested';
+import { HandleStateBlockRequested } from './sagaHandlers/blockRequested';
+import { HandleStateDisconnectRequested } from './sagaHandlers/disconnectRequested';
 import {
   HandleStateNetworkRequested,
   HandleStateNetworkSwitchRequested,
-} from "./sagaHandlers/networkRequested";
+} from './sagaHandlers/networkRequested';
 import {
   HandleStateNotSigned,
   HandleStateSignRequested,
-} from "./sagaHandlers/signRequested";
-import { HandleStateUserAuthenticated } from "./sagaHandlers/userAuthenticated";
-import { HandleStateDisconnectRequested } from "./sagaHandlers/disconnectRequested";
-import { HandleStateBlockRequested } from "./sagaHandlers/blockRequested";
+} from './sagaHandlers/signRequested';
+import { HandleStateUserAuthenticated } from './sagaHandlers/userAuthenticated';
+import { HandleStateWalletRequested } from './sagaHandlers/walletRequested';
+import * as slicesActions from './slices';
+import { IWalletAPI, LoadingStatusType, WalletStateType } from './types';
 
 // ACTION EFFECTS
 function* ActionEffectConnectWallet(walletApi: IWalletAPI) {

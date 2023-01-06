@@ -1,5 +1,6 @@
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "@reduxjs/toolkit";
+import { bindActionCreators } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+
 import {
   connectWallet,
   switchNetwork,
@@ -7,7 +8,7 @@ import {
   signIn,
   disconnectWallet,
   latestBlock,
-} from "./actions";
+} from './actions';
 
 export const useActions = () => {
   const dispatch = useDispatch();

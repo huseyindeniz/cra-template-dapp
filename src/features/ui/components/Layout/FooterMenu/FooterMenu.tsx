@@ -1,12 +1,12 @@
-import React from "react";
-import { NavLink as RouterLink } from "react-router-dom";
-import { Link, useColorModeValue } from "@chakra-ui/react";
+import { Link, useColorModeValue } from '@chakra-ui/react';
+import React from 'react';
+import { NavLink as RouterLink } from 'react-router-dom';
 
-import { usePages } from "../../../../../pages/usePages";
+import { usePages } from '../../../../../pages/usePages';
 
 export const FooterMenu: React.FC = () => {
   const { footerMenuItems } = usePages();
-  const activeMenuColor = useColorModeValue("blue.900", "blue.100");
+  const activeMenuColor = useColorModeValue('blue.900', 'blue.100');
   return (
     <>
       {footerMenuItems &&
@@ -15,10 +15,10 @@ export const FooterMenu: React.FC = () => {
             key={index}
             _activeLink={{
               color: activeMenuColor,
-              fontWeight: "bold",
+              fontWeight: 'bold',
             }}
             as={RouterLink}
-            to={link.path ?? ""}
+            to={link.path ?? ''}
           >
             {link.menuLabel}
           </Link>

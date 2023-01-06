@@ -1,16 +1,17 @@
-import React, { useEffect } from "react";
-import { useDisclosure } from "@chakra-ui/react";
+import { useDisclosure } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
 
-import useTypedSelector from "../../../../hooks/useTypedSelector";
-import { LoadingStatusType, WalletStateType } from "../../types";
-import { useActions } from "../../useActions";
-import { Button } from "./Button";
-import { WalletLoading } from "./WalletLoading";
+import useTypedSelector from '../../../../hooks/useTypedSelector';
+import { LoadingStatusType, WalletStateType } from '../../types';
+import { useActions } from '../../useActions';
+
+import { Button } from './Button/Button';
+import { WalletLoading } from './WalletLoading/WalletLoading';
 
 const ConnectionModal = React.lazy(() =>
   import(
-    /* webpackChunkName: "../ConnectionModal" */ "../ConnectionModal/ConnectionModal"
-  ).then((module) => ({
+    /* webpackChunkName: "../ConnectionModal" */ '../ConnectionModal/ConnectionModal'
+  ).then(module => ({
     default: module.ConnectionModal,
   }))
 );
@@ -18,10 +19,8 @@ const ConnectionModal = React.lazy(() =>
 export const ConnectButton: React.FC = () => {
   const actions = useActions();
   const { onOpen, onClose, isOpen } = useDisclosure();
-  const loadingState = useTypedSelector((state) => state.wallet.loading);
-  const walletState = useTypedSelector(
-    (state) => state.wallet.globalState.state
-  );
+  const loadingState = useTypedSelector(state => state.wallet.loading);
+  const walletState = useTypedSelector(state => state.wallet.globalState.state);
 
   useEffect(() => {
     walletState !== null &&

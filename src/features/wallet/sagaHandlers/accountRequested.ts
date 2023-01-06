@@ -1,14 +1,15 @@
-import { put, call, select } from "redux-saga/effects";
+import { put, call, select } from 'redux-saga/effects';
 
-import * as slicesActions from "../slices";
+import { RootState } from '../../../store/store';
+import * as slicesActions from '../slices';
 import {
   WalletStateType,
   WalletAccountStateType,
   WalletGlobalStateType,
   IWalletAccountApi,
-} from "../types";
-import { RootState } from "../../../store/store";
-import { SlowDown } from "./utils";
+} from '../types';
+
+import { SlowDown } from './utils';
 
 export function* HandleStateAccountRequested(
   walletAccountApi: IWalletAccountApi
@@ -64,7 +65,7 @@ export function* HandleStateUnlockRequested(
       isUnlocked = yield call(walletAccountApi.isUnlocked);
     }
   } catch (error) {
-    if ((error as Error).message === "unlock_rejected") {
+    if ((error as Error).message === 'unlock_rejected') {
       isRejected = true;
     }
     isUnlocked = false;

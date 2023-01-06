@@ -74,9 +74,15 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.10",
     "@types/redux-mock-store": "^1.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "i18next-parser": "^7.1.0",
     "postcss": "8.4.19",
+    "prettier": "2.8.1",
     "prop-types": "^15.8.1",
     "redux-mock-store": "^1.5.4",
     "redux-saga-test-plan": "^4.0.6",
@@ -90,6 +96,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "format": "npx prettier --write './src/**/*.{ts,tsx}'",
     "lint": "eslint --ext .js,.ts,.jsx,.tsx ./src",
     "test": "react-scripts test --verbose --no-cache --watchAll",
     "coverage": "react-scripts test --coverage --no-cache --watchAll",
@@ -104,7 +111,19 @@
     "prepublishOnly": "npm run clean-files && npm run copy-files"
   },
   "eslintConfig": {
-    "extends": "react-app",
+    "extends": [
+      "react-app",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "root": true,
     "overrides": [
       {
         "files": [
@@ -114,7 +133,49 @@
           "import/no-anonymous-default-export": "off"
         }
       }
-    ]
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto",
+          "singleQuote": true
+        }
+      ],
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "always",
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index"
+          ],
+          "pathGroups": [
+            {
+              "pattern": "**/*.stories.ts?",
+              "group": "external",
+              "position": "before"
+            },
+            {
+              "pattern": "**/*.test.ts?",
+              "group": "external",
+              "position": "before"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": [
+            "builtin"
+          ],
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
+      ]
+    }
   },
   "jest": {
     "collectCoverageFrom": [

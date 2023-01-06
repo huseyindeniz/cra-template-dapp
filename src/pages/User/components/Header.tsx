@@ -1,20 +1,17 @@
-import React, { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { Heading, Divider, Text, HStack, Flex } from "@chakra-ui/react";
+import { Heading, Divider, Text, HStack, Flex } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useActions } from "../../../features/wallet/useActions";
-import { BlockInfo } from "../../../features/wallet/components/BlockInfo/BlockInfo";
-import { NetworkLogo } from "../../../features/wallet/components/NetworkLogo/NetworkLogo";
-
-import useTypedSelector from "../../../hooks/useTypedSelector";
+import { BlockInfo } from '../../../features/wallet/components/BlockInfo/BlockInfo';
+import { NetworkLogo } from '../../../features/wallet/components/NetworkLogo/NetworkLogo';
+import { useActions } from '../../../features/wallet/useActions';
+import useTypedSelector from '../../../hooks/useTypedSelector';
 
 export const Header: React.FC = () => {
-  const { t } = useTranslation("PageUser");
+  const { t } = useTranslation('PageUser');
   const actions = useActions();
-  const account = useTypedSelector((state) => state.wallet.account);
-  const currentNetwork = useTypedSelector(
-    (state) => state.wallet.currentNetwork
-  );
+  const account = useTypedSelector(state => state.wallet.account);
+  const currentNetwork = useTypedSelector(state => state.wallet.currentNetwork);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,7 +26,7 @@ export const Header: React.FC = () => {
       {account && (
         <>
           <Heading size="xs" textAlign="center">
-            {t("User Dashboard")}
+            {t('User Dashboard')}
           </Heading>
           <Divider />
           <Flex alignItems="center" justifyContent="space-between">

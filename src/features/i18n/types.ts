@@ -1,6 +1,6 @@
 export enum LangCode {
-  TR_TR = "tr-TR",
-  EN_US = "en-US",
+  TR_TR = 'tr-TR',
+  EN_US = 'en-US',
 }
 
 export type SupportedLang = {

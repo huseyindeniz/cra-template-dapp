@@ -1,6 +1,7 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { disconnectWallet } from "./actions";
+import { disconnectWallet } from './actions';
+import { SIGN_TIMEOUT_IN_SEC } from './config';
 import {
   WalletStoreState,
   WalletStateType,
@@ -12,9 +13,7 @@ import {
   WalletAccountStateType,
   WalletNetworkStateType,
   WalletSignStateType,
-} from "./types";
-
-import { SIGN_TIMEOUT_IN_SEC } from "./config";
+} from './types';
 
 export const initialState = Object.freeze({
   loading: LoadingStatusType.IDLE,
@@ -34,7 +33,7 @@ export const initialState = Object.freeze({
 }) as WalletStoreState;
 
 const wallet = createSlice({
-  name: "wallet",
+  name: 'wallet',
   initialState: initialState,
   reducers: {
     setLoading: (state, { payload }: PayloadAction<LoadingStatusType>) => {
@@ -70,10 +69,10 @@ const wallet = createSlice({
     setCurrentNetwork: (state, { payload }: PayloadAction<ChainInfoType>) => {
       state.currentNetwork = payload;
     },
-    decSignCounter: (state) => {
+    decSignCounter: state => {
       --state.signCounter;
     },
-    resetSignCounter: (state) => {
+    resetSignCounter: state => {
       state.signCounter = initialState.signCounter;
     },
     setAccount: (state, { payload }: PayloadAction<AccountType>) => {
@@ -95,7 +94,7 @@ const wallet = createSlice({
       state.blockInfo = payload;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(disconnectWallet.type, (state, action) => {
       state.loading = initialState.loading;
       state.globalState = initialState.globalState;

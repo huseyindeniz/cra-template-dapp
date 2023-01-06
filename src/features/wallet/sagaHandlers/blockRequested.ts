@@ -1,7 +1,7 @@
-import { put, call } from "redux-saga/effects";
+import { put, call } from 'redux-saga/effects';
 
-import * as slicesActions from "../slices";
-import { BlockInfoType, IWalletBlockInfoApi } from "../types";
+import * as slicesActions from '../slices';
+import { BlockInfoType, IWalletBlockInfoApi } from '../types';
 
 export function* HandleStateBlockRequested(
   walletBlockInfoApi: IWalletBlockInfoApi
@@ -13,7 +13,7 @@ export function* HandleStateBlockRequested(
     walletBlockInfoApi.getBalance
   );
   const payload: BlockInfoType = {
-    blockNumber: latestBlockNumber ? latestBlockNumber.toString() : "",
+    blockNumber: latestBlockNumber ? latestBlockNumber.toString() : '',
     signerAccountBalance: signerAccountBalance,
   };
   yield put(slicesActions.setBlockInfo(payload));

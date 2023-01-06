@@ -1,8 +1,9 @@
-import { put, call } from "redux-saga/effects";
+import { put, call } from 'redux-saga/effects';
 
-import * as slicesActions from "../slices";
-import { IWalletInitApi, WalletInitStateType } from "../types";
-import { SlowDown } from "./utils";
+import * as slicesActions from '../slices';
+import { IWalletInitApi, WalletInitStateType } from '../types';
+
+import { SlowDown } from './utils';
 
 export function* HandleStateWalletRequested(walletInitApi: IWalletInitApi) {
   yield put(
@@ -24,7 +25,7 @@ export function* HandleStateWalletRequested(walletInitApi: IWalletInitApi) {
       return true;
     } else {
       if (isError) {
-        yield call(HandleStateWalletFailed, "Wallet detection failed");
+        yield call(HandleStateWalletFailed, 'Wallet detection failed');
       } else {
         yield call(HandleStateWalletNotSupported);
       }

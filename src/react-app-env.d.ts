@@ -5,6 +5,6 @@ interface Window {
   web3: any;
 }
 
-declare module "@metamask/jazzicon" {
+declare module '@metamask/jazzicon' {
   export default function (diameter: number, seed: number): HTMLElement;
 }

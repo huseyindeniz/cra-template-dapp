@@ -1,16 +1,16 @@
-import React from "react";
-import { Image } from "@chakra-ui/react";
+import { Image } from '@chakra-ui/react';
+import React from 'react';
 
-import imageAvalanche from "../../assets/images/chains/43114.webp";
-import imageAvalancheFuji from "../../assets/images/chains/43113.webp";
-import imageBsc from "../../assets/images/chains/56.webp";
-import imageBscTest from "../../assets/images/chains/97.webp";
-import imageEthereumMainnet from "../../assets/images/chains/1.webp";
-import imageGanache from "../../assets/images/chains/1337.webp";
-import imageGoerli from "../../assets/images/chains/5.webp";
-import imageHardhat from "../../assets/images/chains/31337.webp";
-import imagePolygon from "../../assets/images/chains/137.webp";
-import imagePolygonMumbai from "../../assets/images/chains/80001.webp";
+import imageEthereumMainnet from '../../assets/images/chains/1.webp';
+import imageGanache from '../../assets/images/chains/1337.webp';
+import imagePolygon from '../../assets/images/chains/137.webp';
+import imageHardhat from '../../assets/images/chains/31337.webp';
+import imageAvalancheFuji from '../../assets/images/chains/43113.webp';
+import imageAvalanche from '../../assets/images/chains/43114.webp';
+import imageGoerli from '../../assets/images/chains/5.webp';
+import imageBsc from '../../assets/images/chains/56.webp';
+import imagePolygonMumbai from '../../assets/images/chains/80001.webp';
+import imageBscTest from '../../assets/images/chains/97.webp';
 
 export interface NetworkLogoProps {
   networkId: number;

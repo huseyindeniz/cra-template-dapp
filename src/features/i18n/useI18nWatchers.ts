@@ -1,8 +1,10 @@
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
-import { usePages } from "../../pages/usePages";
-import { i18nConfig } from "./config";
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
+
+import { usePages } from '../../pages/usePages';
+
+import { i18nConfig } from './config';
 
 export const useI18nWatcher = () => {
   const { i18n } = useTranslation();
@@ -15,10 +17,10 @@ export const useI18nWatcher = () => {
   useEffect(() => {
     if (
       isHashRouter &&
-      location.key === "default" &&
-      location.pathname === "/"
+      location.key === 'default' &&
+      location.pathname === '/'
     ) {
-      navigate("/");
+      navigate('/');
     }
     // eslint-disable-next-line
   }, [location.key, isHashRouter]);
@@ -29,7 +31,7 @@ export const useI18nWatcher = () => {
     if (
       isHashRouter &&
       i18n.resolvedLanguage !== lang &&
-      i18nConfig.supportedLanguages.find((l) => l.code === lang) !== undefined
+      i18nConfig.supportedLanguages.find(l => l.code === lang) !== undefined
     ) {
       i18n.changeLanguage(lang);
     }
@@ -39,8 +41,8 @@ export const useI18nWatcher = () => {
   useEffect(() => {
     if (
       lang &&
-      lang !== "" &&
-      i18nConfig.supportedLanguages.find((l) => l.code === lang) === undefined
+      lang !== '' &&
+      i18nConfig.supportedLanguages.find(l => l.code === lang) === undefined
     ) {
       navigate(`${i18nConfig.fallbackLang.code}/not-found`);
     }

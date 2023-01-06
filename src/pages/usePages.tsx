@@ -1,13 +1,14 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { RouteObject } from "react-router-dom";
-import { i18nConfig } from "../features/i18n/config";
-import { useWalletAuthentication } from "../features/wallet/hooks/useWalletAuthentication";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { RouteObject } from 'react-router-dom';
 
-import { MenuType, PageType } from "./types";
+import { i18nConfig } from '../features/i18n/config';
+import { useWalletAuthentication } from '../features/wallet/hooks/useWalletAuthentication';
+
+import { MenuType, PageType } from './types';
 
 const HomePage = React.lazy(() =>
-  import(/* webpackChunkName: "HomePage" */ "./Home/Home").then((module) => ({
+  import(/* webpackChunkName: "HomePage" */ './Home/Home').then(module => ({
     default: module.HomePage,
   }))
 );
@@ -15,13 +16,13 @@ const HomePage = React.lazy(() =>
 // ADD YOUR PAGES HERE
 
 const UserPage = React.lazy(() =>
-  import(/* webpackChunkName: "UserPage" */ "./User/User").then((module) => ({
+  import(/* webpackChunkName: "UserPage" */ './User/User').then(module => ({
     default: module.UserPage,
   }))
 );
 
 export const usePages = () => {
-  const { t, i18n } = useTranslation("Menu");
+  const { t, i18n } = useTranslation('Menu');
   const { isAuthenticated } = useWalletAuthentication();
 
   // if you do not have control/access on hosting(html server) config, use hashRouter
@@ -35,7 +36,7 @@ export const usePages = () => {
   const Home: PageType = {
     index: true,
     element: <HomePage />,
-    menuLabel: t("Home", { ns: "Menu" }),
+    menuLabel: t('Home', { ns: 'Menu' }),
     isShownInMainMenu: true,
     isShownInFooter: true,
     isProtected: false,
@@ -43,7 +44,7 @@ export const usePages = () => {
 
   // User Dashboard Page
   const User: RouteObject = {
-    path: "user",
+    path: 'user',
     element: <UserPage />,
   };
 
@@ -55,17 +56,17 @@ export const usePages = () => {
     ...Home,
     path:
       i18n.resolvedLanguage === i18nConfig.fallbackLang.code
-        ? ""
+        ? ''
         : `/${i18n.resolvedLanguage}/`,
   };
 
   const mainMenuItems: MenuType[] = [
     homeMenuItem,
     ...Pages.filter(
-      (m) =>
+      m =>
         m.isShownInMainMenu &&
         ((m.isProtected && isAuthenticated) || !m.isProtected)
-    ).map((m) => {
+    ).map(m => {
       return {
         ...m,
         path:
@@ -79,10 +80,10 @@ export const usePages = () => {
   const footerMenuItems: MenuType[] = [
     homeMenuItem,
     ...Pages.filter(
-      (m) =>
+      m =>
         m.isShownInFooter &&
         ((m.isProtected && isAuthenticated) || !m.isProtected)
-    ).map((m) => {
+    ).map(m => {
       return {
         ...m,
         path:
@@ -95,7 +96,7 @@ export const usePages = () => {
 
   const userPageLink: string =
     i18n.resolvedLanguage === i18nConfig.fallbackLang.code
-      ? "user"
+      ? 'user'
       : `/${i18n.resolvedLanguage}/user`;
 
   return React.useMemo(() => {

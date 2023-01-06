@@ -1,12 +1,13 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import reportWebVitals from "./reportWebVitals";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
 
-import "./loading.css";
+import reportWebVitals from './reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
+import './loading.css';
 
 const App = React.lazy(() =>
-  import(/* webpackChunkName: "App" */ "./App").then((module) => ({
+  import(/* webpackChunkName: "App" */ './App').then(module => ({
     default: module.App,
   }))
 );
@@ -19,8 +20,8 @@ const loader = (
   </div>
 );
 
-const container = document.getElementById("root");
-if (!container) throw new Error("Failed to find the root element");
+const container = document.getElementById('root');
+if (!container) throw new Error('Failed to find the root element');
 const root = ReactDOM.createRoot(container);
 
 root.render(

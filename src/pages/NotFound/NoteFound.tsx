@@ -1,5 +1,3 @@
-import { Link as RouterLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import {
   Heading,
   Divider,
@@ -11,20 +9,24 @@ import {
   VStack,
   Center,
   Link,
-} from "@chakra-ui/react";
-import imageBackToHomePage from "./assets/images/backToTheHomepage.webp";
-import imageDelorean from "./assets/images/delorean.webp";
-import { usePageLink } from "../usePageLink";
+} from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
+import { Link as RouterLink } from 'react-router-dom';
+
+import { usePageLink } from '../usePageLink';
+
+import imageBackToHomePage from './assets/images/backToTheHomepage.webp';
+import imageDelorean from './assets/images/delorean.webp';
 
 export const NotFoundPage: React.FC = () => {
-  const { t } = useTranslation("PageNotFound");
-  const homeLink = usePageLink("/");
+  const { t } = useTranslation('PageNotFound');
+  const homeLink = usePageLink('/');
 
   return (
     <Box>
       <Container maxW="7xl" py={2} as={Stack} spacing={12}>
         <Stack spacing={0} align="center">
-          <Heading>{t("404 Page Not Found")}</Heading>
+          <Heading>{t('404 Page Not Found')}</Heading>
           <Divider />
         </Stack>
         <Center>
@@ -40,7 +42,7 @@ export const NotFoundPage: React.FC = () => {
         </Center>
         <Center>
           <VStack>
-            <Text>{t("Back To Home?")}</Text>
+            <Text>{t('Back To Home?')}</Text>
             <Box>
               <Link
                 as={RouterLink}
@@ -51,7 +53,7 @@ export const NotFoundPage: React.FC = () => {
                 p={1}
                 m={1}
               >
-                {t("Yes")}
+                {t('Yes')}
               </Link>
               <Link
                 border="1px"
@@ -61,7 +63,7 @@ export const NotFoundPage: React.FC = () => {
                 m={1}
                 href="https://www.youtube.com/watch?v=M230r6CLZUA"
               >
-                {t("No")}
+                {t('No')}
               </Link>
             </Box>
           </VStack>

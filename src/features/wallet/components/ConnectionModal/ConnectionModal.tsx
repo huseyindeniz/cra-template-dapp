@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useSteps } from "chakra-ui-steps";
+import { useSteps } from 'chakra-ui-steps';
+import React, { useEffect, useState } from 'react';
 
-import { Modal } from "./Modal";
+import useTypedSelector from '../../../../hooks/useTypedSelector';
+import { SUPPORTED_NETWORKS, DEFAULT_NETWORK } from '../../config';
 import {
   WalletAccountStateType,
   WalletInitStateType,
   WalletNetworkStateType,
   WalletSignStateType,
   WalletStateType,
-} from "../../types";
-import { StepCheckWallet } from "./StepCheckWallet";
-import { StepCheckNetwork } from "./StepCheckNetwork";
-import { StepCheckAccount } from "./StepCheckAccount";
-import { StepCheckSign } from "./StepCheckSign";
-import useTypedSelector from "../../../../hooks/useTypedSelector";
-import { SUPPORTED_NETWORKS, DEFAULT_NETWORK } from "../../config";
-import { useActions } from "../../useActions";
+} from '../../types';
+import { useActions } from '../../useActions';
+
+import { Modal } from './Modal/Modal';
+import { StepCheckAccount } from './Steps/StepCheckAccount';
+import { StepCheckNetwork } from './Steps/StepCheckNetwork';
+import { StepCheckSign } from './Steps/StepCheckSign';
+import { StepCheckWallet } from './Steps/StepCheckWallet';
 
 export interface ConnectionModalProps {
   onDisconnect: () => void;
@@ -25,32 +26,31 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
   onDisconnect,
 }) => {
   const actions = useActions();
-  const walletState = useTypedSelector(
-    (state) => state.wallet.globalState.state
-  );
+  const walletState = useTypedSelector(state => state.wallet.globalState.state);
   const initState = useTypedSelector(
-    (state) => state.wallet.globalState.initState
+    state => state.wallet.globalState.initState
   );
   const accountState = useTypedSelector(
-    (state) => state.wallet.globalState.accountState
+    state => state.wallet.globalState.accountState
   );
   const networkState = useTypedSelector(
-    (state) => state.wallet.globalState.networkState
+    state => state.wallet.globalState.networkState
   );
   const signState = useTypedSelector(
-    (state) => state.wallet.globalState.signState
+    state => state.wallet.globalState.signState
   );
-  const error = useTypedSelector((state) => state.wallet.error);
-  const signCounter = useTypedSelector((state) => state.wallet.signCounter);
+  const error = useTypedSelector(state => state.wallet.error);
+  const signCounter = useTypedSelector(state => state.wallet.signCounter);
   const { setStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
 
-  const [stepState, setStepState] =
-    useState<"error" | "loading" | undefined>(undefined);
+  const [stepState, setStepState] = useState<'error' | 'loading' | undefined>(
+    undefined
+  );
 
   const defaultNetwork = DEFAULT_NETWORK.chainId;
-  const supportedNetworks = SUPPORTED_NETWORKS.map((network) => {
+  const supportedNetworks = SUPPORTED_NETWORKS.map(network => {
     return {
       id: network.chainId,
       name: network.chainName,
@@ -71,11 +71,11 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
         setStepState(undefined);
         break;
       case WalletInitStateType.INIT_REQUESTED:
-        setStepState("loading");
+        setStepState('loading');
         break;
       case WalletInitStateType.INIT_FAILED:
       case WalletInitStateType.NOT_SUPPORTED:
-        setStepState("error");
+        setStepState('error');
         break;
       default:
         setStepState(undefined);
@@ -90,13 +90,13 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
         break;
       case WalletAccountStateType.ACCOUNT_REQUESTED:
       case WalletAccountStateType.UNLOCK_REQUESTED:
-        setStepState("loading");
+        setStepState('loading');
         break;
       case WalletAccountStateType.ACCOUNT_DETECTION_FAILED:
       case WalletAccountStateType.LOCKED:
       case WalletAccountStateType.UNLOCK_FAILED:
       case WalletAccountStateType.UNLOCK_REJECTED:
-        setStepState("error");
+        setStepState('error');
         break;
       default:
         setStepState(undefined);
@@ -111,13 +111,13 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
         break;
       case WalletNetworkStateType.NETWORK_REQUESTED:
       case WalletNetworkStateType.NETWORK_SWITCH_REQUESTED:
-        setStepState("loading");
+        setStepState('loading');
         break;
       case WalletNetworkStateType.NETWORK_DETECTION_FAILED:
       case WalletNetworkStateType.NETWORK_SWITCH_FAILED:
       case WalletNetworkStateType.NETWORK_SWITCH_REJECTED:
       case WalletNetworkStateType.WRONG_NETWORK:
-        setStepState("error");
+        setStepState('error');
         break;
       default:
         setStepState(undefined);
@@ -131,13 +131,13 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
         setStepState(undefined);
         break;
       case WalletSignStateType.SIGN_REQUESTED:
-        setStepState("loading");
+        setStepState('loading');
         break;
       case WalletSignStateType.NOT_SIGNED:
       case WalletSignStateType.SIGN_FAILED:
       case WalletSignStateType.SIGN_REJECTED:
       case WalletSignStateType.SIGN_TIMED_OUT:
-        setStepState("error");
+        setStepState('error');
         break;
       default:
         setStepState(undefined);

@@ -1,8 +1,9 @@
-import { put, call } from "redux-saga/effects";
+import { put, call } from 'redux-saga/effects';
 
-import * as slicesActions from "../slices";
-import { WalletNetworkStateType, IWalletNetworkApi } from "../types";
-import { SlowDown } from "./utils";
+import * as slicesActions from '../slices';
+import { WalletNetworkStateType, IWalletNetworkApi } from '../types';
+
+import { SlowDown } from './utils';
 
 export function* HandleStateNetworkRequested(
   walletNetworkApi: IWalletNetworkApi
@@ -38,7 +39,7 @@ export function* HandleStateNetworkRequested(
       if (isError) {
         yield call(
           HandleStateNetworkDetectionFailed,
-          "Network detection failed"
+          'Network detection failed'
         );
       } else {
         yield call(HandleStateWrongNetwork);
@@ -82,11 +83,11 @@ export function* HandleStateNetworkSwitchRequested(
       if (network !== undefined) {
         yield put(slicesActions.setCurrentNetwork(network));
       } else {
-        throw Error("network error");
+        throw Error('network error');
       }
     }
   } catch (error) {
-    if ((error as Error).message === "switch_rejected") {
+    if ((error as Error).message === 'switch_rejected') {
       isRejected = true;
     }
     isNetworkSwitched = false;
@@ -102,7 +103,7 @@ export function* HandleStateNetworkSwitchRequested(
       if (isRejected) {
         yield call(HandleStateNetworkSwitchRejected);
       } else {
-        yield call(HandleStateNetworkSwitchFailed, "Network switch failed");
+        yield call(HandleStateNetworkSwitchFailed, 'Network switch failed');
       }
       return false;
     }
@@ -110,7 +111,7 @@ export function* HandleStateNetworkSwitchRequested(
 }
 
 export function* HandleStateNetworkSwitchRejected() {
-  yield put(slicesActions.setError("Network switch rejected"));
+  yield put(slicesActions.setError('Network switch rejected'));
   yield put(
     slicesActions.setWalletNetworkState(
       WalletNetworkStateType.NETWORK_SWITCH_REJECTED

@@ -1,18 +1,19 @@
-import { put, spawn, call, delay, select, cancel } from "redux-saga/effects";
-import { Task } from "redux-saga";
+import { Task } from 'redux-saga';
+import { put, spawn, call, delay, select, cancel } from 'redux-saga/effects';
 
-import * as actions from "../actions";
-import * as slicesActions from "../slices";
+import { RootState } from '../../../store/store';
+import * as actions from '../actions';
+import { SIGN_TIMEOUT_IN_SEC } from '../config';
+import * as slicesActions from '../slices';
 import {
   WalletStateType,
   AccountType,
   WalletGlobalStateType,
   WalletSignStateType,
   IWalletSignApi,
-} from "../types";
-import { RootState } from "../../../store/store";
-import { SIGN_TIMEOUT_IN_SEC } from "../config";
-import { SlowDown } from "./utils";
+} from '../types';
+
+import { SlowDown } from './utils';
 
 // Cancellable Task Handlers
 let taskSign: Task;
@@ -44,7 +45,7 @@ export function* HandleStateSignRequested(
       isSigned = yield call(walletSignApi.isSigned);
     }
   } catch (error) {
-    if ((error as Error).message === "sign_rejected") {
+    if ((error as Error).message === 'sign_rejected') {
       isRejected = true;
     }
     isSigned = false;
@@ -57,7 +58,7 @@ export function* HandleStateSignRequested(
       if (isRejected) {
         yield call(HandleStateSignRejected);
       } else {
-        yield call(HandleStateSignFailed, "SIGN_FAILED");
+        yield call(HandleStateSignFailed, 'SIGN_FAILED');
       }
       return false;
     }

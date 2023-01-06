@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Box, IconButton } from "@chakra-ui/react";
-import { IoChevronUp } from "@react-icons/all-files/io5/IoChevronUp";
+import { Box, IconButton } from '@chakra-ui/react';
+import { IoChevronUp } from '@react-icons/all-files/io5/IoChevronUp';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const ScrollToTopButton: React.FC = () => {
-  const { t } = useTranslation("Layout");
+  const { t } = useTranslation('Layout');
   const [scrollPosition, setScrollPosition] = useState(0);
   const scrollToTop = () => {
     window.scrollTo({
@@ -18,9 +18,9 @@ export const ScrollToTopButton: React.FC = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -34,11 +34,11 @@ export const ScrollToTopButton: React.FC = () => {
             }
           `}
         </style>
-        <Box position="fixed" bottom="50px" right={["16px", "16px"]} zIndex={1}>
+        <Box position="fixed" bottom="50px" right={['16px', '16px']} zIndex={1}>
           <IconButton
             variant="outline"
             icon={<IoChevronUp />}
-            aria-label={t("Go To Top")}
+            aria-label={t('Go To Top')}
             size="lg"
             onClick={scrollToTop}
           />
