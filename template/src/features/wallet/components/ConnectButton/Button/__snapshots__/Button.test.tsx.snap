@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feature: Wallet Component: ConnectButton/Button Scenario: Loading should be visible, display loading spinner and disabled 1`] = `[Function]`;
+
+exports[`Feature: Wallet Component: ConnectButton/Button Scenario: NotLoading should be visible and clickable 1`] = `[Function]`;
