@@ -2,6 +2,8 @@
 
 A create-react-app template specifically designed for decentralized application (dApp) development.
 
+![npm](https://img.shields.io/npm/dt/@huseyindeniz/cra-template-dapp)
+
 ## Why use dApp CRA Template?
 
 While React based "Next" generation frameworks may be perfect fit for building e-commerce applications, landing pages, and marketing pages, they may not be the best choice for dApps. Consider the following questions:
