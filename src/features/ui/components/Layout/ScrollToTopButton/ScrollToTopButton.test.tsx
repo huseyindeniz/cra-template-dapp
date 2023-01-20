@@ -15,7 +15,7 @@ describe.skip('Feature: UI', () => {
       (global as any).window = mockWindow;
 
       // Act
-      const { getByLabelText, asFragment } = render(<ScrollToTopButton />);
+      const { getByLabelText } = render(<ScrollToTopButton />);
 
       fireEvent.click(getByLabelText('Go To Top'));
 

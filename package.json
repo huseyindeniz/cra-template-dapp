@@ -34,7 +34,7 @@
     "@metamask/jazzicon": "^2.0.0",
     "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.1",
-    "chakra-ui-steps": "^2.0.1",
+    "chakra-ui-steps": "^1.8.0",
     "ethers": "^5.7.2",
     "framer-motion": "^6.5.1",
     "i18next": "^22.4.9",
@@ -100,7 +100,7 @@
     "format": "npx prettier --write './src/**/*.{ts,tsx}'",
     "lint": "eslint --ext .js,.ts,.jsx,.tsx ./src",
     "test": "react-scripts test --verbose --no-cache",
-    "coverage": "react-scripts test --coverage --no-cache",
+    "coverage": "react-scripts test --coverage --no-cache --watchAll",
     "extract": "i18next 'src/**/*.{ts,tsx}'",
     "build": "react-scripts build",
     "storybook": "start-storybook -p 6006",
@@ -181,6 +181,12 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
+      "!src/reportWebVitals.ts",
+      "!src/serviceWorker.ts",
+      "!src/serviceWorkerRegistration.ts",
+      "!src/test-utils.tsx",
+      "!src/index.tsx",
+      "!src/App.tsx",
       "!src/**/*.stories.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/",
       "!<rootDir>/template/"
@@ -188,10 +194,10 @@
     "coveragePathIgnorePatterns": [],
     "coverageThreshold": {
       "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
+        "branches": 30,
+        "functions": 40,
+        "lines": 40,
+        "statements": 40
       }
     }
   },

@@ -9,7 +9,6 @@ export function* HandleStateUserAuthenticated(
   walletAuthenticatedApi: IWalletAuthenticatedApi
 ) {
   yield spawn(handleEventAccountsChanged, walletAuthenticatedApi);
-  yield spawn(handleEventNetworkChanged, walletAuthenticatedApi);
   const isEnsSupported: boolean = yield call(
     walletAuthenticatedApi.isEnsSupported,
     null
@@ -52,29 +51,6 @@ function* handleEventAccountsChanged(
     }
   } finally {
     console.debug('accountsChanged terminated');
-    channel.close();
-  }
-}
-
-function* handleEventNetworkChanged(
-  walletAuthenticatedApi: IWalletAuthenticatedApi
-) {
-  const channel: EventChannel<string> = yield call(
-    walletAuthenticatedApi.listenNetworkChange
-  );
-  try {
-    while (true) {
-      let chainId: string = yield take(channel);
-      console.debug('networkChanged: ' + chainId);
-      yield put(actions.disconnectWallet());
-      yield call(walletAuthenticatedApi.handleNetworkChange);
-      yield put(actions.connectWallet());
-      // take(END) will cause the saga to terminate by jumping to the finally block
-      yield take(END.type);
-      break;
-    }
-  } finally {
-    console.debug('networkChanged terminated');
     channel.close();
   }
 }

@@ -115,6 +115,8 @@ export interface IWalletNetworkApi {
   loadNetwork(): Promise<boolean>;
   getNetwork(): ChainInfoType | undefined;
   switchNetwork(networkId: number): Promise<boolean>;
+  listenNetworkChange(): EventChannel<string> | undefined;
+  handleNetworkChange(): Promise<void>;
 }
 
 export interface IWalletSignApi {
@@ -126,9 +128,7 @@ export interface IWalletSignApi {
 export interface IWalletAuthenticatedApi {
   isEnsSupported(chainId: number | null): Promise<boolean>;
   getEns(): Promise<string | null | undefined>;
-  listenNetworkChange(): EventChannel<string> | undefined;
   listenAccountChange(): EventChannel<string[]> | undefined;
-  handleNetworkChange(): Promise<void>;
   handleAccountChange(): Promise<void>;
 }
 

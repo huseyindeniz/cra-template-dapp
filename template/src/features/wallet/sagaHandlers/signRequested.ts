@@ -26,13 +26,13 @@ export function* HandleStateSignRequested(
   walletSignApi: IWalletSignApi,
   message: string
 ) {
-  yield put(
-    slicesActions.setWalletSignState(WalletSignStateType.SIGN_REQUESTED)
-  );
-  yield call(SlowDown);
   let isSigned: boolean = false;
   let isRejected: boolean = false;
   try {
+    yield put(
+      slicesActions.setWalletSignState(WalletSignStateType.SIGN_REQUESTED)
+    );
+    yield call(SlowDown);
     yield spawn(CheckSignTimeout);
     yield call(walletSignApi.sign, message);
     const walletGlobalState: WalletGlobalStateType = yield select(

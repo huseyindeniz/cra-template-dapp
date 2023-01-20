@@ -11,11 +11,11 @@ describe('Feature: UI', () => {
     describe('Scenario: Default', () => {
       it('should be visible and show both rows of content', () => {
         // Arrange
-        const { asFragment, getByRole } = render(<Default {...Default.args} />);
+        const { getByRole } = render(<Default {...Default.args} />);
         const element = getByRole('img');
         // Assert
         expect(element.hasAttribute('aria-label'));
-        //  (Default.args?.siteName ?? '')).toBeInTheDocument();
+        // TODO: (Default.args?.siteName ?? '')).toBeInTheDocument();
       });
     });
   });

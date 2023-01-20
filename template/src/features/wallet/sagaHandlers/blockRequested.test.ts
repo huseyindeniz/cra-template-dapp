@@ -1,5 +1,5 @@
-import { expectSaga } from 'redux-saga-test-plan';
 import { call } from 'redux-saga/effects';
+import { expectSaga } from 'redux-saga-test-plan';
 
 import * as slicesActions from '../slices';
 import { BlockInfoType, IWalletBlockInfoApi } from '../types';

@@ -54,6 +54,12 @@ export class EthersWalletAPI implements IWalletAPI {
     return isSupported && this._network !== null;
   };
 
+  public getNetwork = () => {
+    return SUPPORTED_NETWORKS.find(
+      chain => chain.chainId === this._network?.chainId
+    );
+  };
+
   private _isNetworkSupported = async (chainId: number | null) => {
     if (chainId) {
       // check if chainId is in the supported list
@@ -171,12 +177,6 @@ export class EthersWalletAPI implements IWalletAPI {
     if (this._network?.chainId === 1 && this._signerAddress) {
       return await this._provider?.lookupAddress(this._signerAddress);
     }
-  };
-
-  public getNetwork = () => {
-    return SUPPORTED_NETWORKS.find(
-      chain => chain.chainId === this._network?.chainId
-    );
   };
 
   // reset

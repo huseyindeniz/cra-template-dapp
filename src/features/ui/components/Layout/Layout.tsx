@@ -67,5 +67,3 @@ export const Layout: React.FC = () => {
     </ErrorBoundary>
   );
 };
-
-export default Layout;

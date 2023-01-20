@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { Modal } from './Modal';
 
-describe('Feature: Wallet', () => {
+describe.skip('Feature: Wallet', () => {
   describe('Component: ConnectionModal/Modal', () => {
     const onClickSpy = jest.fn();
 

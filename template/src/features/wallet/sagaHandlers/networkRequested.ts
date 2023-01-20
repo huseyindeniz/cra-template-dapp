@@ -1,51 +1,50 @@
-import { put, call } from 'redux-saga/effects';
+import { END, EventChannel } from 'redux-saga';
+import { put, call, take, spawn } from 'redux-saga/effects';
 
+import * as actions from '../actions';
 import * as slicesActions from '../slices';
-import { WalletNetworkStateType, IWalletNetworkApi } from '../types';
+import {
+  WalletNetworkStateType,
+  IWalletNetworkApi,
+  ChainInfoType,
+} from '../types';
 
 import { SlowDown } from './utils';
 
 export function* HandleStateNetworkRequested(
   walletNetworkApi: IWalletNetworkApi
 ) {
-  yield put(
-    slicesActions.setWalletNetworkState(
-      WalletNetworkStateType.NETWORK_REQUESTED
-    )
-  );
-  yield call(SlowDown);
-  let isNetworkLoaded: boolean = false;
-  let isError: boolean = false;
+  let isSuccessful: boolean = false;
   try {
-    isNetworkLoaded = yield call(walletNetworkApi.loadNetwork);
-  } catch (error) {
-    isNetworkLoaded = false;
-    isError = true;
-  } finally {
-    if (isNetworkLoaded) {
-      const network = walletNetworkApi.getNetwork();
-      if (network !== undefined) {
-        yield put(slicesActions.setCurrentNetwork(network));
-      } else {
-        isError = true; // TODO: check what the fuck is going on here
-      }
-      yield put(
-        slicesActions.setWalletNetworkState(
-          WalletNetworkStateType.NETWORK_LOADED
-        )
-      );
-      return true;
-    } else {
-      if (isError) {
-        yield call(
-          HandleStateNetworkDetectionFailed,
-          'Network detection failed'
-        );
-      } else {
-        yield call(HandleStateWrongNetwork);
-      }
-      return false;
+    yield put(
+      slicesActions.setWalletNetworkState(
+        WalletNetworkStateType.NETWORK_REQUESTED
+      )
+    );
+    yield call(SlowDown);
+    const isNetworkLoaded: boolean = yield call(walletNetworkApi.loadNetwork);
+    if (!isNetworkLoaded) {
+      throw new Error('Network detection failed');
     }
+    const network: ChainInfoType = yield call(walletNetworkApi.getNetwork);
+    if (network === undefined || network === null) {
+      throw new Error('Wrong network');
+    }
+    yield put(slicesActions.setCurrentNetwork(network));
+    yield put(
+      slicesActions.setWalletNetworkState(WalletNetworkStateType.NETWORK_LOADED)
+    );
+    isSuccessful = true;
+    yield spawn(handleEventNetworkChanged, walletNetworkApi);
+  } catch (error) {
+    const errorMessage: string = (error as Error).message;
+    if (errorMessage === 'Wrong network') {
+      yield call(HandleStateWrongNetwork);
+    } else {
+      yield call(HandleStateNetworkDetectionFailed, errorMessage);
+    }
+  } finally {
+    return isSuccessful;
   }
 }
 
@@ -68,45 +67,40 @@ export function* HandleStateNetworkSwitchRequested(
   networkId: number,
   walletNetworkApi: IWalletNetworkApi
 ) {
-  yield put(
-    slicesActions.setWalletNetworkState(
-      WalletNetworkStateType.NETWORK_SWITCH_REQUESTED
-    )
-  );
-  yield call(SlowDown);
-  let isNetworkSwitched: boolean = false;
-  let isRejected: boolean = false;
+  let isSuccessful: boolean = false;
   try {
-    isNetworkSwitched = yield call(walletNetworkApi.switchNetwork, networkId);
-    if (isNetworkSwitched) {
-      const network = walletNetworkApi.getNetwork();
-      if (network !== undefined) {
-        yield put(slicesActions.setCurrentNetwork(network));
-      } else {
-        throw Error('network error');
-      }
+    yield put(
+      slicesActions.setWalletNetworkState(
+        WalletNetworkStateType.NETWORK_SWITCH_REQUESTED
+      )
+    );
+    yield call(SlowDown);
+    const isNetworkSwitched: boolean = yield call(
+      walletNetworkApi.switchNetwork,
+      networkId
+    );
+    if (!isNetworkSwitched) {
+      throw new Error('Network switch failed');
     }
+    const network: ChainInfoType = yield call(walletNetworkApi.getNetwork);
+    if (network === undefined || network === null) {
+      throw new Error('Network switch failed');
+    }
+    yield put(slicesActions.setCurrentNetwork(network));
+    yield put(
+      slicesActions.setWalletNetworkState(WalletNetworkStateType.NETWORK_LOADED)
+    );
+    isSuccessful = true;
+    yield spawn(handleEventNetworkChanged, walletNetworkApi);
   } catch (error) {
-    if ((error as Error).message === 'switch_rejected') {
-      isRejected = true;
-    }
-    isNetworkSwitched = false;
-  } finally {
-    if (isNetworkSwitched) {
-      yield put(
-        slicesActions.setWalletNetworkState(
-          WalletNetworkStateType.NETWORK_LOADED
-        )
-      );
-      return true;
+    const errorMessage: string = (error as Error).message;
+    if (errorMessage === 'switch_rejected') {
+      yield call(HandleStateNetworkSwitchRejected);
     } else {
-      if (isRejected) {
-        yield call(HandleStateNetworkSwitchRejected);
-      } else {
-        yield call(HandleStateNetworkSwitchFailed, 'Network switch failed');
-      }
-      return false;
+      yield call(HandleStateNetworkSwitchFailed, errorMessage);
     }
+  } finally {
+    return isSuccessful;
   }
 }
 
@@ -126,4 +120,27 @@ export function* HandleStateNetworkSwitchFailed(error: string) {
       WalletNetworkStateType.NETWORK_SWITCH_FAILED
     )
   );
+}
+
+export function* handleEventNetworkChanged(
+  walletNetworkApi: IWalletNetworkApi
+) {
+  const channel: EventChannel<string> = yield call(
+    walletNetworkApi.listenNetworkChange
+  );
+  try {
+    while (true) {
+      let chainId: string = yield take(channel);
+      console.debug('networkChanged: ' + chainId);
+      yield put(actions.disconnectWallet());
+      yield call(walletNetworkApi.handleNetworkChange);
+      yield put(actions.connectWallet());
+      // take(END) will cause the saga to terminate by jumping to the finally block
+      yield take(END.type);
+      break;
+    }
+  } finally {
+    console.debug('networkChanged terminated');
+    channel.close();
+  }
 }

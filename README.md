@@ -22,19 +22,15 @@ The dApp CRA Template allows you to choose whether or not to optimize your dApp 
 
 One of the challenges of building applications with pure React is the need to identify and configure a large number of packages to get the desired functionality. This can be time-consuming and error-prone, especially for developers who are new to React or who are building their first dApp application.
 
-The dApp CRA Template helps developers avoid this challenge by including a wide range of preconfigured packages that are ready to use out of the box. This includes packages for core functionality such as routing and state management, as well as packages for specialized features like form validation and internationalization. All of these packages are carefully selected and integrated to work seamlessly together, making it easy for developers to build powerful and feature-rich applications without the need to spend time researching and configuring individual packages.
+The dApp CRA Template helps developers avoid this challenge by including a wide range of preconfigured packages that are ready to use out of the box. This includes packages for core functionality such as routing and state management, as well as packages for specialized features like internationalization. All of these packages are carefully selected and integrated to work seamlessly together, making it easy for developers to build powerful and feature-rich applications without the need to spend time researching and configuring individual packages.
+
+### Benefits of dApp CRA Template?
 
 dApp CRA Template is specifically designed to meet the needs of dApp development. It is built on top of React, just like React based "Next" generation frameworks, but it offers greater flexibility and customization options. With dApp CRA Template, you can take full advantage of the capabilities of React to build fast, scalable, and user-friendly dApps, while also being able to easily integrate with decentralized protocols and technologies. Additionally, dApp CRA Template allows you to host your dApp on decentralized servers, ensuring maximum security and decentralization.
 
 - Decentralized hosting: One of the main benefits of using this template is that it allows you to host your application on decentralized servers, such as IPFS or Swarm. This allows you to build truly decentralized applications that are not reliant on a single centralized server. In contrast, React based "Next" generation frameworks applications require centralized hosting, which can be less secure and more susceptible to censorship.
 
 - Greater flexibility: By using this template, you have more flexibility in terms of the tools and technologies you can use to build your decentralized application. For example, you can use various React libraries and packages to customize the look and feel of your application, and you can choose from a wide range of decentralized storage solutions. With React based "Next" generation frameworks, you are more limited in terms of the customization options available.
-
-Overall, this template is a good choice if you want to build decentralized applications that are hosted on decentralized servers and can be easily integrated with decentralized protocols. It offers greater flexibility and customization options than React based "Next" generation frameworks, and is specifically designed for decentralized application development.
-
-On the other hand, one of the challenges of building applications with pure React is the need to identify and configure a large number of packages to get the desired functionality. This can be time-consuming and error-prone, especially for developers who are new to React or who are building their first dApp application.
-
-dApp CRA Template helps developers avoid this challenge by including a wide range of preconfigured packages that are ready to use out of the box. This includes packages for core functionality such as routing and state management, as well as packages for specialized features like form validation and internationalization. All of these packages are carefully selected and integrated to work seamlessly together, making it easy for developers to build powerful and feature-rich applications without the need to spend time researching and configuring individual packages.
 
 Overall, dApp CRA Template provides an easy-to-use foundation for building decentralized applications with React, and helps developers avoid the difficulties of identifying and configuring lots of packages. It is an ideal choice for developers who want to build high-quality dApps quickly and efficiently.
 
@@ -43,8 +39,8 @@ Overall, dApp CRA Template provides an easy-to-use foundation for building decen
 - Authentication with Metamask Wallet
 - Internationalization
 - Dark Theme
-- SEO support
 - Page load optimizations
+- SEO support
 
 ## What's Included and Preconfigured
 
@@ -80,15 +76,7 @@ Overall, dApp CRA Template provides an easy-to-use foundation for building decen
 
 **I18Next**: I18Next is an internationalization (i18n) library for JavaScript applications. It allows developers to easily translate their application into different languages, making it more accessible to a global audience. The Browser Language Detector is a library that automatically detects the user's language based on the browser settings, allowing the application to display the correct language for the user.
 
-**React Hook Form**: React Hook Form is a library for managing form state and validation in React applications. It provides an easy-to-use API that allows developers to build forms quickly and efficiently, with built-in support for validation and error handling.
-
-**Zod**: Zod is a schema validation library that can be used with React Hook Form. It allows developers to define the structure and content of their form data in a declarative way, making it easier to validate and sanitize user input.
-
 **React Icon All Files**: React Icon All Files is a library that provides a collection of high-quality SVG icons for use in React applications. It includes a wide range of icons, making it easy to find the perfect icon for your application.
-
-**React Date Picker**: is a customizable date picker component for React applications.
-
-**React Count Down Circle Timer**: is a customizable timer component that displays a countdown in the form of a circular progress bar.
 
 **React Cookie Consent**: is a library that makes it easy to implement a cookie consent banner in a React application.
 
@@ -101,8 +89,6 @@ npx create-react-app my-app --template @huseyindeniz/dapp
 ```
 
 ### Configuration
-
-Open the following files under the src/config folder:
 
 TODO
 ...

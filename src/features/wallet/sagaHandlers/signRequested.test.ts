@@ -1,25 +1,17 @@
-import { Task } from 'redux-saga';
+import { call, spawn, put, delay, select } from 'redux-saga/effects';
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { throwError } from 'redux-saga-test-plan/providers';
-import { call, spawn, put, delay, select, cancel } from 'redux-saga/effects';
 
-import { RootState } from '../../../store/store';
-import * as actions from '../actions';
 import { SIGN_TIMEOUT_IN_SEC } from '../config';
 import * as slicesActions from '../slices';
-import {
-  WalletStateType,
-  AccountType,
-  WalletGlobalStateType,
-  WalletSignStateType,
-  IWalletSignApi,
-} from '../types';
+import { WalletStateType, WalletSignStateType, IWalletSignApi } from '../types';
 
 import {
   CheckSignTimeout,
   HandleStateSignFailed,
   HandleStateSignRejected,
   HandleStateSignRequested,
+  HandleStateSignTimedout,
 } from './signRequested';
 import { SlowDown } from './utils';
 
@@ -63,6 +55,70 @@ describe('Feature: Wallet', () => {
         .call(SlowDown)
         .call(HandleStateSignRejected)
         .run();
+    });
+  });
+
+  describe('When CheckSignTimeout is called', () => {
+    it('should handle the sign timeout correctly', () => {
+      const getState = () => ({
+        wallet: {
+          globalState: {
+            state: WalletStateType.CHECKING_SIGN,
+            signState: WalletSignStateType.SIGN_REQUESTED,
+          },
+        },
+      });
+
+      return expectSaga(CheckSignTimeout)
+        .provide([
+          [select(getState), getState()],
+          [call(HandleStateSignTimedout), null],
+          [put(slicesActions.decSignCounter()), null],
+          [put(slicesActions.resetSignCounter()), null],
+          [delay(1000), null],
+        ])
+        .withState(getState())
+        .call(HandleStateSignTimedout)
+        .put(slicesActions.decSignCounter())
+        .put(slicesActions.resetSignCounter())
+        .run(SIGN_TIMEOUT_IN_SEC * 1000);
+    });
+  });
+
+  describe('When HandleStateSignRejected is called', () => {
+    it('should set state as SIGN_REJECTED', () => {
+      testSaga(HandleStateSignRejected)
+        .next()
+        .put(
+          slicesActions.setWalletSignState(WalletSignStateType.SIGN_REJECTED)
+        )
+        .next()
+        .isDone();
+    });
+  });
+
+  describe('When HandleStateSignTimedout is called', () => {
+    it('should set state as SIGN_TIMED_OUT', () => {
+      testSaga(HandleStateSignTimedout)
+        .next()
+        .put(
+          slicesActions.setWalletSignState(WalletSignStateType.SIGN_TIMED_OUT)
+        )
+        .next()
+        .isDone();
+    });
+  });
+
+  describe('When HandleStateSignFailed is called', () => {
+    it('should call setError and setWalletSignState actions with the correct payload', () => {
+      const error = 'mock sign error';
+      testSaga(HandleStateSignFailed, error)
+        .next()
+        .put(slicesActions.setError(error))
+        .next()
+        .put(slicesActions.setWalletSignState(WalletSignStateType.SIGN_FAILED))
+        .next()
+        .isDone();
     });
   });
 });
