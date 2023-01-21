@@ -1,6 +1,16 @@
 # @huseyindeniz/cra-template-dapp
 
+[This template is still in beta version.]
+
 A create-react-app template specifically designed for decentralized application (dApp) development.
+
+Quick start
+
+```sh
+npx create-react-app mydapp --template @huseyindeniz/dapp
+cd mydapp
+npm start
+```
 
 ![npm](https://img.shields.io/npm/dt/@huseyindeniz/cra-template-dapp)
 
@@ -92,8 +102,23 @@ npx create-react-app mydapp --template @huseyindeniz/dapp
 
 ### Configuration
 
-TODO
-...
+TODO: Tutorials and dedicated documentation website...
+
+#### Setting Supported Languages
+
+- Open /src/features/i18n/config.ts
+- set supportedLanguages array under the i18nConfig object
+
+#### Adding new pages
+
+- Create a new page under pages folder
+- Import your page into usePages.tsx and create a Route for it
+- If your page need authentication wrap it with withWalletProtection hoc.
+
+#### Changing site name
+
+- Open /src/features/i18n/translations/en-US/Layout.json
+- Change the entries with the keys SITE_NAME and SITE_DESCRIPTION
 
 ## Contributions
 
