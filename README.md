@@ -87,7 +87,7 @@ Overall, dApp CRA Template provides an easy-to-use foundation for building decen
 ### Installation
 
 ```sh
-npx create-react-app my-app --template @huseyindeniz/dapp
+npx create-react-app mydapp --template @huseyindeniz/dapp
 ```
 
 ### Configuration
