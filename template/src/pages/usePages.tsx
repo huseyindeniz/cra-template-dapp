@@ -13,13 +13,13 @@ const HomePage = React.lazy(() =>
   }))
 );
 
-// ADD YOUR PAGES HERE
-
 const UserPage = React.lazy(() =>
   import(/* webpackChunkName: "UserPage" */ './User/User').then(module => ({
     default: module.UserPage,
   }))
 );
+
+// ADD YOUR PAGE IMPORTS HERE
 
 export const usePages = () => {
   const { t, i18n } = useTranslation('Menu');
@@ -29,8 +29,6 @@ export const usePages = () => {
   // keep in mind that if you do not use hashRouter,
   // you should redirect all requests to index.html in your server config
   const isHashRouter = true;
-
-  // ADD YOUR PAGE ROUTES
 
   // Home Route
   const Home: PageType = {
@@ -48,7 +46,9 @@ export const usePages = () => {
     element: <UserPage />,
   };
 
-  // do not forget add your pages into this array
+  // ADD YOUR PAGE ROUTES HERE
+
+  // do not forget add your page routes into this array
   const Pages: PageType[] = [];
 
   // DO NOT CHANGE THE REST
@@ -104,5 +104,5 @@ export const usePages = () => {
       isHashRouter,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18n.resolvedLanguage]);
+  }, [i18n.resolvedLanguage, isAuthenticated]);
 };
