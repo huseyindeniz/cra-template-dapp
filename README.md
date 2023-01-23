@@ -1,8 +1,10 @@
 # @huseyindeniz/cra-template-dapp
 
-[This template is still in beta version.]
+![downloads](https://img.shields.io/npm/dt/@huseyindeniz/cra-template-dapp)
+![version](https://img.shields.io/npm/v/@huseyindeniz/cra-template-dapp)
+![build](https://img.shields.io/github/actions/workflow/status/huseyindeniz/cra-template-dapp/ci.yml)
 
-A create-react-app template specifically designed for decentralized application (dApp) development.
+A create-react-app template specifically designed for decentralized application (dApp) frontend development.
 
 Quick start
 
@@ -11,8 +13,6 @@ npx create-react-app mydapp --template @huseyindeniz/dapp
 cd mydapp
 npm start
 ```
-
-![npm](https://img.shields.io/npm/dt/@huseyindeniz/cra-template-dapp)
 
 ## Why use dApp CRA Template?
 
