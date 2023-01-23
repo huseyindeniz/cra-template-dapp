@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
 import imageMetamaskLogo from '../../../assets/images/mm-logo.webp';
-import { WalletInitStateType } from '../../../types';
+import { WalletInitStateType } from '../../../models/WalletGlobalState';
 
 export interface CheckWalletProps {
   stepState: WalletInitStateType;

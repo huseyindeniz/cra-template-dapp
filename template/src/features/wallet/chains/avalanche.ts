@@ -1,4 +1,4 @@
-import { ChainInfoType } from '../types';
+import { ChainInfoType } from '../models/ChainInfo';
 
 export const AvalancheChain: ChainInfoType = {
   chainId: 43114,

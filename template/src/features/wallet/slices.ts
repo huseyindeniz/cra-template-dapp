@@ -2,18 +2,18 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { disconnectWallet } from './actions';
 import { SIGN_TIMEOUT_IN_SEC } from './config';
+import { AccountType } from './models/Account';
+import { BlockInfoType } from './models/BlockInfo';
+import { ChainInfoType } from './models/ChainInfo';
+import { LoadingStatusType } from './models/LoadingStatus';
 import {
-  WalletStoreState,
-  WalletStateType,
-  AccountType,
-  LoadingStatusType,
-  ChainInfoType,
-  BlockInfoType,
-  WalletInitStateType,
   WalletAccountStateType,
+  WalletInitStateType,
   WalletNetworkStateType,
   WalletSignStateType,
-} from './types';
+  WalletStateType,
+} from './models/WalletGlobalState';
+import { WalletStoreState } from './models/WalletStoreState';
 
 export const initialState = Object.freeze({
   loading: LoadingStatusType.IDLE,

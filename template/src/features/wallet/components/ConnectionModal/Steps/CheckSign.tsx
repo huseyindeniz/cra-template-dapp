@@ -11,7 +11,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
-import { WalletSignStateType } from '../../../types';
+import { WalletSignStateType } from '../../../models/WalletGlobalState';
 
 export interface CheckSignProps {
   stepState: WalletSignStateType;

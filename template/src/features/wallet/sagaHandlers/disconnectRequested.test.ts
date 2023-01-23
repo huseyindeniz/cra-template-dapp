@@ -2,8 +2,8 @@ import { call } from 'redux-saga/effects';
 import { expectSaga } from 'redux-saga-test-plan';
 import { throwError } from 'redux-saga-test-plan/providers';
 
+import { IWalletResetApi } from '../models/IWalletAPI';
 import * as slicesActions from '../slices';
-import { IWalletResetApi } from '../types';
 
 import { HandleStateDisconnectRequested } from './disconnectRequested';
 

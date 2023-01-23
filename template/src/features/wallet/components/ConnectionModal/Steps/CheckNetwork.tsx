@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
-import { WalletNetworkStateType } from '../../../types';
+import { WalletNetworkStateType } from '../../../models/WalletGlobalState';
 
 export interface CheckNetworkProps {
   supportedNetworks: {

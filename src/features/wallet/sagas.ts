@@ -1,6 +1,9 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
 
 import * as actions from './actions';
+import { IWalletAPI } from './models/IWalletAPI';
+import { LoadingStatusType } from './models/LoadingStatus';
+import { WalletStateType } from './models/WalletGlobalState';
 import {
   HandleStateAccountRequested,
   HandleStateUnlockRequested,
@@ -18,7 +21,6 @@ import {
 import { HandleStateUserAuthenticated } from './sagaHandlers/userAuthenticated';
 import { HandleStateWalletRequested } from './sagaHandlers/walletRequested';
 import * as slicesActions from './slices';
-import { IWalletAPI, LoadingStatusType, WalletStateType } from './types';
 
 // ACTION EFFECTS
 function* ActionEffectConnectWallet(walletApi: IWalletAPI) {

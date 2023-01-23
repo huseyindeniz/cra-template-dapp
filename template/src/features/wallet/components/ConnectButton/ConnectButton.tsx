@@ -2,7 +2,8 @@ import { useDisclosure } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 
 import useTypedSelector from '../../../../hooks/useTypedSelector';
-import { LoadingStatusType, WalletStateType } from '../../types';
+import { LoadingStatusType } from '../../models/LoadingStatus';
+import { WalletStateType } from '../../models/WalletGlobalState';
 import { useActions } from '../../useActions';
 
 import { Button } from './Button/Button';

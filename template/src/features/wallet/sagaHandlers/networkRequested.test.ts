@@ -3,8 +3,9 @@ import { expectSaga } from 'redux-saga-test-plan';
 import { throwError } from 'redux-saga-test-plan/providers';
 
 import { HardhatChain } from '../chains/hardhat';
+import { IWalletNetworkApi } from '../models/IWalletAPI';
+import { WalletNetworkStateType } from '../models/WalletGlobalState';
 import * as slicesActions from '../slices';
-import { IWalletNetworkApi, WalletNetworkStateType } from '../types';
 
 import {
   handleEventNetworkChanged,

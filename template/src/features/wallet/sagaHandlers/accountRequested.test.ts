@@ -2,12 +2,12 @@ import { call } from 'redux-saga/effects';
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { throwError } from 'redux-saga-test-plan/providers';
 
-import * as slicesActions from '../slices';
+import { IWalletAccountApi } from '../models/IWalletAPI';
 import {
-  IWalletAccountApi,
   WalletAccountStateType,
   WalletStateType,
-} from '../types';
+} from '../models/WalletGlobalState';
+import * as slicesActions from '../slices';
 
 import {
   HandleStateAccountRequested,

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useTypedSelector from '../../../../hooks/useTypedSelector';
-import { LoadingStatusType } from '../../types';
+import { LoadingStatusType } from '../../models/LoadingStatus';
 import { useActions } from '../../useActions';
 
 export const BlockInfo: React.FC = () => {

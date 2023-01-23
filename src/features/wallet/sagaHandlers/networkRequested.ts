@@ -2,12 +2,10 @@ import { END, EventChannel } from 'redux-saga';
 import { put, call, take, spawn } from 'redux-saga/effects';
 
 import * as actions from '../actions';
+import { ChainInfoType } from '../models/ChainInfo';
+import { IWalletNetworkApi } from '../models/IWalletAPI';
+import { WalletNetworkStateType } from '../models/WalletGlobalState';
 import * as slicesActions from '../slices';
-import {
-  WalletNetworkStateType,
-  IWalletNetworkApi,
-  ChainInfoType,
-} from '../types';
 
 import { SlowDown } from './utils';
 

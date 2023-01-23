@@ -1,7 +1,8 @@
 import { put, call } from 'redux-saga/effects';
 
+import { IWalletInitApi } from '../models/IWalletAPI';
+import { WalletInitStateType } from '../models/WalletGlobalState';
 import * as slicesActions from '../slices';
-import { IWalletInitApi, WalletInitStateType } from '../types';
 
 import { SlowDown } from './utils';
 

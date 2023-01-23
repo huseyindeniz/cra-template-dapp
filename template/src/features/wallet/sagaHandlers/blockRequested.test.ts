@@ -1,8 +1,9 @@
 import { call } from 'redux-saga/effects';
 import { expectSaga } from 'redux-saga-test-plan';
 
+import { BlockInfoType } from '../models/BlockInfo';
+import { IWalletBlockInfoApi } from '../models/IWalletAPI';
 import * as slicesActions from '../slices';
-import { BlockInfoType, IWalletBlockInfoApi } from '../types';
 
 import { HandleStateBlockRequested } from './blockRequested';
 

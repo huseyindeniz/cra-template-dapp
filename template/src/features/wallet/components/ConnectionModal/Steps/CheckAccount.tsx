@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
-import { WalletAccountStateType } from '../../../types';
+import { WalletAccountStateType } from '../../../models/WalletGlobalState';
 
 export interface CheckAccountProps {
   stepState: WalletAccountStateType;

@@ -2,7 +2,8 @@ import { ethers } from 'ethers';
 import { eventChannel, EventChannel } from 'redux-saga';
 
 import { SUPPORTED_NETWORKS } from '../../../features/wallet/config';
-import { IWalletAPI, AccountType } from '../../../features/wallet/types';
+import { AccountType } from '../../../features/wallet/models/Account';
+import { IWalletAPI } from '../../../features/wallet/models/IWalletAPI';
 
 enum MetamaskRPCErrors {
   ACTION_REJECTED = 'ACTION_REJECTED',

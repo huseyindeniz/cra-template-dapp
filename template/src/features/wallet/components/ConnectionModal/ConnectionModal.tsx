@@ -9,7 +9,7 @@ import {
   WalletNetworkStateType,
   WalletSignStateType,
   WalletStateType,
-} from '../../types';
+} from '../../models/WalletGlobalState';
 import { useActions } from '../../useActions';
 
 import { Modal } from './Modal/Modal';

@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 
+import { IWalletResetApi } from '../models/IWalletAPI';
 import * as slicesActions from '../slices';
-import { IWalletResetApi } from '../types';
 
 export function* HandleStateDisconnectRequested(
   walletResetApi: IWalletResetApi
