@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "init-cra-package-template" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -19,8 +19,6 @@ jobs:
     runs-on: Ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: init-cra-package-template
       - uses: actions/setup-node@v3
         with:
           node-version: 16
