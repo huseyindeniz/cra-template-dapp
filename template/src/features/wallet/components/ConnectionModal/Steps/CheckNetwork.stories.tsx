@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { SUPPORTED_NETWORKS, DEFAULT_NETWORK } from '../../../config';
-import { WalletNetworkStateType } from '../../../types';
+import { WalletNetworkStateType } from '../../../models/WalletGlobalState';
 
 import { CheckNetwork } from './CheckNetwork';
 

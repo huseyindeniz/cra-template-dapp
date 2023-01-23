@@ -1,7 +1,7 @@
 // ConnectionModal.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { WalletAccountStateType } from '../../../types';
+import { WalletAccountStateType } from '../../../models/WalletGlobalState';
 
 import { CheckAccount } from './CheckAccount';
 

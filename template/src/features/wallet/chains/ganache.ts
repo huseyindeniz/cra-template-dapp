@@ -1,4 +1,4 @@
-import { ChainInfoType } from '../types';
+import { ChainInfoType } from '../models/ChainInfo';
 
 export const GanacheChain: ChainInfoType = {
   chainId: 1337,

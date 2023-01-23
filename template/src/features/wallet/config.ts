@@ -8,7 +8,7 @@ import { GoerliTestChain } from './chains/goerliTest';
 import { HardhatChain } from './chains/hardhat';
 import { PolygonChain } from './chains/polygon';
 import { PolygonMumbaiChain } from './chains/polygonMumbai';
-import { ChainInfoType } from './types';
+import { ChainInfoType } from './models/ChainInfo';
 
 export const SUPPORTED_NETWORKS: ChainInfoType[] = [
   AvalancheChain,

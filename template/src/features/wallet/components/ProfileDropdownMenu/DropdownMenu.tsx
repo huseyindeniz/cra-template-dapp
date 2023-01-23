@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { usePageLink } from '../../../../pages/usePageLink';
-import { ChainInfoType } from '../../types';
+import { ChainInfoType } from '../../models/ChainInfo';
 import { NetworkLogo } from '../NetworkLogo/NetworkLogo';
 
 import { Identicon } from './Identicon';

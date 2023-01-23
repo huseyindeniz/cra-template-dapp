@@ -1,16 +1,16 @@
 import { disconnectWallet } from './actions';
-import * as slicesActions from './slices';
+import { AccountType } from './models/Account';
+import { BlockInfoType } from './models/BlockInfo';
+import { ChainInfoType } from './models/ChainInfo';
+import { LoadingStatusType } from './models/LoadingStatus';
 import {
-  AccountType,
-  BlockInfoType,
-  ChainInfoType,
-  LoadingStatusType,
   WalletAccountStateType,
   WalletInitStateType,
   WalletNetworkStateType,
   WalletSignStateType,
   WalletStateType,
-} from './types';
+} from './models/WalletGlobalState';
+import * as slicesActions from './slices';
 
 const mockObject = <T extends object>(): T => {
   return {} as T;

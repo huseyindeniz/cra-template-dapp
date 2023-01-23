@@ -3,8 +3,12 @@ import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { throwError } from 'redux-saga-test-plan/providers';
 
 import { SIGN_TIMEOUT_IN_SEC } from '../config';
+import { IWalletSignApi } from '../models/IWalletAPI';
+import {
+  WalletSignStateType,
+  WalletStateType,
+} from '../models/WalletGlobalState';
 import * as slicesActions from '../slices';
-import { WalletStateType, WalletSignStateType, IWalletSignApi } from '../types';
 
 import {
   CheckSignTimeout,

@@ -2,8 +2,8 @@ import { EventChannel, END } from 'redux-saga';
 import { put, take, spawn, call } from 'redux-saga/effects';
 
 import * as actions from '../actions';
+import { IWalletAuthenticatedApi } from '../models/IWalletAPI';
 import * as slicesActions from '../slices';
-import { IWalletAuthenticatedApi } from '../types';
 
 export function* HandleStateUserAuthenticated(
   walletAuthenticatedApi: IWalletAuthenticatedApi

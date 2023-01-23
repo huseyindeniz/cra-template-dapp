@@ -4,14 +4,14 @@ import { put, spawn, call, delay, select, cancel } from 'redux-saga/effects';
 import { RootState } from '../../../store/store';
 import * as actions from '../actions';
 import { SIGN_TIMEOUT_IN_SEC } from '../config';
-import * as slicesActions from '../slices';
+import { AccountType } from '../models/Account';
+import { IWalletSignApi } from '../models/IWalletAPI';
 import {
-  WalletStateType,
-  AccountType,
   WalletGlobalStateType,
   WalletSignStateType,
-  IWalletSignApi,
-} from '../types';
+  WalletStateType,
+} from '../models/WalletGlobalState';
+import * as slicesActions from '../slices';
 
 import { SlowDown } from './utils';
 

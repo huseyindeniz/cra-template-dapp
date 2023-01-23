@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 import { connectWallet } from '../../actions';
-import { LoadingStatusType } from '../../types';
+import { LoadingStatusType } from '../../models/LoadingStatus';
 
 import { ConnectButton } from './ConnectButton';
 

@@ -1,7 +1,8 @@
 import { put, call } from 'redux-saga/effects';
 
+import { BlockInfoType } from '../models/BlockInfo';
+import { IWalletBlockInfoApi } from '../models/IWalletAPI';
 import * as slicesActions from '../slices';
-import { BlockInfoType, IWalletBlockInfoApi } from '../types';
 
 export function* HandleStateBlockRequested(
   walletBlockInfoApi: IWalletBlockInfoApi
