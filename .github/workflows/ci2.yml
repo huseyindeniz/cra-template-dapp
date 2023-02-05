@@ -25,8 +25,11 @@ jobs:
         with:
           node-version: 16
       - run: npx create-react-app test1 --template file:./dapp
-      - run: cd test1
       - run: npm i
+        working-directory: test1
       - run: npm run lint
+        working-directory: test1
       - run: npm run test
+        working-directory: test1
       - run: npm run build
+        working-directory: test1
