@@ -3,10 +3,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
-import { WalletAccountStateType } from '../../../models/WalletGlobalState';
+import { AccountLoadState } from '../../../models/account/types/AccountLoadState';
 
 export interface CheckAccountProps {
-  stepState: WalletAccountStateType;
+  stepState: AccountLoadState;
   errorMessage: string | null;
   onUnlock: () => void;
 }
@@ -89,15 +89,15 @@ export const CheckAccount: React.FC<CheckAccountProps> = ({
 
   const Content = () => {
     switch (stepState) {
-      case WalletAccountStateType.ACCOUNT_DETECTION_FAILED:
+      case AccountLoadState.ACCOUNT_DETECTION_FAILED:
         return <AccountDetectionFailed />;
-      case WalletAccountStateType.LOCKED:
+      case AccountLoadState.LOCKED:
         return <Locked />;
-      case WalletAccountStateType.UNLOCK_REQUESTED:
+      case AccountLoadState.UNLOCK_REQUESTED:
         return <UnlockRequested />;
-      case WalletAccountStateType.UNLOCK_REJECTED:
+      case AccountLoadState.UNLOCK_REJECTED:
         return <UnlockRejected />;
-      case WalletAccountStateType.UNLOCK_FAILED:
+      case AccountLoadState.UNLOCK_FAILED:
         return <UnlockFailed />;
       default:
         return null;
@@ -106,8 +106,8 @@ export const CheckAccount: React.FC<CheckAccountProps> = ({
 
   const UnlockButton = () => {
     switch (stepState) {
-      case WalletAccountStateType.LOCKED:
-      case WalletAccountStateType.UNLOCK_REJECTED:
+      case AccountLoadState.LOCKED:
+      case AccountLoadState.UNLOCK_REJECTED:
         return (
           <Box>
             <Button

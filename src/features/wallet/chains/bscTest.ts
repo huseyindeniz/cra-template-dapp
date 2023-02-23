@@ -1,6 +1,6 @@
-import { ChainInfoType } from '../models/ChainInfo';
+import { Network } from '../models/network/types/Network';
 
-export const BSCTestChain: ChainInfoType = {
+export const BSCTestChain: Network = {
   chainId: 97,
   chainName: 'Binance Smart Chain Testnet',
   nativeCurrency: {

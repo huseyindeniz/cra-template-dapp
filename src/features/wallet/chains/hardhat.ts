@@ -1,6 +1,6 @@
-import { ChainInfoType } from '../models/ChainInfo';
+import { Network } from '../models/network/types/Network';
 
-export const HardhatChain: ChainInfoType = {
+export const HardhatChain: Network = {
   chainId: 31337,
   chainName: 'Hardhat',
   nativeCurrency: {

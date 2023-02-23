@@ -4,14 +4,16 @@ import { useTranslation } from 'react-i18next';
 
 import { BlockInfo } from '../../../features/wallet/components/BlockInfo/BlockInfo';
 import { NetworkLogo } from '../../../features/wallet/components/NetworkLogo/NetworkLogo';
-import { useActions } from '../../../features/wallet/useActions';
+import { useActions } from '../../../features/wallet/hooks/useActions';
 import useTypedSelector from '../../../hooks/useTypedSelector';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation('PageUser');
   const actions = useActions();
   const account = useTypedSelector(state => state.wallet.account);
-  const currentNetwork = useTypedSelector(state => state.wallet.currentNetwork);
+  const currentNetwork = useTypedSelector(
+    state => state.wallet.network.network
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {

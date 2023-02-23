@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
 import imageMetamaskLogo from '../../../assets/images/mm-logo.webp';
-import { WalletInitStateType } from '../../../models/WalletGlobalState';
+import { ProviderLoadState } from '../../../models/provider/types/ProviderLoadState';
 
 export interface CheckWalletProps {
-  stepState: WalletInitStateType;
+  stepState: ProviderLoadState;
   onCancel: () => void;
 }
 
@@ -18,8 +18,8 @@ export const CheckWallet: React.FC<CheckWalletProps> = ({
 }) => {
   const { t } = useTranslation('FeatureWallet');
   const isVisible: boolean =
-    stepState === WalletInitStateType.INIT_FAILED ||
-    stepState === WalletInitStateType.NOT_SUPPORTED;
+    stepState === ProviderLoadState.FAILED ||
+    stepState === ProviderLoadState.NOT_SUPPORTED;
   return isVisible ? (
     <VStack>
       <Box w="full">

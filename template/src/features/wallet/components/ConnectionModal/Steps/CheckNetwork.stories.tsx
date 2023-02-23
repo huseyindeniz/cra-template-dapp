@@ -2,7 +2,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { SUPPORTED_NETWORKS, DEFAULT_NETWORK } from '../../../config';
-import { WalletNetworkStateType } from '../../../models/WalletGlobalState';
+import { NetworkLoadState } from '../../../models/network/types/NetworkLoadState';
 
 import { CheckNetwork } from './CheckNetwork';
 
@@ -31,14 +31,14 @@ export const CheckNetworkIdle = Template.bind({});
 // NETWORK_REQUESTED
 export const NetworkRequested = Template.bind({});
 NetworkRequested.args = {
-  stepState: WalletNetworkStateType.NETWORK_REQUESTED,
+  stepState: NetworkLoadState.NETWORK_REQUESTED,
 };
 
 // NETWORK_DETECTION_FAILED
 export const NetworkDetectionFailed = Template.bind({});
 NetworkDetectionFailed.args = {
   errorMessage: 'MockNetworkDetectionFailedErrorCode',
-  stepState: WalletNetworkStateType.NETWORK_DETECTION_FAILED,
+  stepState: NetworkLoadState.NETWORK_DETECTION_FAILED,
 };
 
 // WRONG_NETWORK
@@ -48,13 +48,13 @@ WrongNetwork.args = {
   defaultNetwork: defaultNetwork,
   onSwitchNetwork: () => null,
   errorMessage: null,
-  stepState: WalletNetworkStateType.WRONG_NETWORK,
+  stepState: NetworkLoadState.WRONG_NETWORK,
 };
 
 // NETWORK_SWITCH_REQUESTED
 export const NetworkSwitchRequested = Template.bind({});
 NetworkSwitchRequested.args = {
-  stepState: WalletNetworkStateType.NETWORK_SWITCH_REQUESTED,
+  stepState: NetworkLoadState.NETWORK_SWITCH_REQUESTED,
 };
 
 // NETWORK_SWITCH_REJECTED
@@ -64,18 +64,18 @@ NetworkSwitchRejected.args = {
   defaultNetwork: defaultNetwork,
   onSwitchNetwork: () => null,
   errorMessage: null,
-  stepState: WalletNetworkStateType.NETWORK_SWITCH_REJECTED,
+  stepState: NetworkLoadState.NETWORK_SWITCH_REJECTED,
 };
 
 // NETWORK_SWITCH_FAILED
 export const NetworkSwitchFailed = Template.bind({});
 NetworkSwitchFailed.args = {
   errorMessage: 'MockNetworkSwitchFailedErrorCode',
-  stepState: WalletNetworkStateType.NETWORK_SWITCH_FAILED,
+  stepState: NetworkLoadState.NETWORK_SWITCH_FAILED,
 };
 
 // NETWORK_LOADED
 export const NetworkLoaded = Template.bind({});
 NetworkLoaded.args = {
-  stepState: WalletNetworkStateType.NETWORK_LOADED,
+  stepState: NetworkLoadState.NETWORK_LOADED,
 };

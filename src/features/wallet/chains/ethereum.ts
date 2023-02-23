@@ -1,6 +1,6 @@
-import { ChainInfoType } from '../models/ChainInfo';
+import { Network } from '../models/network/types/Network';
 
-export const EthereumMainnetChain: ChainInfoType = {
+export const EthereumMainnetChain: Network = {
   chainId: 1,
   chainName: 'Ethereum Mainnet',
   nativeCurrency: {

@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
-import { WalletNetworkStateType } from '../../../models/WalletGlobalState';
+import { NetworkLoadState } from '../../../models/network/types/NetworkLoadState';
 
 export interface CheckNetworkProps {
   supportedNetworks: {
@@ -13,7 +13,7 @@ export interface CheckNetworkProps {
     isLocalChain: boolean;
   }[];
   defaultNetwork: number;
-  stepState: WalletNetworkStateType;
+  stepState: NetworkLoadState;
   errorMessage: string | null;
   onSwitchNetwork: (id: number) => void;
 }
@@ -102,15 +102,15 @@ export const CheckNetwork: React.FC<CheckNetworkProps> = ({
 
   const Content = () => {
     switch (stepState) {
-      case WalletNetworkStateType.NETWORK_DETECTION_FAILED:
+      case NetworkLoadState.NETWORK_DETECTION_FAILED:
         return <NetworkDetectionFailed />;
-      case WalletNetworkStateType.WRONG_NETWORK:
+      case NetworkLoadState.WRONG_NETWORK:
         return <WrongNetwork />;
-      case WalletNetworkStateType.NETWORK_SWITCH_REQUESTED:
+      case NetworkLoadState.NETWORK_SWITCH_REQUESTED:
         return <NetworkSwitchRequested />;
-      case WalletNetworkStateType.NETWORK_SWITCH_REJECTED:
+      case NetworkLoadState.NETWORK_SWITCH_REJECTED:
         return <NetworkSwitchRejected />;
-      case WalletNetworkStateType.NETWORK_SWITCH_FAILED:
+      case NetworkLoadState.NETWORK_SWITCH_FAILED:
         return <NetworkSwitchFailed />;
       default:
         return null;
@@ -119,8 +119,8 @@ export const CheckNetwork: React.FC<CheckNetworkProps> = ({
 
   const SwitchNetworkMenu = () => {
     switch (stepState) {
-      case WalletNetworkStateType.WRONG_NETWORK:
-      case WalletNetworkStateType.NETWORK_SWITCH_REJECTED:
+      case NetworkLoadState.WRONG_NETWORK:
+      case NetworkLoadState.NETWORK_SWITCH_REJECTED:
         return (
           <VStack spacing={2}>
             <Select
