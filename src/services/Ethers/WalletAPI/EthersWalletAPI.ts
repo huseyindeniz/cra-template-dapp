@@ -2,7 +2,7 @@ import { ethers } from 'ethers';
 import { eventChannel, EventChannel } from 'redux-saga';
 
 import { SUPPORTED_NETWORKS } from '../../../features/wallet/config';
-import { AccountType } from '../../../features/wallet/models/Account';
+import { AccountType } from '../../../features/wallet/models/account/types/Account';
 import { IWalletAPI } from '../../../features/wallet/models/IWalletAPI';
 
 enum MetamaskRPCErrors {
@@ -52,13 +52,45 @@ export class EthersWalletAPI implements IWalletAPI {
     await this._provider?.ready;
     this._network = this._provider ? await this._provider.getNetwork() : null;
     const isSupported: boolean = await this._isNetworkSupported(null);
-    return isSupported && this._network !== null;
+    if (!isSupported) {
+      this._network = null;
+    }
+    return this.getNetwork();
   };
 
   public getNetwork = () => {
     return SUPPORTED_NETWORKS.find(
       chain => chain.chainId === this._network?.chainId
     );
+  };
+
+  public switchNetwork = async (networkId: number) => {
+    const isSupported = this._isNetworkSupported(networkId);
+    if (!isSupported) {
+      return false;
+    }
+    await this._provider?.ready;
+    console.debug('0x' + networkId.toString(16));
+    try {
+      await this._provider?.send('wallet_switchEthereumChain', [
+        { chainId: '0x' + networkId.toString(16) },
+      ]);
+      return true;
+    } catch (error: any) {
+      const networkDetails = SUPPORTED_NETWORKS.find(
+        chain => chain.chainId === networkId
+      );
+      await this._provider?.send('wallet_addEthereumChain', [
+        {
+          chainId: '0x' + networkId.toString(16),
+          rpcUrls: networkDetails?.rpcUrls,
+          chainName: networkDetails?.chainName,
+          nativeCurrency: networkDetails?.nativeCurrency,
+          blockExplorerUrls: networkDetails?.blockExplorerUrls,
+        },
+      ]);
+      return false;
+    }
   };
 
   private _isNetworkSupported = async (chainId: number | null) => {
@@ -81,34 +113,6 @@ export class EthersWalletAPI implements IWalletAPI {
     } else {
       return this._network?.chainId === 1;
     }
-  };
-
-  public switchNetwork = async (networkId: number) => {
-    const isSupported = this._isNetworkSupported(networkId);
-    if (!isSupported) {
-      return false;
-    }
-    await this._provider?.ready;
-    console.debug('0x' + networkId.toString(16));
-    try {
-      await this._provider?.send('wallet_switchEthereumChain', [
-        { chainId: '0x' + networkId.toString(16) },
-      ]);
-    } catch (error: any) {
-      const networkDetails = SUPPORTED_NETWORKS.find(
-        chain => chain.chainId === networkId
-      );
-      await this._provider?.send('wallet_addEthereumChain', [
-        {
-          chainId: '0x' + networkId.toString(16),
-          rpcUrls: networkDetails?.rpcUrls,
-          chainName: networkDetails?.chainName,
-          nativeCurrency: networkDetails?.nativeCurrency,
-          blockExplorerUrls: networkDetails?.blockExplorerUrls,
-        },
-      ]);
-    }
-    return this.loadNetwork();
   };
 
   public isUnlocked = async () => {

@@ -1,6 +1,6 @@
-import { ChainInfoType } from '../models/ChainInfo';
+import { Network } from '../models/network/types/Network';
 
-export const AvalancheChain: ChainInfoType = {
+export const AvalancheChain: Network = {
   chainId: 43114,
   chainName: 'Avalanche C-Chain',
   nativeCurrency: {

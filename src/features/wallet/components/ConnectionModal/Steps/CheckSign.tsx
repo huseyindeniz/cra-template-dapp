@@ -11,10 +11,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
-import { WalletSignStateType } from '../../../models/WalletGlobalState';
+import { AccountSignState } from '../../../models/account/types/AccountSignState';
 
 export interface CheckSignProps {
-  stepState: WalletSignStateType;
+  stepState: AccountSignState;
   errorMessage: string | null;
   signCounter: number;
   onSign: (message: string) => void;
@@ -102,17 +102,17 @@ export const CheckSign: React.FC<CheckSignProps> = ({
 
   const Content = () => {
     switch (stepState) {
-      case WalletSignStateType.NOT_SIGNED:
+      case AccountSignState.NOT_SIGNED:
         return <NotSigned />;
-      case WalletSignStateType.SIGN_REQUESTED:
+      case AccountSignState.SIGN_REQUESTED:
         return <SignRequested />;
-      case WalletSignStateType.SIGN_REJECTED:
+      case AccountSignState.SIGN_REJECTED:
         return <SignRejected />;
-      case WalletSignStateType.SIGN_TIMED_OUT:
+      case AccountSignState.SIGN_TIMED_OUT:
         return <SignTimedOut />;
-      case WalletSignStateType.SIGN_FAILED:
+      case AccountSignState.SIGN_FAILED:
         return <SignFailed />;
-      case WalletSignStateType.SIGNED:
+      case AccountSignState.SIGNED:
         return <Signed />;
       default:
         return null;
@@ -121,9 +121,9 @@ export const CheckSign: React.FC<CheckSignProps> = ({
 
   const SignButton = () => {
     switch (stepState) {
-      case WalletSignStateType.NOT_SIGNED:
-      case WalletSignStateType.SIGN_REJECTED:
-      case WalletSignStateType.SIGN_TIMED_OUT:
+      case AccountSignState.NOT_SIGNED:
+      case AccountSignState.SIGN_REJECTED:
+      case AccountSignState.SIGN_TIMED_OUT:
         return (
           <Box>
             <Button

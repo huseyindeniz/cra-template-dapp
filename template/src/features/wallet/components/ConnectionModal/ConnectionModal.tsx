@@ -3,14 +3,12 @@ import React, { useEffect, useState } from 'react';
 
 import useTypedSelector from '../../../../hooks/useTypedSelector';
 import { SUPPORTED_NETWORKS, DEFAULT_NETWORK } from '../../config';
-import {
-  WalletAccountStateType,
-  WalletInitStateType,
-  WalletNetworkStateType,
-  WalletSignStateType,
-  WalletStateType,
-} from '../../models/WalletGlobalState';
-import { useActions } from '../../useActions';
+import { useActions } from '../../hooks/useActions';
+import { AccountLoadState } from '../../models/account/types/AccountLoadState';
+import { AccountSignState } from '../../models/account/types/AccountSignState';
+import { NetworkLoadState } from '../../models/network/types/NetworkLoadState';
+import { ProviderLoadState } from '../../models/provider/types/ProviderLoadState';
+import { WalletState } from '../../models/types/WalletState';
 
 import { Modal } from './Modal/Modal';
 import { CheckAccount } from './Steps/CheckAccount';
@@ -26,21 +24,23 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
   onDisconnect,
 }) => {
   const actions = useActions();
-  const walletState = useTypedSelector(state => state.wallet.globalState.state);
-  const initState = useTypedSelector(
-    state => state.wallet.globalState.initState
+  const walletState = useTypedSelector(state => state.wallet.state.state);
+  const error = useTypedSelector(state => state.wallet.state.error);
+  const providerLoadState = useTypedSelector(
+    state => state.wallet.provider.providerLoadState
   );
-  const accountState = useTypedSelector(
-    state => state.wallet.globalState.accountState
+  const accountLoadState = useTypedSelector(
+    state => state.wallet.account.accountLoadState
   );
-  const networkState = useTypedSelector(
-    state => state.wallet.globalState.networkState
+  const networkLoadState = useTypedSelector(
+    state => state.wallet.network.networkLoadState
   );
-  const signState = useTypedSelector(
-    state => state.wallet.globalState.signState
+  const accountSignState = useTypedSelector(
+    state => state.wallet.account.accountSignState
   );
-  const error = useTypedSelector(state => state.wallet.error);
-  const signCounter = useTypedSelector(state => state.wallet.signCounter);
+  const signCounter = useTypedSelector(
+    state => state.wallet.account.signCounter
+  );
   const { setStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
@@ -65,102 +65,102 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
   };
 
   useEffect(() => {
-    switch (initState) {
-      case WalletInitStateType.IDLE:
-      case WalletInitStateType.INITIALIZED:
+    switch (providerLoadState) {
+      case ProviderLoadState.IDLE:
+      case ProviderLoadState.INITIALIZED:
         setStepState(undefined);
         break;
-      case WalletInitStateType.INIT_REQUESTED:
+      case ProviderLoadState.REQUESTED:
         setStepState('loading');
         break;
-      case WalletInitStateType.INIT_FAILED:
-      case WalletInitStateType.NOT_SUPPORTED:
+      case ProviderLoadState.FAILED:
+      case ProviderLoadState.NOT_SUPPORTED:
         setStepState('error');
         break;
       default:
         setStepState(undefined);
     }
-  }, [initState]);
+  }, [providerLoadState]);
 
   useEffect(() => {
-    switch (accountState) {
-      case WalletAccountStateType.IDLE:
-      case WalletAccountStateType.ACCOUNT_LOADED:
+    switch (accountLoadState) {
+      case AccountLoadState.IDLE:
+      case AccountLoadState.ACCOUNT_LOADED:
         setStepState(undefined);
         break;
-      case WalletAccountStateType.ACCOUNT_REQUESTED:
-      case WalletAccountStateType.UNLOCK_REQUESTED:
+      case AccountLoadState.ACCOUNT_REQUESTED:
+      case AccountLoadState.UNLOCK_REQUESTED:
         setStepState('loading');
         break;
-      case WalletAccountStateType.ACCOUNT_DETECTION_FAILED:
-      case WalletAccountStateType.LOCKED:
-      case WalletAccountStateType.UNLOCK_FAILED:
-      case WalletAccountStateType.UNLOCK_REJECTED:
+      case AccountLoadState.ACCOUNT_DETECTION_FAILED:
+      case AccountLoadState.LOCKED:
+      case AccountLoadState.UNLOCK_FAILED:
+      case AccountLoadState.UNLOCK_REJECTED:
         setStepState('error');
         break;
       default:
         setStepState(undefined);
     }
-  }, [accountState]);
+  }, [accountLoadState]);
 
   useEffect(() => {
-    switch (networkState) {
-      case WalletNetworkStateType.IDLE:
-      case WalletNetworkStateType.NETWORK_LOADED:
+    switch (networkLoadState) {
+      case NetworkLoadState.IDLE:
+      case NetworkLoadState.NETWORK_LOADED:
         setStepState(undefined);
         break;
-      case WalletNetworkStateType.NETWORK_REQUESTED:
-      case WalletNetworkStateType.NETWORK_SWITCH_REQUESTED:
+      case NetworkLoadState.NETWORK_REQUESTED:
+      case NetworkLoadState.NETWORK_SWITCH_REQUESTED:
         setStepState('loading');
         break;
-      case WalletNetworkStateType.NETWORK_DETECTION_FAILED:
-      case WalletNetworkStateType.NETWORK_SWITCH_FAILED:
-      case WalletNetworkStateType.NETWORK_SWITCH_REJECTED:
-      case WalletNetworkStateType.WRONG_NETWORK:
+      case NetworkLoadState.NETWORK_DETECTION_FAILED:
+      case NetworkLoadState.NETWORK_SWITCH_FAILED:
+      case NetworkLoadState.NETWORK_SWITCH_REJECTED:
+      case NetworkLoadState.WRONG_NETWORK:
         setStepState('error');
         break;
       default:
         setStepState(undefined);
     }
-  }, [networkState]);
+  }, [networkLoadState]);
 
   useEffect(() => {
-    switch (signState) {
-      case WalletSignStateType.IDLE:
-      case WalletSignStateType.SIGNED:
+    switch (accountSignState) {
+      case AccountSignState.IDLE:
+      case AccountSignState.SIGNED:
         setStepState(undefined);
         break;
-      case WalletSignStateType.SIGN_REQUESTED:
+      case AccountSignState.SIGN_REQUESTED:
         setStepState('loading');
         break;
-      case WalletSignStateType.NOT_SIGNED:
-      case WalletSignStateType.SIGN_FAILED:
-      case WalletSignStateType.SIGN_REJECTED:
-      case WalletSignStateType.SIGN_TIMED_OUT:
+      case AccountSignState.NOT_SIGNED:
+      case AccountSignState.SIGN_FAILED:
+      case AccountSignState.SIGN_REJECTED:
+      case AccountSignState.SIGN_TIMED_OUT:
         setStepState('error');
         break;
       default:
         setStepState(undefined);
     }
-  }, [signState]);
+  }, [accountSignState]);
 
   useEffect(() => {
     switch (walletState) {
       // STEP 0: Initialization
-      case WalletStateType.NOT_INITIALIZED:
-      case WalletStateType.CHECKING_WALLET:
+      case WalletState.NOT_INITIALIZED:
+      case WalletState.CHECKING_WALLET:
         setStep(0);
         break;
       // STEP 1: Account Check
-      case WalletStateType.CHECKING_ACCOUNT:
+      case WalletState.CHECKING_ACCOUNT:
         setStep(1);
         break;
       // STEP 2: Network Check
-      case WalletStateType.CHECKING_NETWORK:
+      case WalletState.CHECKING_NETWORK:
         setStep(2);
         break;
       // STEP 3: Sign Check
-      case WalletStateType.CHECKING_SIGN:
+      case WalletState.CHECKING_SIGN:
         setStep(3);
         break;
       default:
@@ -173,12 +173,15 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
   return (
     <Modal
       checkWalletContent={
-        <CheckWallet stepState={initState} onCancel={handleDisconnect} />
+        <CheckWallet
+          stepState={providerLoadState}
+          onCancel={handleDisconnect}
+        />
       }
       checkAccountContent={
         <CheckAccount
           onUnlock={actions.unlockWallet}
-          stepState={accountState}
+          stepState={accountLoadState}
           errorMessage={error}
         />
       }
@@ -187,7 +190,7 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
           supportedNetworks={supportedNetworks}
           defaultNetwork={defaultNetwork}
           onSwitchNetwork={actions.switchNetwork}
-          stepState={networkState}
+          stepState={networkLoadState}
           errorMessage={error}
         />
       }
@@ -195,7 +198,7 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
         <CheckSign
           onSign={actions.signIn}
           onDisconnect={handleDisconnect}
-          stepState={signState}
+          stepState={accountSignState}
           signCounter={signCounter}
           errorMessage={error}
         />

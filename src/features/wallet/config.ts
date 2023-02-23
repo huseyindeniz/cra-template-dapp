@@ -8,9 +8,9 @@ import { GoerliTestChain } from './chains/goerliTest';
 import { HardhatChain } from './chains/hardhat';
 import { PolygonChain } from './chains/polygon';
 import { PolygonMumbaiChain } from './chains/polygonMumbai';
-import { ChainInfoType } from './models/ChainInfo';
+import { Network } from './models/network/types/Network';
 
-export const SUPPORTED_NETWORKS: ChainInfoType[] = [
+export const SUPPORTED_NETWORKS: Network[] = [
   AvalancheChain,
   BinanceSmartChain,
   PolygonChain,

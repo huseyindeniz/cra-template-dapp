@@ -1,6 +1,6 @@
-import { ChainInfoType } from '../models/ChainInfo';
+import { Network } from '../models/network/types/Network';
 
-export const PolygonMumbaiChain: ChainInfoType = {
+export const PolygonMumbaiChain: Network = {
   chainId: 80001,
   chainName: 'Polygon Mumbai',
   nativeCurrency: {

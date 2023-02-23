@@ -1,6 +1,6 @@
-import { ChainInfoType } from '../models/ChainInfo';
+import { Network } from '../models/network/types/Network';
 
-export const GanacheChain: ChainInfoType = {
+export const GanacheChain: Network = {
   chainId: 1337,
   chainName: 'Ganache',
   nativeCurrency: {

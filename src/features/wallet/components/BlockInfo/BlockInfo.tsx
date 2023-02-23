@@ -4,17 +4,19 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useTypedSelector from '../../../../hooks/useTypedSelector';
-import { LoadingStatusType } from '../../models/LoadingStatus';
-import { useActions } from '../../useActions';
+import { useActions } from '../../hooks/useActions';
+import { LoadingStatusType } from '../../models/types/LoadingStatus';
 
 export const BlockInfo: React.FC = () => {
   const { t } = useTranslation('PageUser');
   const actions = useActions();
-  const currentNetwork = useTypedSelector(state => state.wallet.currentNetwork);
-  const blockInfoLoading = useTypedSelector(
-    state => state.wallet.blockInfoLoading
+  const currentNetwork = useTypedSelector(
+    state => state.wallet.network.network
   );
-  const blockInfo = useTypedSelector(state => state.wallet.blockInfo);
+  const blockInfoLoading = useTypedSelector(
+    state => state.wallet.network.blockInfoLoading
+  );
+  const blockInfo = useTypedSelector(state => state.wallet.network.blockInfo);
 
   useEffect(() => {
     if (currentNetwork) {

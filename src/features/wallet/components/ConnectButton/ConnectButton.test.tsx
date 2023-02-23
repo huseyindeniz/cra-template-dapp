@@ -2,8 +2,8 @@ import { render, cleanup } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import { connectWallet } from '../../actions';
-import { LoadingStatusType } from '../../models/LoadingStatus';
+import { connectWallet } from '../../models/provider/actions';
+import { LoadingStatusType } from '../../models/types/LoadingStatus';
 
 import { ConnectButton } from './ConnectButton';
 

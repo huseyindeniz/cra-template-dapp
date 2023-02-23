@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { usePageLink } from '../../../../pages/usePageLink';
-import { ChainInfoType } from '../../models/ChainInfo';
+import { Network } from '../../models/network/types/Network';
 import { NetworkLogo } from '../NetworkLogo/NetworkLogo';
 
 import { Identicon } from './Identicon';
@@ -28,7 +28,7 @@ import { Identicon } from './Identicon';
 export interface DropdownMenuProps {
   address: string;
   ensOrAddressTruncated: string;
-  currentNetwork: ChainInfoType | null;
+  currentNetwork: Network | null;
   addressExplorerUrl: string | undefined;
   onCopyAddressClicked: () => void;
   onDisconnectClicked: () => void;

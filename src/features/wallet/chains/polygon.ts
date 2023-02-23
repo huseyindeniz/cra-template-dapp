@@ -1,6 +1,6 @@
-import { ChainInfoType } from '../models/ChainInfo';
+import { Network } from '../models/network/types/Network';
 
-export const PolygonChain: ChainInfoType = {
+export const PolygonChain: Network = {
   chainId: 137,
   chainName: 'Polygon Mainnet',
   nativeCurrency: {

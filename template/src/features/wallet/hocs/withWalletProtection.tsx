@@ -7,7 +7,7 @@ export const withWalletProtection = (
   ChildWithProps: React.ComponentType<any | string>,
   CustomWarning: React.ReactElement | undefined = undefined
 ) => {
-  const RouteWithProtection: React.FC = () => {
+  const WithProtection: React.FC = () => {
     const { isAuthenticated } = useWalletAuthentication();
     return isAuthenticated ? (
       <ChildWithProps />
@@ -15,5 +15,5 @@ export const withWalletProtection = (
       CustomWarning ?? <WalletProtectionWarning />
     );
   };
-  return RouteWithProtection;
+  return WithProtection;
 };
