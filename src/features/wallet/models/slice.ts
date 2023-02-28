@@ -12,7 +12,7 @@ export const initialState = Object.freeze({
 }) as WalletStoreState;
 
 const walletStateSlice = createSlice({
-  name: 'walletState',
+  name: 'wallet/walletState',
   initialState: initialState,
   reducers: {
     setLoading: (state, { payload }: PayloadAction<LoadingStatusType>) => {

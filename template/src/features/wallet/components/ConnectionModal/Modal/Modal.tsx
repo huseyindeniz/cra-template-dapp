@@ -46,6 +46,7 @@ export const Modal: React.FC<ModalProps> = ({
       activeStep={activeStep}
       state={stepState}
       colorScheme="whatsapp"
+      responsive={false}
     >
       <Step
         width="100%"

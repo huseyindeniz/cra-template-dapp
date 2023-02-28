@@ -20,7 +20,7 @@ import imageDelorean from './assets/images/delorean.webp';
 
 export const NotFoundPage: React.FC = () => {
   const { t } = useTranslation('PageNotFound');
-  const homeLink = usePageLink('/');
+  const { pageLink } = usePageLink();
 
   return (
     <Box>
@@ -46,7 +46,7 @@ export const NotFoundPage: React.FC = () => {
             <Box>
               <Link
                 as={RouterLink}
-                to={homeLink}
+                to={pageLink('/')}
                 border="1px"
                 borderColor="gray.200"
                 borderRadius="md"

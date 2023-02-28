@@ -8,10 +8,10 @@ export interface SiteLogoProps {
   siteName: string;
 }
 export const SiteLogo: React.FC<SiteLogoProps> = ({ siteName }) => {
-  const homeLink = usePageLink('/');
+  const { pageLink } = usePageLink();
   return (
     <Box>
-      <Link to={homeLink}>
+      <Link to={pageLink('/')}>
         <Avatar src={imageSiteLogo} name={siteName} />
       </Link>
     </Box>

@@ -113,7 +113,7 @@ export function* CheckSignTimeout() {
     yield delay(1000);
     yield put(slicesActions.decSignCounter());
     const walletState: WalletState = yield select(
-      (state: RootState) => state.wallet.state
+      (state: RootState) => state.wallet.state.state
     );
     const accountSignState: AccountSignState = yield select(
       (state: RootState) => state.wallet.account.accountSignState
@@ -128,7 +128,7 @@ export function* CheckSignTimeout() {
     }
   }
   const walletState: WalletState = yield select(
-    (state: RootState) => state.wallet.state
+    (state: RootState) => state.wallet.state.state
   );
   const accountSignState: AccountSignState = yield select(
     (state: RootState) => state.wallet.account.accountSignState

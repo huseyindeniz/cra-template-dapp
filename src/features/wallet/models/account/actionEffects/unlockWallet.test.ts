@@ -73,7 +73,9 @@ describe('Feature: Wallet', () => {
           account: {
             accountLoadState: AccountLoadState.UNLOCK_REQUESTED,
           },
-          state: WalletState.CHECKING_ACCOUNT,
+          state: {
+            state: WalletState.CHECKING_ACCOUNT,
+          },
         },
       };
       return expectSaga(HandleStateUnlockRequested, mockWalletAccountApi)
