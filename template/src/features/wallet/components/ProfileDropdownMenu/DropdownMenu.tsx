@@ -43,7 +43,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   onDisconnectClicked,
 }) => {
   const { t } = useTranslation('FeatureWallet');
-  const userPageLink = usePageLink('/user');
+  const { pageLink } = usePageLink();
   return (
     <Menu placement="bottom-end">
       <MenuButton
@@ -66,7 +66,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
           <Text color="white" fontSize="md" fontWeight="medium" mr="2">
             {ensOrAddressTruncated}
           </Text>
-          <Identicon size={16} account={address} />
+          <Identicon size={24} account={address} />
         </HStack>
       </MenuButton>
       <MenuList alignItems="center" m={0}>
@@ -79,11 +79,14 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
           </Box>
         </VStack>
         <MenuDivider />
-        {userPageLink ? (
-          <MenuItem icon={<MdDashboard />} as={RouterLink} to={userPageLink}>
-            {t('Dashboard')}
-          </MenuItem>
-        ) : null}
+        <MenuItem
+          icon={<MdDashboard />}
+          as={RouterLink}
+          to={pageLink('/user')}
+          command="1"
+        >
+          {t('Dashboard')}
+        </MenuItem>
         <MenuItem
           icon={<MdContentCopy />}
           onClick={() => onCopyAddressClicked()}

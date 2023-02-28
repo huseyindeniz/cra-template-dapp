@@ -16,7 +16,7 @@ export const initialState = Object.freeze({
 }) as NetworkStoreState;
 
 const networkSlice = createSlice({
-  name: 'network',
+  name: 'wallet/network',
   initialState: initialState,
   reducers: {
     setNetworkLoadState: (

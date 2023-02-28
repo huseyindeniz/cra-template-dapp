@@ -41,7 +41,7 @@ export function* HandleStateUnlockRequested(
   try {
     yield call(walletAccountApi.unlock);
     const walletState: WalletState = yield select(
-      (state: RootState) => state.wallet.state
+      (state: RootState) => state.wallet.state.state
     );
     const accountLoadState: AccountLoadState = yield select(
       (state: RootState) => state.wallet.account.accountLoadState
@@ -53,6 +53,7 @@ export function* HandleStateUnlockRequested(
       isUnlocked = yield call(walletAccountApi.isUnlocked);
     }
   } catch (error) {
+    console.debug(error);
     if ((error as Error).message === 'unlock_rejected') {
       isRejected = true;
     }

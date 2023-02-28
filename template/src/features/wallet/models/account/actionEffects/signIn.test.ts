@@ -68,7 +68,9 @@ describe('Feature: Wallet', () => {
     it('should handle the sign timeout correctly', () => {
       const getState = () => ({
         wallet: {
-          state: WalletState.CHECKING_SIGN,
+          state: {
+            state: WalletState.CHECKING_SIGN,
+          },
           account: {
             accountSignState: AccountSignState.SIGN_REQUESTED,
           },

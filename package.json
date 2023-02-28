@@ -1,6 +1,6 @@
 {
   "name": "@huseyindeniz/cra-template-dapp",
-  "version": "1.0.0.beta-0",
+  "version": "1.0.0-beta.1",
   "description": "dApp CRA Template",
   "main": "template.json",
   "files": [

@@ -40,8 +40,9 @@ describe.skip('usePageLink', () => {
     }));
 
     const originalPath = '/test';
-    const translatedPath = usePageLink(originalPath);
+    const { pageLink } = usePageLink();
+    const actualLink = pageLink(originalPath);
 
-    expect(translatedPath).toBe(`/tr-TR${originalPath}`);
+    expect(actualLink).toBe(`/tr-TR${originalPath}`);
   });
 });
