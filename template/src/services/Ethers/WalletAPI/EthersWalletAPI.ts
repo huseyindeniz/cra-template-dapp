@@ -23,7 +23,6 @@ export class EthersWalletAPI implements IWalletAPI {
 
   public static getInstance(): IWalletAPI {
     if (this._instance === null) {
-      console.debug('ethers init');
       this._instance = new EthersWalletAPI();
     }
     return this._instance;
@@ -70,7 +69,6 @@ export class EthersWalletAPI implements IWalletAPI {
       return false;
     }
     await this._provider?.ready;
-    console.debug('0x' + networkId.toString(16));
     try {
       await this._provider?.send('wallet_switchEthereumChain', [
         { chainId: '0x' + networkId.toString(16) },
@@ -96,10 +94,8 @@ export class EthersWalletAPI implements IWalletAPI {
   private _isNetworkSupported = async (chainId: number | null) => {
     if (chainId) {
       // check if chainId is in the supported list
-      console.debug('isSupported for:', chainId);
       return SUPPORTED_NETWORKS.some(chain => chain.chainId === chainId);
     } else {
-      console.debug('isNetworkSupported', this._network);
       return SUPPORTED_NETWORKS.some(
         chain => chain.chainId === this._network?.chainId
       );
@@ -107,7 +103,6 @@ export class EthersWalletAPI implements IWalletAPI {
   };
 
   public isEnsSupported = async (chainId: number | null) => {
-    console.debug(this._network?.chainId);
     if (chainId) {
       return chainId === 1;
     } else {
@@ -132,7 +127,6 @@ export class EthersWalletAPI implements IWalletAPI {
 
   public sign = async (message: string | ethers.utils.Bytes) => {
     const signer = this._provider?.getSigner();
-    console.debug('signer', signer);
     message += this._newUUID();
     let signature: string | undefined = undefined;
     try {
@@ -200,13 +194,11 @@ export class EthersWalletAPI implements IWalletAPI {
       this._accountChangeListener = null;
     }
     this._accountChangeListener = eventChannel<string[]>(emit => {
-      console.debug('listening for account changes');
       window.ethereum.addListener('accountsChanged', (accounts: string[]) => {
         emit(accounts);
       });
 
       return (): void => {
-        console.debug('account listener closed');
         window.ethereum.removeListener('accountsChanged', emit);
       };
     });
@@ -219,13 +211,11 @@ export class EthersWalletAPI implements IWalletAPI {
       this._networkChangeListener = null;
     }
     this._networkChangeListener = eventChannel<string>(emit => {
-      console.debug('listening for network changes');
       window.ethereum.on('chainChanged', (chainId: string) => {
         emit(chainId);
       });
 
       return (): void => {
-        console.debug('network listener closed');
         window.ethereum.removeListener('chainChanged', emit);
       };
     });
@@ -241,14 +231,11 @@ export class EthersWalletAPI implements IWalletAPI {
   };
 
   public getLatestBlock = async () => {
-    console.debug('get latest block called');
     const blockNumber = await this._provider?.getBlockNumber();
-    console.debug('block:', blockNumber);
     return blockNumber;
   };
 
   public getBalance = async () => {
-    console.debug('get balance called');
     if (this._signerAddress) {
       const balance = await this._provider?.getBalance(this._signerAddress);
       if (balance) {

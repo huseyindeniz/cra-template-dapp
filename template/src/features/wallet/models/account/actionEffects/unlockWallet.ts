@@ -53,7 +53,6 @@ export function* HandleStateUnlockRequested(
       isUnlocked = yield call(walletAccountApi.isUnlocked);
     }
   } catch (error) {
-    console.debug(error);
     if ((error as Error).message === 'unlock_rejected') {
       isRejected = true;
     }

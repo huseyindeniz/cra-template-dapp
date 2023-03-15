@@ -19,7 +19,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { usePageLink } from '../../../../pages/usePageLink';
 import { Network } from '../../models/network/types/Network';
 import { NetworkLogo } from '../NetworkLogo/NetworkLogo';
 
@@ -30,6 +29,7 @@ export interface DropdownMenuProps {
   ensOrAddressTruncated: string;
   currentNetwork: Network | null;
   addressExplorerUrl: string | undefined;
+  userPageLink: string;
   onCopyAddressClicked: () => void;
   onDisconnectClicked: () => void;
 }
@@ -39,11 +39,12 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   ensOrAddressTruncated,
   currentNetwork,
   addressExplorerUrl,
+  userPageLink,
   onCopyAddressClicked,
   onDisconnectClicked,
 }) => {
   const { t } = useTranslation('FeatureWallet');
-  const { pageLink } = usePageLink();
+
   return (
     <Menu placement="bottom-end">
       <MenuButton
@@ -82,7 +83,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         <MenuItem
           icon={<MdDashboard />}
           as={RouterLink}
-          to={pageLink('/user')}
+          to={userPageLink}
           command="1"
         >
           {t('Dashboard')}

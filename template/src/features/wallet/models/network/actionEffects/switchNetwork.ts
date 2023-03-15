@@ -65,7 +65,6 @@ export function* HandleStateNetworkSwitchRequested(
     isSuccessful = true;
   } catch (error) {
     const errorMessage: string = (error as Error).message;
-    console.log(errorMessage);
     if (errorMessage === 'switch_rejected') {
       yield call(HandleStateNetworkSwitchRejected);
     } else {

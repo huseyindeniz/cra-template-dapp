@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import useTypedSelector from '../../../../hooks/useTypedSelector';
+import { usePageLink } from '../../../../pages/usePageLink';
 import { useActions } from '../../hooks/useActions';
 
 import { DropdownMenu } from './DropdownMenu';
@@ -11,6 +12,7 @@ import { DropdownMenu } from './DropdownMenu';
 export const ProfileDropdownMenu: React.FC = () => {
   const { t } = useTranslation('FeatureWallet');
   const navigate = useNavigate();
+  const { pageLink } = usePageLink();
   const toast = useToast();
   const actions = useActions();
   const account = useTypedSelector(state => state.wallet.account.account);
@@ -65,6 +67,7 @@ export const ProfileDropdownMenu: React.FC = () => {
       ensOrAddressTruncated={ensOrAddressTruncated ?? ''}
       currentNetwork={currentNetwork}
       addressExplorerUrl={addressExplorerUrl}
+      userPageLink={pageLink('/user')}
       onCopyAddressClicked={onCopyClicked}
       onDisconnectClicked={onDisconnectClick}
     />
