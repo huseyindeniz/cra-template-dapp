@@ -76,8 +76,7 @@ export function* handleEventNetworkChanged(
   );
   try {
     while (true) {
-      let chainId: string = yield take(channel);
-      console.debug('networkChanged: ' + chainId);
+      yield take(channel);
       yield put(accountActions.disconnectWallet());
       yield call(walletNetworkApi.handleNetworkChange);
       yield put(connectWallet.connectWallet());
@@ -86,7 +85,6 @@ export function* handleEventNetworkChanged(
       break;
     }
   } finally {
-    console.debug('networkChanged terminated');
     channel.close();
   }
 }

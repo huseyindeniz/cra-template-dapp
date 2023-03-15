@@ -78,8 +78,6 @@ export function* HandleStateSignRequested(
     const accountSignState: AccountSignState = yield select(
       (state: RootState) => state.wallet.account.accountSignState
     );
-    console.debug(walletState);
-    console.debug(accountSignState);
     if (
       walletState === WalletState.CHECKING_SIGN &&
       accountSignState === AccountSignState.SIGN_REQUESTED
@@ -87,7 +85,6 @@ export function* HandleStateSignRequested(
       isSigned = yield call(walletSignApi.isSigned);
     }
   } catch (error) {
-    console.debug(error);
     if ((error as Error).message === 'sign_rejected') {
       isRejected = true;
     }
@@ -187,7 +184,6 @@ function* updateEnsWithAPI(walletAuthenticatedApi: IWalletAccountApi) {
       yield put(slicesActions.setAccountEns(ens));
     }
   } catch (error) {
-    console.debug(error);
     yield put(walletStateSliceActions.setError(error as string));
   }
 }
@@ -201,8 +197,7 @@ function* handleEventAccountsChanged(
   );
   try {
     while (true) {
-      let accounts: string[] = yield take(channel);
-      console.debug(`accountsChanged: ${accounts[0]}`);
+      yield take(channel);
       yield put(actions.disconnectWallet());
       yield call(walletAuthenticatedApi.handleAccountChange);
       yield put({ type: connectWallet.type });
@@ -211,7 +206,6 @@ function* handleEventAccountsChanged(
       break;
     }
   } finally {
-    console.debug('accountsChanged terminated');
     channel.close();
   }
 }

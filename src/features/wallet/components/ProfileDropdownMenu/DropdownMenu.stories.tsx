@@ -5,7 +5,7 @@ import { withRouter } from 'storybook-addon-react-router-v6';
 import { DropdownMenu } from './DropdownMenu';
 
 export default {
-  title: 'wallet/ProfileDropdownMenu',
+  title: 'wallet/DropdownMenu',
   component: DropdownMenu,
   decorators: [withRouter],
   argTypes: {},

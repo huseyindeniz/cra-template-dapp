@@ -8,6 +8,6 @@ describe.skip('App', () => {
     act(() => {
       result = render(<App />);
     });
-    console.log(result);
+    console.debug(result);
   });
 });

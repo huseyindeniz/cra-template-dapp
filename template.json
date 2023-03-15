@@ -1,7 +1,7 @@
 {
   "package": {
     "dependencies": {
-      "@chakra-ui/react": "^2.4.8",
+      "@chakra-ui/react": "^2.5.1",
       "@emotion/react": "^11.10.5",
       "@emotion/styled": "^11.10.5",
       "@metamask/jazzicon": "^2.0.0",
@@ -60,7 +60,7 @@
       "redux-mock-store": "^1.5.4",
       "redux-saga-test-plan": "^4.0.6",
       "source-map-explorer": "^2.5.3",
-      "storybook-addon-react-router-v6": "^0.2.1",
+      "storybook-addon-react-router-v6": "0.2.1",
       "typescript": "^4.9.3",
       "webpack": "^5.75.0"
     },
