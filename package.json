@@ -98,7 +98,7 @@
     "start": "react-scripts start",
     "format": "npx prettier --write './src/**/*.{ts,tsx}'",
     "lint": "eslint --ext .js,.ts,.jsx,.tsx ./src",
-    "test": "react-scripts test --verbose --no-cache --watchAll",
+    "test": "react-scripts test --verbose --no-cache",
     "coverage": "react-scripts test --coverage --no-cache --watchAll",
     "extract": "i18next 'src/**/*.{ts,tsx}'",
     "build": "react-scripts build",
