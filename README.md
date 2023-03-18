@@ -14,22 +14,6 @@ cd mydapp
 npm start
 ```
 
-## Why use dApp CRA Template?
-
-While React based "Next" generation frameworks may be perfect fit for building e-commerce applications, landing pages, and marketing pages, they may not be the best choice for dApps. Consider the following questions:
-
-### Why do you need server-side rendering for your dApp? Do you really need it?
-
-Server-side rendering (SSR) can be useful for dApps in certain situations, such as when you want to improve the loading performance of your application. However, it's not always necessary or desirable for dApps.
-
-The dApp CRA Template already includes lazy loading as a preconfigured feature, so you don't have to worry about implementing it yourself. This can help reduce the initial loading time of your dApp, especially if you have a large number of components or a complex application structure, and can also help reduce the overall size of your dApp.
-
-### Is Google SEO essential for your dApp? Isn't the Metamask wallet login supposed to protect the majority of your content?
-
-Like SSR, search engine optimization (SEO) can be useful for dApps in certain situations, such as when you want to improve the visibility of your dApp in search engine results. However, it's not always necessary or desirable for dApps, especially if most of your pages are behind a login wall like the Metamask wallet.
-
-The dApp CRA Template allows you to choose whether or not to optimize your dApp for SEO. If you do want to optimize for SEO, the template includes tools and configurations to make it easy to set up. If you don't need SEO, you can simply build your dApp without worrying about it.
-
 ### Are you tired of searching for and configuring numerous React packages? Do you get tired of writing the same boilerplate for each new dApp?
 
 One of the challenges of building applications with pure React is the need to identify and configure a large number of packages to get the desired functionality. This can be time-consuming and error-prone, especially for developers who are new to React or who are building their first dApp application.
@@ -38,11 +22,11 @@ The dApp CRA Template helps developers avoid this challenge by including a wide 
 
 ### Benefits of dApp CRA Template?
 
-dApp CRA Template is specifically designed to meet the needs of dApp development. It is built on top of React, just like React based "Next" generation frameworks, but it offers greater flexibility and customization options. With dApp CRA Template, you can take full advantage of the capabilities of React to build fast, scalable, and user-friendly dApps, while also being able to easily integrate with decentralized protocols and technologies. Additionally, dApp CRA Template allows you to host your dApp on decentralized servers, ensuring maximum security and decentralization.
+dApp CRA Template is specifically designed to meet the needs of dApp development. It is built on top of React, just like React based frameworks, but it offers greater flexibility and customization options. With dApp CRA Template, you can take full advantage of the capabilities of React to build fast, scalable, and user-friendly dApps, while also being able to easily integrate with decentralized protocols and technologies. Additionally, dApp CRA Template allows you to host your dApp on decentralized servers, ensuring maximum security and decentralization.
 
-- Decentralized hosting: One of the main benefits of using this template is that it allows you to host your application on decentralized servers, such as IPFS or Swarm. This allows you to build truly decentralized applications that are not reliant on a single centralized server. In contrast, React based "Next" generation frameworks applications require centralized hosting, which can be less secure and more susceptible to censorship.
+- Decentralized hosting: One of the main benefits of using this template is that it allows you to host your application on decentralized servers, such as IPFS or Swarm. This allows you to build truly decentralized applications that are not reliant on a single centralized server. In contrast, React based frameworks applications require centralized hosting, which can be less secure and more susceptible to censorship.
 
-- Greater flexibility: By using this template, you have more flexibility in terms of the tools and technologies you can use to build your decentralized application. For example, you can use various React libraries and packages to customize the look and feel of your application, and you can choose from a wide range of decentralized storage solutions. With React based "Next" generation frameworks, you are more limited in terms of the customization options available.
+- Greater flexibility: By using this template, you have more flexibility in terms of the tools and technologies you can use to build your decentralized application. For example, you can use various React libraries and packages to customize the look and feel of your application, and you can choose from a wide range of decentralized storage solutions.
 
 Overall, dApp CRA Template provides an easy-to-use foundation for building decentralized applications with React, and helps developers avoid the difficulties of identifying and configuring lots of packages. It is an ideal choice for developers who want to build high-quality dApps quickly and efficiently.
 
