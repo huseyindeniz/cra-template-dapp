@@ -1,13 +1,15 @@
 // ProfileDropdownMenu.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { withRouter } from 'storybook-addon-react-router-v6';
+//import { withRouter } from 'storybook-addon-react-router-v6';
 
 import { DropdownMenu } from './DropdownMenu';
 
 export default {
   title: 'wallet/DropdownMenu',
   component: DropdownMenu,
-  decorators: [withRouter],
+  decorators: [
+    /*withRouter*/
+  ],
   argTypes: {},
 } as ComponentMeta<typeof DropdownMenu>;
 
