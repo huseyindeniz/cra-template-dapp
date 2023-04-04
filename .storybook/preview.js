@@ -1,5 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
-import { StepsTheme as Steps } from "chakra-ui-steps";
+import { StepsStyleConfig as Steps } from "chakra-ui-steps";
 
 const theme = extendTheme({
   components: {
@@ -12,13 +12,17 @@ const theme = extendTheme({
   enableColorModeControl: true,
 });
 
-export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
+const preview = {
+  parameters: {
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
     },
-  },
-  chakra: { theme: theme },
+    chakra: { theme: theme },
+  }
 }
+
+export default preview;
