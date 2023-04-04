@@ -1,6 +1,6 @@
 // ConnectButton.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { withRouter } from 'storybook-addon-react-router-v6';
+//import { withRouter } from 'storybook-addon-react-router-v6';
 
 import { MenuType } from '../../../../../pages/types';
 
@@ -9,7 +9,9 @@ import { SecondaryMenu } from './SecondaryMenu';
 export default {
   title: 'ui/Components/Layout/SecondaryMenu',
   component: SecondaryMenu,
-  decorators: [withRouter],
+  decorators: [
+    /*withRouter*/
+  ],
 } as ComponentMeta<typeof SecondaryMenu>;
 
 const mockPublicMenuItem1: MenuType = {
