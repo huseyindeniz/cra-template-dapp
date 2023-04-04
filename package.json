@@ -1,6 +1,6 @@
 {
   "name": "@huseyindeniz/cra-template-dapp",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "dApp CRA Template",
   "main": "template.json",
   "files": [
@@ -57,7 +57,7 @@
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-interactions": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
-    "@storybook/addons": "^7.0.2",
+    "@storybook/addons": "^6.4.0",
     "@storybook/client-logger": "^7.0.2",
     "@storybook/node-logger": "^7.0.2",
     "@storybook/preset-create-react-app": "^7.0.2",
