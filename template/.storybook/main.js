@@ -1,27 +1,14 @@
-module.exports = {
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/preset-create-react-app",
-    "storybook-addon-react-router-v6",
-    "@snek-at/storybook-addon-chakra-ui",
-    '@storybook/addon-postcss',
-    {
-      name: '@storybook/addon-postcss',
-      options: {
-        postcssLoaderOptions: {
-          implementation: require('postcss'),
-        },
-      },
-    },
-  ],
-  "framework": "@storybook/react",
-  "core": {
-    "builder": "@storybook/builder-webpack5"
+const config = {
+  "stories": ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  "addons": ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-interactions", "@storybook/preset-create-react-app", "storybook-addon-react-router-v6", "@chakra-ui/storybook-addon",],
+  "framework": {
+    name: "@storybook/react-webpack5",
+    options: {}
+  },
+  "core": {},
+  docs: {
+    autodocs: false
   }
-}
+};
+export default config;
+export const framework = "@storybook/react";

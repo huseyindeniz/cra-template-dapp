@@ -80,12 +80,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
           </Box>
         </VStack>
         <MenuDivider />
-        <MenuItem
-          icon={<MdDashboard />}
-          as={RouterLink}
-          to={userPageLink}
-          command="1"
-        >
+        <MenuItem icon={<MdDashboard />} as={RouterLink} to={userPageLink}>
           {t('Dashboard')}
         </MenuItem>
         <MenuItem
