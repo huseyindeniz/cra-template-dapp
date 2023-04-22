@@ -8,7 +8,7 @@ describe('Feature: UI', () => {
       // Arrange
       const { asFragment, getByText } = render(<Copyright />);
       // Assert
-      expect(getByText('dApp CRA Template')).toBeVisible();
+      expect(getByText('dApp CRA Template v1.0.0')).toBeVisible();
       expect(asFragment).toMatchSnapshot();
     });
   });

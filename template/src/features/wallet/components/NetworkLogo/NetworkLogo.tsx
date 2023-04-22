@@ -15,6 +15,7 @@ import imageBscTest from '../../assets/images/chains/97.webp';
 export interface NetworkLogoProps {
   networkId: number;
   networkName: string;
+  boxSize?: string;
 }
 
 const imagesNetwork: Record<number, string> = {
@@ -26,17 +27,18 @@ const imagesNetwork: Record<number, string> = {
   1337: imageGanache,
   5: imageGoerli,
   31337: imageHardhat,
-  1237: imagePolygon,
+  137: imagePolygon,
   80001: imagePolygonMumbai,
 };
 
 export const NetworkLogo: React.FC<NetworkLogoProps> = ({
   networkId,
   networkName,
+  boxSize = '24px',
 }) => {
   return (
     <Image
-      boxSize="24px"
+      boxSize={boxSize}
       objectFit="cover"
       src={imagesNetwork[networkId]}
       alt={networkName}

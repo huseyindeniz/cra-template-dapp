@@ -1,4 +1,5 @@
 import { Box, ScaleFade } from '@chakra-ui/react';
+import log from 'loglevel';
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
@@ -37,7 +38,8 @@ const CookieConsent = React.lazy(() =>
 const myErrorHandler = (error: Error, info: { componentStack: string }) => {
   // Do something with the error
   // E.g. log to an error logging client here
-  //console.error(error.message, info);
+  log.error(error.message);
+  log.error(info.componentStack);
 };
 
 export const Layout: React.FC = () => {

@@ -72,6 +72,22 @@ export const CheckAccount: React.FC<CheckAccountProps> = ({
     );
   };
 
+  const UnlockWaiting = () => {
+    return (
+      <Box w="full">
+        <AlertMessage status="warning" title={t('Waiting Unlock')}>
+          <Text fontSize="xs">
+            {t("You haven't unlocked your wallet yet.")}
+            <br />
+            {t(
+              'Please close this window, open your wallet, unlock it, and click connect button again.'
+            )}
+          </Text>
+        </AlertMessage>
+      </Box>
+    );
+  };
+
   const UnlockFailed = () => {
     return (
       <Box w="full">
@@ -97,6 +113,8 @@ export const CheckAccount: React.FC<CheckAccountProps> = ({
         return <UnlockRequested />;
       case AccountLoadState.UNLOCK_REJECTED:
         return <UnlockRejected />;
+      case AccountLoadState.WAITING__UNLOCK:
+        return <UnlockWaiting />;
       case AccountLoadState.UNLOCK_FAILED:
         return <UnlockFailed />;
       default:

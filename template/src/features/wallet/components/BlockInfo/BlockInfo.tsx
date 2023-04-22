@@ -8,7 +8,7 @@ import { useActions } from '../../hooks/useActions';
 import { LoadingStatusType } from '../../models/types/LoadingStatus';
 
 export const BlockInfo: React.FC = () => {
-  const { t } = useTranslation('PageUser');
+  const { t } = useTranslation('FeatureWallet');
   const actions = useActions();
   const currentNetwork = useTypedSelector(
     state => state.wallet.network.network

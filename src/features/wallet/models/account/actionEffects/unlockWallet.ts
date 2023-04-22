@@ -1,3 +1,4 @@
+import log from 'loglevel';
 import { put, call, select } from 'redux-saga/effects';
 
 import { RootState } from '../../../../../store/store';
@@ -38,6 +39,7 @@ export function* HandleStateUnlockRequested(
   yield call(SlowDown);
   let isUnlocked: boolean = false;
   let isRejected: boolean = false;
+  let isWaiting: boolean = false;
   try {
     yield call(walletAccountApi.unlock);
     const walletState: WalletState = yield select(
@@ -52,9 +54,14 @@ export function* HandleStateUnlockRequested(
     ) {
       isUnlocked = yield call(walletAccountApi.isUnlocked);
     }
-  } catch (error) {
-    if ((error as Error).message === 'unlock_rejected') {
+  } catch (error: any) {
+    log.debug(error);
+    const strError: string = error.message || '';
+    if (strError.match(/unlock_rejected/i)) {
       isRejected = true;
+    }
+    if (strError.match(/already processing/i)) {
+      isWaiting = true;
     }
     isUnlocked = false;
   } finally {
@@ -66,6 +73,8 @@ export function* HandleStateUnlockRequested(
     } else {
       if (isRejected) {
         yield call(HandleStateUnlockRejected);
+      } else if (isWaiting) {
+        yield call(HandleStateUnlockWaiting);
       } else {
         yield call(HandleStateUnlockFailed);
       }
@@ -80,6 +89,11 @@ export function* HandleStateUnlockRejected() {
   );
 }
 
+export function* HandleStateUnlockWaiting() {
+  yield put(
+    slicesActions.setAccountLoadState(AccountLoadState.WAITING__UNLOCK)
+  );
+}
 export function* HandleStateUnlockFailed() {
   yield put(slicesActions.setAccountLoadState(AccountLoadState.UNLOCK_FAILED));
 }
