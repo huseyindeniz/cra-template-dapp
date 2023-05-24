@@ -20,7 +20,7 @@ export const LangMenu: React.FC = () => {
   useI18nWatcher();
   const { changeLanguage } = useChangeLanguage(
     location.pathname,
-    i18n.resolvedLanguage
+    i18n.resolvedLanguage ?? i18nConfig.fallbackLang.code
   );
   const { onOpen, onClose, isOpen } = useDisclosure();
 
@@ -37,7 +37,7 @@ export const LangMenu: React.FC = () => {
           isOpen={isOpen}
           onClose={onClose}
           onChange={changeLanguage}
-          defaultValue={i18n.resolvedLanguage}
+          defaultValue={i18n.resolvedLanguage ?? i18nConfig.fallbackLang.code}
           supportedLanguages={i18nConfig.supportedLanguages}
         />
       </>

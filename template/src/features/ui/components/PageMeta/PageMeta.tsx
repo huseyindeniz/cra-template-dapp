@@ -20,7 +20,7 @@ export const PageMeta: React.FC<PageMetaProps> = ({
       <meta name="description" content={description} />
       <meta name="image" content={image ?? `${PUBLIC_URL}/default.png`} />
 
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={`${PUBLIC_URL}${url}`} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
