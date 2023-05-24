@@ -48,6 +48,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
         min-height: 100vh;
         width: 100%;
         height: auto;
@@ -66,9 +67,11 @@
         position: relative;
         letter-spacing: 0.5px;
       }
-
+      .spinner {
+        color: #808080;
+      }
       .spinner::after {
-        content: "";
+        content: '';
         box-sizing: border-box;
         width: 40px;
         height: 40px;
@@ -112,7 +115,10 @@
     <div id="root">
       <div class="container">
         <div class="loading">
-          <span class="grow-pulse spinner" />
+          <span class="grow-pulse spinner"
+            >dApp is loading.<br />Please wait.</span
+          >
+        </div>
       </div>
     </div>
     <!--

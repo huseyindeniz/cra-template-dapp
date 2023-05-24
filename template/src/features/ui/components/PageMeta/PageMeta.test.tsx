@@ -6,9 +6,9 @@ import { PageMeta } from './PageMeta';
 describe('PageMeta', () => {
   it('should render the correct meta tags', async () => {
     const title = 'My Page';
-    const url = 'https://example.com';
+    const url = '/whitepaper';
     const description = 'This is my page';
-    const image = 'https://example.com/image.jpg';
+    const image = 'test.jpg';
 
     render(
       <HelmetProvider>
@@ -35,7 +35,7 @@ describe('PageMeta', () => {
       );
       expect(document.querySelector('meta[property="og:url"]')).toHaveAttribute(
         'content',
-        url
+        `localhost${url}`
       );
       expect(
         document.querySelector('meta[property="og:type"]')
