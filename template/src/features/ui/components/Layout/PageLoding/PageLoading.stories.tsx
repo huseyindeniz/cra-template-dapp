@@ -1,14 +1,12 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { PageLoading } from './PageLoading';
 
-export default {
-  title: 'ui/Components/Layout/PageLoading',
-  component: PageLoading,
-} as ComponentMeta<typeof PageLoading>;
+const meta: Meta<typeof PageLoading> = { component: PageLoading };
+export default meta;
 
-const Template: ComponentStory<typeof PageLoading> = args => (
-  <PageLoading {...args} />
-);
+type Story = StoryObj<typeof PageLoading>;
 
-export const Default = Template.bind({});
+export const Default: Story = {
+  args: {},
+};

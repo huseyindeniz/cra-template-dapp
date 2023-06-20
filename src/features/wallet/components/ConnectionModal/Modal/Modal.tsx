@@ -102,11 +102,10 @@ export const Modal: React.FC<ModalProps> = ({
       closeOnOverlayClick={false}
       isOpen={isOpen}
       onClose={() => onDisconnect()}
-      size="xl"
       preserveScrollBarGap={true}
     >
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent mx={4} maxWidth={{ base: '90%', md: '600px' }}>
         <ModalHeader>
           {t('Connecting to Metamask')}:
           <Divider mt={1} />

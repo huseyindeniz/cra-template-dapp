@@ -1,15 +1,13 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { SocialMenu } from './SocialMenu';
 
-export default {
-  title: 'ui/Components/Layout/SocialMenu',
-  component: SocialMenu,
-} as ComponentMeta<typeof SocialMenu>;
+const meta: Meta<typeof SocialMenu> = { component: SocialMenu };
+export default meta;
 
-const Template: ComponentStory<typeof SocialMenu> = args => (
-  <SocialMenu {...args} />
-);
+type Story = StoryObj<typeof SocialMenu>;
 
-export const Default = Template.bind({});
+export const Default: Story = {
+  args: {},
+};

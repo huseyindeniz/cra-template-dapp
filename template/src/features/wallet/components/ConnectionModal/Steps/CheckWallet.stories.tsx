@@ -1,43 +1,42 @@
 // ConnectionModal.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { ProviderLoadState } from '../../../models/provider/types/ProviderLoadState';
 
 import { CheckWallet } from './CheckWallet';
 
-export default {
-  title: 'wallet/ConnectionModal/Steps/CheckWallet',
-  component: CheckWallet,
-  excludeStories: [],
-} as ComponentMeta<typeof CheckWallet>;
+const meta: Meta<typeof CheckWallet> = { component: CheckWallet };
+export default meta;
 
-const Template: ComponentStory<typeof CheckWallet> = args => (
-  <CheckWallet {...args} />
-);
+type Story = StoryObj<typeof CheckWallet>;
 
 // IDLE
-export const CheckWalletIdle = Template.bind({});
+export const CheckWalletIdle: Story = { args: {} };
 
 // INIT_REQUESTED
-export const InitRequested = Template.bind({});
-InitRequested.args = {
-  stepState: ProviderLoadState.REQUESTED,
+export const InitRequested: Story = {
+  args: {
+    stepState: ProviderLoadState.REQUESTED,
+  },
 };
 
 // NOT_SUPPORTED
-export const NotSupported = Template.bind({});
-NotSupported.args = {
-  stepState: ProviderLoadState.NOT_SUPPORTED,
+export const NotSupported: Story = {
+  args: {
+    stepState: ProviderLoadState.NOT_SUPPORTED,
+  },
 };
 
 // INIT_FAILED
-export const InitFailed = Template.bind({});
-InitFailed.args = {
-  stepState: ProviderLoadState.FAILED,
+export const InitFailed: Story = {
+  args: {
+    stepState: ProviderLoadState.FAILED,
+  },
 };
 
 // INITIALIZED
-export const Initialized = Template.bind({});
-Initialized.args = {
-  stepState: ProviderLoadState.INITIALIZED,
+export const Initialized: Story = {
+  args: {
+    stepState: ProviderLoadState.INITIALIZED,
+  },
 };
