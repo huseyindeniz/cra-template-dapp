@@ -1,17 +1,19 @@
 // Button.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ButtonProps } from './Button';
+import { Button } from './Button';
 
-export default {
-  title: 'Wallet/Button',
-  component: Button,
-} as ComponentMeta<typeof Button>;
+const meta: Meta<typeof Button> = { component: Button };
+export default meta;
 
-export const NotLoading: ComponentStory<typeof Button> = (
-  args: ButtonProps
-) => <Button {...args} />;
+type Story = StoryObj<typeof Button>;
 
-export const Loading: ComponentStory<typeof Button> = (args: ButtonProps) => (
-  <Button {...args} isLoading={true} />
-);
+export const Default: Story = {
+  args: {},
+};
+
+export const Loading: Story = {
+  args: {
+    isLoading: true,
+  },
+};

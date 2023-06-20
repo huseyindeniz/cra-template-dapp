@@ -1,18 +1,15 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 //import { withRouter } from 'storybook-addon-react-router-v6';
 
 import { MenuType } from '../../../../../pages/types';
 
 import { SecondaryMenu } from './SecondaryMenu';
 
-export default {
-  title: 'ui/Components/Layout/SecondaryMenu',
-  component: SecondaryMenu,
-  decorators: [
-    /*withRouter*/
-  ],
-} as ComponentMeta<typeof SecondaryMenu>;
+const meta: Meta<typeof SecondaryMenu> = { component: SecondaryMenu };
+export default meta;
+
+type Story = StoryObj<typeof SecondaryMenu>;
 
 const mockPublicMenuItem1: MenuType = {
   isProtected: false,
@@ -44,16 +41,14 @@ const mockMenu = [
   mockMainOnlyMenuItem1,
 ];
 
-export const Default: ComponentStory<typeof SecondaryMenu> = args => (
-  <SecondaryMenu {...args} />
-);
-
-export const Public = Default.bind({});
-Public.args = {
-  items: mockMenu,
+export const Public: Story = {
+  args: {
+    items: mockMenu,
+  },
 };
 
-export const Private = Default.bind({});
-Private.args = {
-  items: mockMenu,
+export const Private: Story = {
+  args: {
+    items: mockMenu,
+  },
 };

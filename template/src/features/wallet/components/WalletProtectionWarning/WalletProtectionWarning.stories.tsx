@@ -1,13 +1,13 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { WalletProtectionWarning } from './WalletProtectionWarning';
 
-export default {
-  title: 'wallet/WalletProtectionWarning',
+const meta: Meta<typeof WalletProtectionWarning> = {
   component: WalletProtectionWarning,
-} as ComponentMeta<typeof WalletProtectionWarning>;
+};
+export default meta;
 
-export const Default: ComponentStory<typeof WalletProtectionWarning> = args => (
-  <WalletProtectionWarning />
-);
+type Story = StoryObj<typeof WalletProtectionWarning>;
+
+export const Default: Story = { args: {} };

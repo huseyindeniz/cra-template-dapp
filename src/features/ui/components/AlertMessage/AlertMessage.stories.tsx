@@ -1,48 +1,49 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { AlertMessage } from './AlertMessage';
 
-export default {
-  title: 'ui/Components/AlertMessage',
-  component: AlertMessage,
-} as ComponentMeta<typeof AlertMessage>;
+const meta: Meta<typeof AlertMessage> = { component: AlertMessage };
+export default meta;
 
-const Template: ComponentStory<typeof AlertMessage> = args => (
-  <AlertMessage {...args} />
-);
+type Story = StoryObj<typeof AlertMessage>;
 
-export const Error = Template.bind({});
-Error.args = {
-  status: 'error',
-  title: 'Mock Error Title',
-  children: 'Mock error children.',
+export const Error: Story = {
+  args: {
+    status: 'error',
+    title: 'Mock Error Title',
+    children: 'Mock error children.',
+  },
 };
 
-export const Info = Template.bind({});
-Info.args = {
-  status: 'info',
-  title: 'Mock Info Title',
-  children: 'Mock info children.',
+export const Info: Story = {
+  args: {
+    status: 'info',
+    title: 'Mock Info Title',
+    children: 'Mock info children.',
+  },
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  status: 'warning',
-  title: 'Mock Warning Title',
-  children: 'Mock warning children.',
+export const Warning: Story = {
+  args: {
+    status: 'warning',
+    title: 'Mock Warning Title',
+    children: 'Mock warning children.',
+  },
 };
 
-export const Success = Template.bind({});
-Success.args = {
-  status: 'success',
-  title: 'Mock Success Title',
-  children: 'Mock success children.',
+export const Success: Story = {
+  args: {
+    status: 'success',
+    title: 'Mock Success Title',
+    children: 'Mock success children.',
+  },
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  status: 'loading',
-  title: 'Mock Loading Title',
-  children: 'Mock loading children.',
+export const Loading: Story = {
+  args: {
+    status: 'loading',
+    title: 'Mock Loading Title',
+    children: 'Mock loading children.',
+  },
 };

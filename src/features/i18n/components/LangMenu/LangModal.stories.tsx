@@ -1,10 +1,11 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { LangCode } from '../../types';
 
 import { LangModal } from './LangModal';
 
-export default {
-  title: 'i18n/LangModal',
+const meta: Meta<typeof LangModal> = {
   component: LangModal,
   args: {
     defaultValue: 'en-US',
@@ -13,17 +14,20 @@ export default {
     onClose: () => null,
     supportedLanguages: [
       {
-        code: 'en-US',
+        code: LangCode.EN_US,
         label: 'English (US)',
       },
       {
-        code: 'tr-TR',
+        code: LangCode.TR_TR,
         label: 'Türkçe',
       },
     ],
   },
-} as ComponentMeta<typeof LangModal>;
+};
+export default meta;
 
-export const Default: ComponentStory<typeof LangModal> = args => (
-  <LangModal {...args} />
-);
+type Story = StoryObj<typeof LangModal>;
+
+export const Default: Story = {
+  args: {},
+};

@@ -1,17 +1,17 @@
-import { composeStories } from '@storybook/testing-react';
+import { composeStories } from '@storybook/react';
 import { render } from '@testing-library/react';
 
 import * as stories from './Button.stories';
 
 describe('Feature: Wallet', () => {
   describe('Component: ConnectButton/Button', () => {
-    const { NotLoading, Loading } = composeStories(stories);
+    const { Default, Loading } = composeStories(stories);
     const onClickSpy = jest.fn();
     describe('Scenario: NotLoading', () => {
       it('should be visible and clickable', () => {
         // Act
         const { asFragment, getByText, getByRole } = render(
-          <NotLoading onClick={onClickSpy} />
+          <Default onClick={onClickSpy} />
         );
         getByRole('button').click();
         // Assert

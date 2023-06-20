@@ -1,13 +1,15 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { CookieConsent } from './CookieConsent';
 
-export default {
-  title: 'ui/Components/Layout/CookieConsent',
-  component: CookieConsent,
-} as ComponentMeta<typeof CookieConsent>;
+const meta: Meta<typeof CookieConsent> = { component: CookieConsent };
+export default meta;
 
-export const Default: ComponentStory<typeof CookieConsent> = args => (
-  <CookieConsent debug={true} />
-);
+type Story = StoryObj<typeof CookieConsent>;
+
+export const Default: Story = {
+  args: {
+    debug: true,
+  },
+};

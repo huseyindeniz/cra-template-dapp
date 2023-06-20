@@ -1,5 +1,5 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 //import { withRouter } from 'storybook-addon-react-router-v6';
 
 import { SiteLogo } from './SiteLogo';
@@ -10,19 +10,13 @@ jest.mock('../../../../../pages/usePageLink.tsx', () => {
   };
 });
 
-export default {
-  title: 'ui/Components/Layout/SiteLogo',
-  component: SiteLogo,
-  decorators: [
-    /*withRouter*/
-  ],
-} as ComponentMeta<typeof SiteLogo>;
+const meta: Meta<typeof SiteLogo> = { component: SiteLogo };
+export default meta;
 
-const Template: ComponentStory<typeof SiteLogo> = args => (
-  <SiteLogo {...args} />
-);
+type Story = StoryObj<typeof SiteLogo>;
 
-export const Default = Template.bind({});
-Default.args = {
-  siteName: 'Mock Site Name',
+export const Default: Story = {
+  args: {
+    siteName: 'Mock Site Name',
+  },
 };

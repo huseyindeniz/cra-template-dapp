@@ -1,13 +1,15 @@
 // ConnectButton.stories.ts|tsx
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { ErrorFallback } from './ErrorFallback';
 
-export default {
-  title: 'ui/Components/Layout/ErrorFallback',
-  component: ErrorFallback,
-} as ComponentMeta<typeof ErrorFallback>;
+const meta: Meta<typeof ErrorFallback> = { component: ErrorFallback };
+export default meta;
 
-export const Default: ComponentStory<typeof ErrorFallback> = args => (
-  <ErrorFallback error={new Error('Mock error message')} />
-);
+type Story = StoryObj<typeof ErrorFallback>;
+
+export const Default: Story = {
+  args: {
+    error: new Error('Mock error message'),
+  },
+};
