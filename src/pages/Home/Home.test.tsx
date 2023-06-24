@@ -10,12 +10,12 @@ describe('HomePage', () => {
         <HomePage />
       </HelmetProvider>
     );
-    const title = getByText('dApp CRA Template');
+    const title = getByText('CRA Template: dApp');
     const description = getByText(
-      'dApp CRA Template is a create-react-app template specifically designed for decentralized application (dApp) development.'
+      'CRA Template: dApp is a create-react-app template specifically designed for decentralized application (dApp) frontend development.'
     );
     const learnReactButton = getByText('Learn React');
-    const learnDappCraTemplateButton = getByText('Learn dApp CRA Template');
+    const learnDappCraTemplateButton = getByText('Learn CRA Template: dApp');
 
     expect(title).toBeInTheDocument();
     expect(description).toBeInTheDocument();
