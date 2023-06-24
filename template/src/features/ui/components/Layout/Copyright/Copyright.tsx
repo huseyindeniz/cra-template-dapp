@@ -8,7 +8,7 @@ import React from 'react';
 // Hüseyin Deniz KIVRAK - https://github.com/huseyindeniz
 
 export const Copyright: React.FC = React.memo(() => {
-  const copyrightLabel: string = 'powered by dApp CRA Template v1.0.3';
+  const copyrightLabel: string = 'powered by CRA Template: dApp v1.0.3';
   const copyrightUrl: string =
     'https://github.com/huseyindeniz/cra-template-dapp';
 

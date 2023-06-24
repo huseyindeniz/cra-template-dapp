@@ -19,9 +19,9 @@ import logo from './assets/images/logo.svg';
 
 export const HomePage: React.FC = () => {
   const { t } = useTranslation('PageHome');
-  const title: string = t('dApp CRA Template');
+  const title: string = t('CRA Template: dApp');
   const description: string = t(
-    'dApp CRA Template is a create-react-app template specifically designed for decentralized application (dApp) development.'
+    'CRA Template: dApp is a create-react-app template specifically designed for decentralized application (dApp) development.'
   );
   return (
     <>
@@ -104,7 +104,7 @@ export const HomePage: React.FC = () => {
               size="xs"
               rightIcon={<FaExternalLinkAlt />}
             >
-              {t('Learn dApp CRA Template')}
+              {t('Learn CRA Template: dApp')}
             </Button>
           </Stack>
         </Stack>

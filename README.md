@@ -18,17 +18,17 @@ npm start
 
 One of the challenges of building applications with pure React is the need to identify and configure a large number of packages to get the desired functionality. This can be time-consuming and error-prone, especially for developers who are new to React or who are building their first dApp application.
 
-The dApp CRA Template helps developers avoid this challenge by including a wide range of preconfigured packages that are ready to use out of the box. This includes packages for core functionality such as routing and state management, as well as packages for specialized features like internationalization. All of these packages are carefully selected and integrated to work seamlessly together, making it easy for developers to build powerful and feature-rich applications without the need to spend time researching and configuring individual packages.
+The CRA Template: dApp helps developers avoid this challenge by including a wide range of preconfigured packages that are ready to use out of the box. This includes packages for core functionality such as routing and state management, as well as packages for specialized features like internationalization. All of these packages are carefully selected and integrated to work seamlessly together, making it easy for developers to build powerful and feature-rich applications without the need to spend time researching and configuring individual packages.
 
-### Benefits of dApp CRA Template?
+### Benefits of CRA Template: dApp?
 
-dApp CRA Template is specifically designed to meet the needs of dApp development. It is built on top of React, just like React based frameworks, but it offers greater flexibility and customization options. With dApp CRA Template, you can take full advantage of the capabilities of React to build fast, scalable, and user-friendly dApps, while also being able to easily integrate with decentralized protocols and technologies. Additionally, dApp CRA Template allows you to host your dApp on decentralized servers, ensuring maximum security and decentralization.
+CRA Template: dApp is specifically designed to meet the needs of dApp development. It is built on top of React, just like React based frameworks, but it offers greater flexibility and customization options. With CRA Template: dApp, you can take full advantage of the capabilities of React to build fast, scalable, and user-friendly dApps, while also being able to easily integrate with decentralized protocols and technologies. Additionally, CRA Template: dApp allows you to host your dApp on decentralized servers, ensuring maximum security and decentralization.
 
 - Decentralized hosting: One of the main benefits of using this template is that it allows you to host your application on decentralized servers, such as IPFS or Swarm. This allows you to build truly decentralized applications that are not reliant on a single centralized server. In contrast, React based frameworks applications require centralized hosting, which can be less secure and more susceptible to censorship.
 
 - Greater flexibility: By using this template, you have more flexibility in terms of the tools and technologies you can use to build your decentralized application. For example, you can use various React libraries and packages to customize the look and feel of your application, and you can choose from a wide range of decentralized storage solutions.
 
-Overall, dApp CRA Template provides an easy-to-use foundation for building decentralized applications with React, and helps developers avoid the difficulties of identifying and configuring lots of packages. It is an ideal choice for developers who want to build high-quality dApps quickly and efficiently.
+Overall, CRA Template: dApp provides an easy-to-use foundation for building decentralized applications with React, and helps developers avoid the difficulties of identifying and configuring lots of packages. It is an ideal choice for developers who want to build high-quality dApps quickly and efficiently.
 
 ## Features
 
@@ -78,36 +78,12 @@ Overall, dApp CRA Template provides an easy-to-use foundation for building decen
 
 ## Getting Started
 
-### Installation
-
-```sh
-npx create-react-app mydapp --template @huseyindeniz/dapp
-```
-
-### Configuration
-
-TODO: Tutorials and dedicated documentation website...
-
-#### Setting Supported Languages
-
-- Open /src/features/i18n/config.ts
-- set supportedLanguages array under the i18nConfig object
-
-#### Adding new pages
-
-- Create a new page under pages folder
-- Import your page into usePages.tsx and create a Route for it
-- If your page need authentication wrap it with withWalletProtection hoc.
-
-#### Changing site name
-
-- Open /src/features/i18n/translations/en-US/Layout.json
-- Change the entries with the keys SITE_NAME and SITE_DESCRIPTION
+Please visit the [Official CRA Tamplate: dApp Documentation Page](https://huseyindeniz.github.io/cra-template-dapp-documentation/) to start your dApp frontend development journey.
 
 ## Contributions
 
-dApp CRA Template is an open-source project and we welcome contributions from the community. If you have any suggestions, please use the [discussion](https://github.com/huseyindeniz/cra-template-dapp/discussions) tab. If you have any bug reports, please [open an issue](https://github.com/huseyindeniz/cra-template-dapp/issues) or [submit a pull request](https://github.com/huseyindeniz/cra-template-dapp/pulls).
+CRA Template: dApp is an open-source project and we welcome contributions from the community. If you have any suggestions, please use the [discussion](https://github.com/huseyindeniz/cra-template-dapp/discussions) tab. If you have any bug reports, please [open an issue](https://github.com/huseyindeniz/cra-template-dapp/issues) or [submit a pull request](https://github.com/huseyindeniz/cra-template-dapp/pulls).
 
 ## License
 
-dApp CRA Template is licensed under the [MIT License](./LICENSE).
+CRA Template: dApp is licensed under the [MIT License](./LICENSE).
