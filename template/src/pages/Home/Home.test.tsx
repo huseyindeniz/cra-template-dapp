@@ -12,7 +12,7 @@ describe('HomePage', () => {
     );
     const title = getByText('CRA Template: dApp');
     const description = getByText(
-      'CRA Template: dApp is a create-react-app template specifically designed for decentralized application (dApp) development.'
+      'CRA Template: dApp is a create-react-app template specifically designed for decentralized application (dApp) frontend development.'
     );
     const learnReactButton = getByText('Learn React');
     const learnDappCraTemplateButton = getByText('Learn CRA Template: dApp');

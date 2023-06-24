@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
   const { t } = useTranslation('PageHome');
   const title: string = t('CRA Template: dApp');
   const description: string = t(
-    'CRA Template: dApp is a create-react-app template specifically designed for decentralized application (dApp) development.'
+    'CRA Template: dApp is a create-react-app template specifically designed for decentralized application (dApp) frontend development.'
   );
   return (
     <>
@@ -97,7 +97,7 @@ export const HomePage: React.FC = () => {
             </Button>
             <Button
               as={Link}
-              href="https://github.com/huseyindeniz/cra-template-dapp"
+              href="https://huseyindeniz.github.io/cra-template-dapp-documentation/"
               rel="noopener noreferrer"
               isExternal
               variant="ghost"
