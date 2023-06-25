@@ -20,11 +20,9 @@ The CRA Template: dApp solves this challenge. It includes preconfigured packages
 
 ### Benefits of CRA Template: dApp?
 
-CRA Template: dApp is a React-based framework designed for dApp frontend development, offering flexibility and customization options. It leverages React's capabilities to build fast, scalable, and user-friendly dApps while integrating with decentralized protocols. It enables decentralized hosting on servers like IPFS or Swarm for enhanced security and decentralization.
-
 Compared to React-based frameworks, CRA Template: dApp allows decentralized hosting, eliminating reliance on a single server. It provides flexibility in tool and technology choices, supporting various React libraries and decentralized storage solutions.
 
-In summary, CRA Template: dApp is an easy-to-use foundation for efficiently building high-quality dApps with React, suitable for developers seeking customization and quick development.
+CRA Template: dApp is an easy-to-use foundation for efficiently building high-quality dApps with React, suitable for developers seeking customization and quick development.
 
 ## Features
 
