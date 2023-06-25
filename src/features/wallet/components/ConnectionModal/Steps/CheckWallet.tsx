@@ -21,33 +21,38 @@ export const CheckWallet: React.FC<CheckWalletProps> = ({
     stepState === ProviderLoadState.FAILED ||
     stepState === ProviderLoadState.NOT_SUPPORTED;
   return isVisible ? (
-    <VStack>
-      <Box w="full">
-        <AlertMessage status="warning" title={t('Metamask Is Not Detected')}>
-          <VStack>
-            <Image width="25%" src={imageMetamaskLogo} alt="Metamask" m={2} />
-            <Text fontSize="xs">
-              {t(
-                'The Metamask wallet extension is not detected in your browser.'
-              )}
-              <br />
-              {t(
-                'In order to use this app, please install the Metamask extension for your browser from the official link below and try again.'
-              )}
-            </Text>
-          </VStack>
-        </AlertMessage>
-      </Box>
-      <Box>
-        <Button size="xs" variant="outline" rightIcon={<FaExternalLinkAlt />}>
-          <Link href="https://metamask.io/" isExternal>
-            https://metamask.io/
-          </Link>
-        </Button>
-        <Button size="xs" onClick={() => onCancel()} variant="outline">
-          {t('Cancel')}
-        </Button>
-      </Box>
-    </VStack>
+    <AlertMessage status="warning" title={t('Metamask Is Not Detected')}>
+      <VStack>
+        <Image width="25%" src={imageMetamaskLogo} alt="Metamask" m={2} />
+        <Text fontSize="xs">
+          {t('The Metamask wallet extension is not detected in your browser.')}
+          <br />
+          {t(
+            'In order to use this app, please install the Metamask extension for your browser from the official link below and try again.'
+          )}
+        </Text>
+        <Box>
+          <Button
+            mr={1}
+            size="xs"
+            variant="solid"
+            rightIcon={<FaExternalLinkAlt />}
+            colorScheme="yellow"
+          >
+            <Link href="https://metamask.io/" isExternal>
+              https://metamask.io/
+            </Link>
+          </Button>
+          <Button
+            size="xs"
+            onClick={() => onCancel()}
+            variant="solid"
+            colorScheme="yellow"
+          >
+            {t('Cancel')}
+          </Button>
+        </Box>
+      </VStack>
+    </AlertMessage>
   ) : null;
 };

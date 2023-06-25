@@ -6,6 +6,9 @@ import { HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useLocation, Outlet } from 'react-router-dom';
 
+import { usePageLink } from '../../../../pages/usePageLink';
+import { usePages } from '../../../../pages/usePages';
+
 import { ErrorFallback } from './ErrorFallback/ErrorFallback';
 import { PageLoading } from './PageLoding/PageLoading';
 import { SiteMeta } from './SiteMeta/SiteMeta';
@@ -45,15 +48,23 @@ const myErrorHandler = (error: Error, info: { componentStack: string }) => {
 export const Layout: React.FC = () => {
   const location = useLocation();
   const { t } = useTranslation('Layout');
+  const { pageLink } = usePageLink();
+  const { mainMenuItems, secondaryMenuItems } = usePages();
   const siteName = t('SITE_NAME');
   const siteDescription = t('SITE_DESCRIPTION');
+
+  const baseUrl = pageLink('/');
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback} onError={myErrorHandler}>
       <HelmetProvider>
         <SiteMeta siteName={siteName} siteDescription={siteDescription} />
         <Box minH="100vh" flexDirection="column" display="flex">
-          <Header siteName={siteName} />
+          <Header
+            siteName={siteName}
+            baseUrl={baseUrl}
+            mainMenuItems={mainMenuItems}
+          />
           <Box p={0} flex={1}>
             <React.Suspense fallback={<PageLoading />}>
               <ScaleFade key={location.pathname} initialScale={0.9} in={true}>
@@ -61,7 +72,11 @@ export const Layout: React.FC = () => {
               </ScaleFade>
             </React.Suspense>
           </Box>
-          <Footer siteName={siteName} />
+          <Footer
+            siteName={siteName}
+            baseUrl={baseUrl}
+            secondaryMenuItems={secondaryMenuItems}
+          />
           <ScrollToTopButton />
           <CookieConsent />
         </Box>

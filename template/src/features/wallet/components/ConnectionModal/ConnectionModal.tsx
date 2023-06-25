@@ -1,4 +1,4 @@
-import { useSteps } from 'chakra-ui-steps';
+import { useSteps } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
 import useTypedSelector from '../../../../hooks/useTypedSelector';
@@ -41,8 +41,9 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
   const signCounter = useTypedSelector(
     state => state.wallet.account.signCounter
   );
-  const { setStep, reset, activeStep } = useSteps({
-    initialStep: 0,
+  const { activeStep, setActiveStep } = useSteps({
+    index: 0,
+    count: 4,
   });
 
   const [stepState, setStepState] = useState<'error' | 'loading' | undefined>(
@@ -149,22 +150,22 @@ export const ConnectionModal: React.FC<ConnectionModalProps> = ({
       // STEP 0: Initialization
       case WalletState.NOT_INITIALIZED:
       case WalletState.CHECKING_WALLET:
-        setStep(0);
+        setActiveStep(0);
         break;
       // STEP 1: Account Check
       case WalletState.CHECKING_ACCOUNT:
-        setStep(1);
+        setActiveStep(1);
         break;
       // STEP 2: Network Check
       case WalletState.CHECKING_NETWORK:
-        setStep(2);
+        setActiveStep(2);
         break;
       // STEP 3: Sign Check
       case WalletState.CHECKING_SIGN:
-        setStep(3);
+        setActiveStep(3);
         break;
       default:
-        reset();
+        setActiveStep(0);
         break;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

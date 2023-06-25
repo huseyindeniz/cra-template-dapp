@@ -6,12 +6,24 @@ import {
   ModalCloseButton,
   ModalBody,
   Divider,
+  Box,
+  Step,
+  StepDescription,
+  StepIcon,
+  StepIndicator,
+  StepSeparator,
+  StepStatus,
+  StepTitle,
+  Stepper,
+  Spinner,
+  Container,
+  Text,
 } from '@chakra-ui/react';
 import { FaFileSignature } from '@react-icons/all-files/fa/FaFileSignature';
 import { GiChoice } from '@react-icons/all-files/gi/GiChoice';
 import { IoMdUnlock } from '@react-icons/all-files/io/IoMdUnlock';
+import { MdError } from '@react-icons/all-files/md/MdError';
 import { MdExtension } from '@react-icons/all-files/md/MdExtension';
-import { Step, Steps } from 'chakra-ui-steps';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -23,7 +35,6 @@ export interface ModalProps {
   checkAccountContent?: React.ReactNode;
   checkNetworkContent?: React.ReactNode;
   checkSignContent?: React.ReactNode;
-  orientation?: 'horizontal' | 'vertical'; // this is a temp fix for unit tests. It should always be "vertical"
   onDisconnect: () => void;
 }
 
@@ -35,66 +46,143 @@ export const Modal: React.FC<ModalProps> = ({
   checkAccountContent,
   checkNetworkContent,
   checkSignContent,
-  orientation = 'vertical',
   onDisconnect,
 }) => {
   const { t } = useTranslation('FeatureWallet');
 
   const connectionSteps = (
-    <Steps
-      orientation={orientation}
-      activeStep={activeStep}
-      state={stepState}
-      colorScheme="whatsapp"
-      responsive={false}
-    >
-      <Step
-        width="100%"
-        label={t('Check Metamask Extension')}
-        key="installation"
-        description={
-          t('The Metamask wallet extension needs to be installed.') as string
-        }
-        icon={MdExtension}
-      >
-        {checkWalletContent}
+    <Stepper index={activeStep} orientation="vertical" gap={'40px'}>
+      <Step key="installation">
+        <StepIndicator>
+          <StepStatus
+            complete={<StepIcon />}
+            incomplete={<MdExtension />}
+            active={
+              stepState !== undefined ? (
+                stepState === 'error' ? (
+                  <MdError />
+                ) : (
+                  <Spinner />
+                )
+              ) : (
+                <MdExtension />
+              )
+            }
+          />
+        </StepIndicator>
+        <Box>
+          <StepTitle>{t('Check Metamask Extension')}</StepTitle>
+          <StepDescription>
+            {
+              t(
+                'The Metamask wallet extension needs to be installed.'
+              ) as string
+            }
+          </StepDescription>
+          <Container my={2} centerContent>
+            {checkWalletContent}
+          </Container>
+        </Box>
+        <StepSeparator />
       </Step>
-      <Step
-        width="100%"
-        label={t('Check Metamask Status')}
-        key="unlock"
-        description={t('The Metamask wallet needs to be unlocked.') as string}
-        icon={IoMdUnlock}
-      >
-        {checkAccountContent}
+      <Step key="unlock">
+        <StepIndicator>
+          <StepStatus
+            complete={<StepIcon />}
+            incomplete={<IoMdUnlock />}
+            active={
+              stepState !== undefined ? (
+                stepState === 'error' ? (
+                  <MdError />
+                ) : (
+                  <Spinner />
+                )
+              ) : (
+                <IoMdUnlock />
+              )
+            }
+          />
+        </StepIndicator>
+        <Box>
+          <StepTitle>{t('Check Metamask Status')}</StepTitle>
+          <StepDescription>
+            <Text textAlign={'left'}>
+              {t('The Metamask wallet needs to be unlocked.') as string}
+            </Text>
+          </StepDescription>
+          <Container my={2} centerContent>
+            {checkAccountContent}
+          </Container>
+        </Box>
+        <StepSeparator />
       </Step>
-      <Step
-        width="100%"
-        label={t('Check Metamask Network')}
-        key="network"
-        description={
-          t(
-            'A supported network needs to be selected in the Metamask wallet.'
-          ) as string
-        }
-        icon={GiChoice}
-      >
-        {checkNetworkContent}
+      <Step key="network">
+        <StepIndicator>
+          <StepStatus
+            complete={<StepIcon />}
+            incomplete={<GiChoice />}
+            active={
+              stepState !== undefined ? (
+                stepState === 'error' ? (
+                  <MdError />
+                ) : (
+                  <Spinner />
+                )
+              ) : (
+                <GiChoice />
+              )
+            }
+          />
+        </StepIndicator>
+        <Box>
+          <StepTitle>{t('Check Metamask Network')}</StepTitle>
+          <StepDescription>
+            {
+              t(
+                'A supported network needs to be selected in the Metamask wallet.'
+              ) as string
+            }
+          </StepDescription>
+          <Container my={2} centerContent>
+            {checkNetworkContent}
+          </Container>
+        </Box>
+        <StepSeparator />
       </Step>
-      <Step
-        width="100%"
-        label={t('Check Metamask Signature')}
-        key="signin"
-        description={
-          t(
-            'The login request needs to be signed in the Metamask wallet.'
-          ) as string
-        }
-        icon={FaFileSignature}
-      >
-        {checkSignContent}
+      <Step key="signin">
+        <StepIndicator>
+          <StepStatus
+            complete={<StepIcon />}
+            incomplete={<FaFileSignature />}
+            active={
+              stepState !== undefined ? (
+                stepState === 'error' ? (
+                  <MdError />
+                ) : (
+                  <Spinner />
+                )
+              ) : (
+                <FaFileSignature />
+              )
+            }
+          />
+        </StepIndicator>
+        <Box>
+          <StepTitle>{t('Check Metamask Signature')}</StepTitle>
+          <StepDescription>
+            {
+              t(
+                'The login request needs to be signed in the Metamask wallet.'
+              ) as string
+            }
+          </StepDescription>
+          <Container my={2} centerContent>
+            {checkSignContent}
+          </Container>
+        </Box>
+        <StepSeparator />
       </Step>
-    </Steps>
+    </Stepper>
   );
 
   return (

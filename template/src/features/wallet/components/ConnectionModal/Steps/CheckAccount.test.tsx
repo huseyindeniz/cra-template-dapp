@@ -24,9 +24,9 @@ describe('Feature: Wallet', () => {
         const result2 = render(<AccountRequested />);
         const result3 = render(<AccountLoaded />);
         // Assert
-        expect(result1.container.childElementCount).toEqual(1);
-        expect(result2.container.childElementCount).toEqual(1);
-        expect(result3.container.childElementCount).toEqual(1);
+        expect(result1.container.childElementCount).toEqual(0);
+        expect(result2.container.childElementCount).toEqual(0);
+        expect(result3.container.childElementCount).toEqual(0);
       });
     });
 

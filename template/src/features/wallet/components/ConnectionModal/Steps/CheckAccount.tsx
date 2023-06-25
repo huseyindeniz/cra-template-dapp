@@ -1,4 +1,4 @@
-import { Box, VStack, Button, Text, Progress } from '@chakra-ui/react';
+import { Box, Button, Text, Progress } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -20,132 +20,105 @@ export const CheckAccount: React.FC<CheckAccountProps> = ({
 
   const AccountDetectionFailed = () => {
     return (
-      <Box w="full">
-        <AlertMessage status="warning" title={t('Unexpected Error')}>
-          <Text fontSize="xs">
-            {t('An error has occured during the wallet status check.')}
-            <br /> {t('Please try again later.')}
-            <br />
-            {t('The error code was')}: {errorMessage}
-          </Text>
-        </AlertMessage>
-      </Box>
+      <AlertMessage status="warning" title={t('Unexpected Error')}>
+        <Text fontSize="xs">
+          {t('An error has occured during the wallet status check.')}
+          <br /> {t('Please try again later.')}
+          <br />
+          {t('The error code was')}: {errorMessage}
+        </Text>
+      </AlertMessage>
     );
   };
 
   const Locked = () => {
     return (
-      <Box w="full">
-        <AlertMessage status="warning" title={t('Wallet Is Locked')}>
-          <Text fontSize="xs">
-            {t('Please unlock your wallet if you want to continue.')}
-          </Text>
-        </AlertMessage>
-      </Box>
+      <AlertMessage status="warning" title={t('Wallet Is Locked')}>
+        <Text fontSize="xs">
+          {t('Please unlock your wallet if you want to continue.')}
+        </Text>
+        <UnlockButton />
+      </AlertMessage>
     );
   };
 
   const UnlockRequested = () => {
     return (
-      <Box w="full">
-        <Progress size="xs" isIndeterminate colorScheme="yellow" />
+      <AlertMessage status="info" title={t('Unlock Requested')}>
         <Text fontSize="xs">
           {t('Waiting for the unlock wallet request to be accepted.')}
           <br />
           {t('Please check your Metamask wallet.')}
         </Text>
-      </Box>
+        <Progress size="xs" isIndeterminate colorScheme="blue" />
+      </AlertMessage>
     );
   };
 
   const UnlockRejected = () => {
     return (
-      <Box w="full">
-        <AlertMessage status="warning" title={t('Unlock Rejected')}>
-          <Text fontSize="xs">
-            {t('You rejected the unlock wallet request.')}
-            <br />
-            {t('Please try again if you want to continue.')}
-          </Text>
-        </AlertMessage>
-      </Box>
+      <AlertMessage status="warning" title={t('Unlock Rejected')}>
+        <Text fontSize="xs">
+          {t('You rejected the unlock wallet request.')}
+          <br />
+          {t('Please try again if you want to continue.')}
+        </Text>
+        <UnlockButton />
+      </AlertMessage>
     );
   };
 
   const UnlockWaiting = () => {
     return (
-      <Box w="full">
-        <AlertMessage status="warning" title={t('Waiting Unlock')}>
-          <Text fontSize="xs">
-            {t("You haven't unlocked your wallet yet.")}
-            <br />
-            {t(
-              'Please close this window, open your wallet, unlock it, and click connect button again.'
-            )}
-          </Text>
-        </AlertMessage>
-      </Box>
+      <AlertMessage status="warning" title={t('Waiting Unlock')}>
+        <Text fontSize="xs">
+          {t("You haven't unlocked your wallet yet.")}
+          <br />
+          {t(
+            'Please close this window, open your wallet, unlock it, and click connect button again.'
+          )}
+        </Text>
+      </AlertMessage>
     );
   };
 
   const UnlockFailed = () => {
     return (
-      <Box w="full">
-        <AlertMessage status="warning" title={t('Unexpected Error')}>
-          <Text fontSize="xs">
-            {t('An error has occured during the unlock wallet check.')}
-            <br /> {t('Please try again later.')}
-            <br />
-            {t('The error code was')}: {errorMessage}
-          </Text>
-        </AlertMessage>
+      <AlertMessage status="warning" title={t('Unexpected Error')}>
+        <Text fontSize="xs">
+          {t('An error has occured during the unlock wallet check.')}
+          <br /> {t('Please try again later.')}
+          <br />
+          {t('The error code was')}: {errorMessage}
+        </Text>
+      </AlertMessage>
+    );
+  };
+
+  const UnlockButton = () => {
+    return (
+      <Box>
+        <Button variant="solid" colorScheme="yellow" onClick={() => onUnlock()}>
+          {t('Unlock Wallet')}
+        </Button>
       </Box>
     );
   };
 
-  const Content = () => {
-    switch (stepState) {
-      case AccountLoadState.ACCOUNT_DETECTION_FAILED:
-        return <AccountDetectionFailed />;
-      case AccountLoadState.LOCKED:
-        return <Locked />;
-      case AccountLoadState.UNLOCK_REQUESTED:
-        return <UnlockRequested />;
-      case AccountLoadState.UNLOCK_REJECTED:
-        return <UnlockRejected />;
-      case AccountLoadState.WAITING__UNLOCK:
-        return <UnlockWaiting />;
-      case AccountLoadState.UNLOCK_FAILED:
-        return <UnlockFailed />;
-      default:
-        return null;
-    }
-  };
-
-  const UnlockButton = () => {
-    switch (stepState) {
-      case AccountLoadState.LOCKED:
-      case AccountLoadState.UNLOCK_REJECTED:
-        return (
-          <Box>
-            <Button
-              variant="solid"
-              colorScheme="yellow"
-              onClick={() => onUnlock()}
-            >
-              {t('Unlock Wallet')}
-            </Button>
-          </Box>
-        );
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <VStack>
-      <Content />
-      <UnlockButton />
-    </VStack>
-  );
+  switch (stepState) {
+    case AccountLoadState.ACCOUNT_DETECTION_FAILED:
+      return <AccountDetectionFailed />;
+    case AccountLoadState.LOCKED:
+      return <Locked />;
+    case AccountLoadState.UNLOCK_REQUESTED:
+      return <UnlockRequested />;
+    case AccountLoadState.UNLOCK_REJECTED:
+      return <UnlockRejected />;
+    case AccountLoadState.WAITING__UNLOCK:
+      return <UnlockWaiting />;
+    case AccountLoadState.UNLOCK_FAILED:
+      return <UnlockFailed />;
+    default:
+      return null;
+  }
 };

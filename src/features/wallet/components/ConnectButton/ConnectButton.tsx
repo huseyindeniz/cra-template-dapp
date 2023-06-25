@@ -1,4 +1,4 @@
-import { useDisclosure } from '@chakra-ui/react';
+import { Spinner, useDisclosure } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 
 import useTypedSelector from '../../../../hooks/useTypedSelector';
@@ -7,7 +7,6 @@ import { LoadingStatusType } from '../../models/types/LoadingStatus';
 import { WalletState } from '../../models/types/WalletState';
 
 import { Button } from './Button/Button';
-import { WalletLoading } from './WalletLoading/WalletLoading';
 
 const ConnectionModal = React.lazy(() =>
   import(
@@ -38,7 +37,7 @@ export const ConnectButton: React.FC = () => {
         onClick={actions.connectWallet}
       />
       {isOpen ? (
-        <React.Suspense fallback={<WalletLoading />}>
+        <React.Suspense fallback={<Spinner size="xs" />}>
           <ConnectionModal onDisconnect={onClose} />
         </React.Suspense>
       ) : null}

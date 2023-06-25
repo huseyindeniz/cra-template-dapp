@@ -8,7 +8,7 @@ import { LoadingStatusType } from '../../models/types/LoadingStatus';
 import { ConnectButton } from './ConnectButton';
 
 const mockStore = configureStore([]);
-describe.skip('Feature: Wallet', () => {
+describe('Feature: Wallet', () => {
   describe('ConnectButton', () => {
     afterEach(() => {
       cleanup();
@@ -17,7 +17,9 @@ describe.skip('Feature: Wallet', () => {
       // Arrange
       const store = mockStore({
         wallet: {
-          loading: LoadingStatusType.IDLE,
+          state: {
+            loading: LoadingStatusType.IDLE,
+          },
         },
       });
       // Act

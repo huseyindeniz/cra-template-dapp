@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 import * as stories from './SiteLogo.stories';
 
-describe.skip('Feature: UI', () => {
+describe('Feature: UI', () => {
   describe('Component: Layout/SiteLogo', () => {
     const { Default } = composeStories(stories);
     describe('Scenario: Default', () => {
