@@ -17,7 +17,6 @@ import {
   Stepper,
   Spinner,
   Container,
-  Text,
 } from '@chakra-ui/react';
 import { FaFileSignature } from '@react-icons/all-files/fa/FaFileSignature';
 import { GiChoice } from '@react-icons/all-files/gi/GiChoice';
@@ -106,9 +105,7 @@ export const Modal: React.FC<ModalProps> = ({
         <Box>
           <StepTitle>{t('Check Metamask Status')}</StepTitle>
           <StepDescription>
-            <Text textAlign={'left'}>
-              {t('The Metamask wallet needs to be unlocked.') as string}
-            </Text>
+            {t('The Metamask wallet needs to be unlocked.') as string}
           </StepDescription>
           <Container my={2} centerContent>
             {checkAccountContent}
