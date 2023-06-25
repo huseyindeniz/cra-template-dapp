@@ -21,7 +21,9 @@ jest.mock('../SocialMenu/SocialMenu', () => ({
 describe('Feature: UI', () => {
   describe('Component: Layout/Footer', () => {
     it('should render the component', () => {
-      const { getByTestId } = render(<Footer siteName="Test Site" />);
+      const { getByTestId } = render(
+        <Footer siteName="Test Site" baseUrl="/" secondaryMenuItems={[]} />
+      );
 
       expect(getByTestId('mock-copyright')).toBeInTheDocument();
       expect(getByTestId('mock-secondary-menu')).toBeInTheDocument();

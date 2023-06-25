@@ -7,9 +7,8 @@
       "@metamask/jazzicon": "^2.0.0",
       "@react-icons/all-files": "^4.1.0",
       "@reduxjs/toolkit": "^1.9.5",
-      "chakra-ui-steps": "1.8.0",
       "ethers": "5.7.2",
-      "framer-motion": "6.5.1",
+      "framer-motion": "^10.12.17",
       "i18next": "^23.2.3",
       "i18next-browser-languagedetector": "^7.0.2",
       "loglevel": "^1.8.1",
@@ -59,6 +58,7 @@
       "redux-saga-test-plan": "^4.0.6",
       "source-map-explorer": "^2.5.3",
       "storybook": "next",
+      "storybook-addon-react-router-v6": "^1.0.2",
       "typescript": "4.9.5",
       "webpack": "^5.88.0"
     },

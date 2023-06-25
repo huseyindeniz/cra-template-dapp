@@ -58,6 +58,15 @@ export const UnlockRejected: Story = {
   },
 };
 
+// UNLOCK_WAITING
+export const UnlockWaiting: Story = {
+  args: {
+    stepState: AccountLoadState.WAITING__UNLOCK,
+    errorMessage: null,
+    onUnlock: () => null,
+  },
+};
+
 // UNLOCK_FAILED
 export const UnlockFailed: Story = {
   args: {

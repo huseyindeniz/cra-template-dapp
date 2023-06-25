@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { Modal } from './Modal';
 
-describe.skip('Feature: Wallet', () => {
+describe('Feature: Wallet', () => {
   describe('Component: ConnectionModal/Modal', () => {
     const onClickSpy = jest.fn();
 
@@ -14,12 +14,7 @@ describe.skip('Feature: Wallet', () => {
           <Modal activeStep={0} isOpen={false} onDisconnect={onClickSpy} />
         );
         const result2 = render(
-          <Modal
-            activeStep={0}
-            isOpen={false}
-            onDisconnect={onClickSpy}
-            orientation="horizontal"
-          />
+          <Modal activeStep={0} isOpen={false} onDisconnect={onClickSpy} />
         );
         // Assert
         expect(result1.container.childElementCount).toEqual(0);
@@ -27,17 +22,12 @@ describe.skip('Feature: Wallet', () => {
       });
     });
 
-    describe('Scenario: OnDisconnect', () => {
+    describe.skip('Scenario: OnDisconnect', () => {
       it('when modal closed disconnet should be called', () => {
         // Arrange
         // Act
         const { getByRole } = render(
-          <Modal
-            activeStep={0}
-            isOpen={true}
-            onDisconnect={onClickSpy}
-            orientation="horizontal"
-          />
+          <Modal activeStep={0} isOpen={true} onDisconnect={onClickSpy} />
         );
         getByRole('button').click();
         // Assert
@@ -45,7 +35,7 @@ describe.skip('Feature: Wallet', () => {
       });
     });
 
-    describe('Scenario: CheckWallet', () => {
+    describe.skip('Scenario: CheckWallet', () => {
       const stateTitle = 'Check Metamask Extension';
       const stateDesc = 'The Metamask wallet extension needs to be installed.';
       const stateContent = 'My Mock Check Wallet Step Content';
@@ -59,7 +49,6 @@ describe.skip('Feature: Wallet', () => {
             checkWalletContent={stateContent}
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -81,7 +70,6 @@ describe.skip('Feature: Wallet', () => {
             stepState="error"
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -104,7 +92,6 @@ describe.skip('Feature: Wallet', () => {
             stepState="loading"
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -117,7 +104,7 @@ describe.skip('Feature: Wallet', () => {
       });
     });
 
-    describe('Scenario: CheckAccount', () => {
+    describe.skip('Scenario: CheckAccount', () => {
       const stateTitle = 'Check Metamask Status';
       const stateDesc = 'The Metamask wallet needs to be unlocked.';
       const stateContent = 'My Mock Check Account Step Content';
@@ -131,7 +118,6 @@ describe.skip('Feature: Wallet', () => {
             checkAccountContent={stateContent}
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -153,7 +139,6 @@ describe.skip('Feature: Wallet', () => {
             stepState="error"
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -176,7 +161,6 @@ describe.skip('Feature: Wallet', () => {
             stepState="loading"
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -189,7 +173,7 @@ describe.skip('Feature: Wallet', () => {
       });
     });
 
-    describe('Scenario: CheckNetwork', () => {
+    describe.skip('Scenario: CheckNetwork', () => {
       const stateTitle = 'Check Metamask Network';
       const stateDesc =
         'A supported network needs to be selected in the Metamask wallet.';
@@ -204,7 +188,6 @@ describe.skip('Feature: Wallet', () => {
             checkNetworkContent={stateContent}
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -226,7 +209,6 @@ describe.skip('Feature: Wallet', () => {
             stepState="error"
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -249,7 +231,6 @@ describe.skip('Feature: Wallet', () => {
             stepState="loading"
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -262,7 +243,7 @@ describe.skip('Feature: Wallet', () => {
       });
     });
 
-    describe('Scenario: CheckSign', () => {
+    describe.skip('Scenario: CheckSign', () => {
       const stateTitle = 'Check Metamask Signature';
       const stateDesc =
         'The login request needs to be signed in the Metamask wallet.';
@@ -277,7 +258,6 @@ describe.skip('Feature: Wallet', () => {
             checkSignContent={stateContent}
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -299,7 +279,6 @@ describe.skip('Feature: Wallet', () => {
             stepState="error"
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert
@@ -322,7 +301,6 @@ describe.skip('Feature: Wallet', () => {
             stepState="loading"
             isOpen={true}
             onDisconnect={onClickSpy}
-            orientation="horizontal"
           />
         );
         // Assert

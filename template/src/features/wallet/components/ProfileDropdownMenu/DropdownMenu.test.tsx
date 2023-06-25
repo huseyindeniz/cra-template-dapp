@@ -5,7 +5,7 @@ import * as stories from './DropdownMenu.stories';
 
 const { Address, Ens } = composeStories(stories);
 
-describe.skip('Feature: Wallet', () => {
+describe('Feature: Wallet', () => {
   describe('Component: ProfileDropdownMenu/DropdownMenu', () => {
     it('renders address', () => {
       render(<Address {...Address.args} />);

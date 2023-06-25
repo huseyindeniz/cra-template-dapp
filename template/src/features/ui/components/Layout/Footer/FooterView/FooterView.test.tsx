@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import * as stories from './FooterView.stories';
 
-describe.skip('Feature: UI', () => {
+describe('Feature: UI', () => {
   describe('Component: Layout/Footer/FooterContent', () => {
     const { Default, OnlyFirstRow, OnlySecondRow } = composeStories(stories);
     describe('Scenario: Default', () => {

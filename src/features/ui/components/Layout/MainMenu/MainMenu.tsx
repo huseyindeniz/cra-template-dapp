@@ -2,16 +2,19 @@ import { Link, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 
-import { usePages } from '../../../../../pages/usePages';
+import { MenuType } from '../../../../../pages/types';
 
 export interface MainMenuProps {
   onClick: () => void;
+  mainMenuItems: MenuType[];
 }
 
-export const MainMenu: React.FC<MainMenuProps> = ({ onClick }) => {
+export const MainMenu: React.FC<MainMenuProps> = ({
+  onClick,
+  mainMenuItems,
+}) => {
   const bgColor = useColorModeValue('gray.200', 'gray.700');
   const activeMenuColor = useColorModeValue('blue.900', 'blue.100');
-  const { mainMenuItems } = usePages();
   return (
     <>
       {mainMenuItems !== undefined && mainMenuItems.length > 0

@@ -75,6 +75,7 @@ const {
   Locked,
   UnlockRequested,
   UnlockRejected,
+  UnlockWaiting,
   UnlockFailed,
   AccountLoaded,
 } = composeStories(checkAccountStories);
@@ -129,6 +130,15 @@ export const CheckAccountUnlockRejected: Story = {
     activeStep: 1,
     stepState: 'error',
     checkAccountContent: <UnlockRejected />,
+  },
+};
+
+export const CheckAccountUnlockWaiting: Story = {
+  args: {
+    isOpen: true,
+    activeStep: 1,
+    stepState: 'error',
+    checkAccountContent: <UnlockWaiting />,
   },
 };
 
