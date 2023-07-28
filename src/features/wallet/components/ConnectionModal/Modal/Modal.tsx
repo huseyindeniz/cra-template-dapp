@@ -78,7 +78,7 @@ export const Modal: React.FC<ModalProps> = ({
               ) as string
             }
           </StepDescription>
-          <Container my={2} centerContent>
+          <Container my={2} p={0} centerContent>
             {checkWalletContent}
           </Container>
         </Box>
@@ -107,7 +107,7 @@ export const Modal: React.FC<ModalProps> = ({
           <StepDescription>
             {t('The Metamask wallet needs to be unlocked.') as string}
           </StepDescription>
-          <Container my={2} centerContent>
+          <Container my={2} p={0} centerContent>
             {checkAccountContent}
           </Container>
         </Box>
@@ -140,7 +140,7 @@ export const Modal: React.FC<ModalProps> = ({
               ) as string
             }
           </StepDescription>
-          <Container my={2} centerContent>
+          <Container my={2} p={0} centerContent>
             {checkNetworkContent}
           </Container>
         </Box>
@@ -173,7 +173,7 @@ export const Modal: React.FC<ModalProps> = ({
               ) as string
             }
           </StepDescription>
-          <Container my={2} centerContent>
+          <Container my={2} p={0} centerContent>
             {checkSignContent}
           </Container>
         </Box>

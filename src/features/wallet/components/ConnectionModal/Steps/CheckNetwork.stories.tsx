@@ -34,7 +34,7 @@ export const NetworkRequested: Story = {
 // NETWORK_DETECTION_FAILED
 export const NetworkDetectionFailed: Story = {
   args: {
-    errorMessage: 'MockNetworkDetectionFailedErrorCode',
+    errorMessage: 'Mock Network Detection Failed ErrorCode',
     stepState: NetworkLoadState.NETWORK_DETECTION_FAILED,
   },
 };
@@ -71,7 +71,7 @@ export const NetworkSwitchRejected: Story = {
 // NETWORK_SWITCH_FAILED
 export const NetworkSwitchFailed: Story = {
   args: {
-    errorMessage: 'MockNetworkSwitchFailedErrorCode',
+    errorMessage: 'Mock Network Switch Failed Error Code',
     stepState: NetworkLoadState.NETWORK_SWITCH_FAILED,
   },
 };

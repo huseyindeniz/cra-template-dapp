@@ -45,7 +45,7 @@ export const SignTimedOut: Story = {
 export const SignFailed: Story = {
   args: {
     stepState: AccountSignState.SIGN_FAILED,
-    errorMessage: 'MockSignFailedErrorCode',
+    errorMessage: 'Mock Sign Failed Error Code',
   },
 };
 

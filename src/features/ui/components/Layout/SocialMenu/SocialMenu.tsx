@@ -51,6 +51,8 @@ const SocialButton = ({
   );
 };
 
+// Replace social links here
+
 export const SocialMenu: React.FC = React.memo(() => {
   return (
     <Stack direction="row" spacing={6}>

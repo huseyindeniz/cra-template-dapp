@@ -26,7 +26,7 @@ export const AlertMessage: React.FC<AlertMessageProps> = ({
       variant={'left-accent'}
     >
       <AlertIcon />
-      <AlertTitle>{title}</AlertTitle>
+      <AlertTitle w={'30%'}>{title}</AlertTitle>
       <AlertDescription overflow={'auto'} w="full">
         {children}
       </AlertDescription>

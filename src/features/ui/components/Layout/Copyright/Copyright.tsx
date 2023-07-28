@@ -8,12 +8,12 @@ import React from 'react';
 // Hüseyin Deniz KIVRAK - https://github.com/huseyindeniz
 
 export const Copyright: React.FC = React.memo(() => {
-  const copyrightLabel: string = 'powered by CRA Template: dApp v1.1.0';
+  const copyrightLabel: string = 'powered by CRA Template: dApp v1.1.1';
   const copyrightUrl: string =
     'https://github.com/huseyindeniz/cra-template-dapp';
 
   return (
-    <Box color="gray">
+    <Box>
       <Button
         as={Link}
         href={copyrightUrl}
@@ -22,6 +22,8 @@ export const Copyright: React.FC = React.memo(() => {
         variant="ghost"
         size="xs"
         rightIcon={<FaExternalLinkAlt />}
+        color="gray"
+        fontWeight="normal"
       >
         {copyrightLabel}
       </Button>
