@@ -41,9 +41,9 @@ export const BlockInfo: React.FC = () => {
           <Box fontSize="xs" mr={1}>
             <Tag>
               {t('Balance')}
-              {`: ${parseFloat(blockInfo.signerAccountBalance).toFixed(2)} ${
-                currentNetwork?.nativeCurrency.symbol
-              }`}
+              {`: ${parseFloat(blockInfo.signerAccountBalance).toFixed(
+                2
+              )} ${currentNetwork?.nativeCurrency.symbol}`}
             </Tag>
           </Box>
           <IconButton

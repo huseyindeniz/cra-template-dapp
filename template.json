@@ -49,6 +49,7 @@
       "@typescript-eslint/parser": "^6.2.0",
       "babel-plugin-named-exports-order": "^0.0.2",
       "eslint-config-prettier": "^8.9.0",
+      "eslint-import-resolver-typescript": "^3.5.5",
       "eslint-plugin-import": "^2.28.0",
       "eslint-plugin-prettier": "^5.0.0",
       "eslint-plugin-react-hooks": "^4.6.0",
@@ -78,14 +79,13 @@
     },
     "eslintConfig": {
       "extends": [
-        "react-app",
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:import/typescript",
         "prettier"
       ],
       "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint", "prettier"],
+      "plugins": ["react-hooks", "prettier"],
       "root": true,
       "overrides": [
         {
