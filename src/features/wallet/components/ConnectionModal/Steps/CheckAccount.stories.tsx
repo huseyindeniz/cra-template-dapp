@@ -26,7 +26,7 @@ export const AccountRequested: Story = {
 export const AccountDetectionFailed: Story = {
   args: {
     stepState: AccountLoadState.ACCOUNT_DETECTION_FAILED,
-    errorMessage: 'MockAccountDetectionFailedErrorCode',
+    errorMessage: 'Mock Account Detection Failed ErrorCode',
     onUnlock: () => null,
   },
 };
@@ -71,7 +71,7 @@ export const UnlockWaiting: Story = {
 export const UnlockFailed: Story = {
   args: {
     stepState: AccountLoadState.UNLOCK_FAILED,
-    errorMessage: 'MockUnlockFailedErrorCode',
+    errorMessage: 'Mock Unlock Failed Error Code',
     onUnlock: () => null,
   },
 };

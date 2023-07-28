@@ -29,7 +29,7 @@
   "An error has occured during the unlock wallet check.": "Cüzdan kilidi açma kontrolü sırasında bir hata oluştu.",
   "Unlock Wallet": "Cüzdanın Kilidini Aç",
   "An error has occured during the network check.": "Ağ kontrolü sırasında bir hata oluştu.",
-  "Unsupported Network": "Desteklenmeyen Ağ",
+  "Wrong Network": "Yanlış Ağ",
   "Current network is not supported by this app.": "Seçilen ağ bu uygulamada desteklenmiyor.",
   "If you want to continue, please switch to any supported network. ": "Devam etmek istiyorsanız, lütfen desteklenen bir ağa geçiş yapınız.",
   "Network Switch Requested": "Ağ Değiştirme İsteği Gönderildi",

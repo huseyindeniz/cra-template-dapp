@@ -44,7 +44,7 @@ export const CheckNetwork: React.FC<CheckNetworkProps> = ({
 
   const WrongNetwork = () => {
     return (
-      <AlertMessage status="warning" title={t('Unsupported Network')}>
+      <AlertMessage status="warning" title={t('Wrong Network')}>
         <Text fontSize="xs">
           {t('Current network is not supported by this app.')}
           <br />

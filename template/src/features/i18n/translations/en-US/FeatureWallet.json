@@ -29,7 +29,7 @@
   "An error has occured during the unlock wallet check.": "An error has occured during the unlock wallet check.",
   "Unlock Wallet": "Unlock Wallet",
   "An error has occured during the network check.": "An error has occured during the network check.",
-  "Unsupported Network": "Unsupported Network",
+  "Wrong Network": "Wrong Network",
   "Current network is not supported by this app.": "Current network is not supported by this app.",
   "If you want to continue, please switch to any supported network. ": "If you want to continue, please switch to any supported network.",
   "Network Switch Requested": "Network Switch Requested",

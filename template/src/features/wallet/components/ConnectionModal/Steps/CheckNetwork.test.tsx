@@ -53,7 +53,7 @@ describe('Feature: Wallet', () => {
     describe('Scenario: WrongNetwork', () => {
       it('should be visible and show error', () => {
         // Arrange
-        const expectedTitle = 'Unsupported Network';
+        const expectedTitle = 'Wrong Network';
         const expectedErrorMessage =
           'Current network is not supported by this app.';
         // Act
