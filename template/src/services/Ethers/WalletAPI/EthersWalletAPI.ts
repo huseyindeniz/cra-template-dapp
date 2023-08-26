@@ -1,10 +1,12 @@
-import { ethers } from 'ethers';
+import { SignatureLike } from '@ethersproject/bytes';
+import { Contract, ethers } from 'ethers';
 import log from 'loglevel';
 import { eventChannel, EventChannel } from 'redux-saga';
 
 import { SUPPORTED_NETWORKS } from '../../../features/wallet/config';
 import { AccountType } from '../../../features/wallet/models/account/types/Account';
 import { IWalletAPI } from '../../../features/wallet/models/IWalletAPI';
+import { AvvyAPI } from '../../Avvy/AvvyAPI';
 
 enum MetamaskRPCErrors {
   ACTION_REJECTED = 'ACTION_REJECTED',
@@ -107,12 +109,22 @@ export class EthersWalletAPI implements IWalletAPI {
     }
   };
 
-  public isEnsSupported = async (chainId: number | null) => {
+  public isDomainNameSupported = async (chainId: number | null) => {
     log.debug(this._network?.chainId);
+    log.debug(chainId);
     if (chainId) {
-      return chainId === 1;
+      return SUPPORTED_NETWORKS.some(
+        chain => chain.chainId === chainId && chain.isDomainNameSupported
+      );
     } else {
-      return this._network?.chainId === 1;
+      const network = SUPPORTED_NETWORKS.find(
+        chain => chain.chainId === this._network?.chainId
+      );
+      if (network) {
+        return network.isDomainNameSupported;
+      } else {
+        return false;
+      }
     }
   };
 
@@ -143,15 +155,14 @@ export class EthersWalletAPI implements IWalletAPI {
         throw new Error('sign_rejected');
       }
     }
-    if (signature) {
-      const signerAddress: string = await ethers.utils.verifyMessage(
-        message,
-        signature
-      );
-
-      const address: string | undefined = await signer?.getAddress();
-      this._isSigned = signerAddress === address;
-      this._signerAddress = signerAddress;
+    const address: string | undefined = await signer?.getAddress();
+    this._isSigned = await this._verifyLogingSignature(
+      message,
+      signature,
+      address
+    );
+    if (this._isSigned && address) {
+      this._signerAddress = address;
     }
   };
 
@@ -173,15 +184,21 @@ export class EthersWalletAPI implements IWalletAPI {
           this._signerAddress.slice(0, 6) +
           '...' +
           this._signerAddress.slice(-4),
-        ens: null,
+        domainName: null,
       };
     }
     return result;
   };
 
-  public getEns = async () => {
-    if (this._network?.chainId === 1 && this._signerAddress) {
-      return await this._provider?.lookupAddress(this._signerAddress);
+  public getDomainName = async () => {
+    log.debug(this._network?.chainId);
+    if (this._provider && this._network && this._signerAddress) {
+      if (this._network.chainId === 1) {
+        return await this._provider.lookupAddress(this._signerAddress);
+      } else if (this._network.chainId === 43114) {
+        const avvyApi = AvvyAPI.getInstance(this._provider);
+        return avvyApi.addressToDomain(this._signerAddress);
+      }
     }
   };
 
@@ -259,6 +276,9 @@ export class EthersWalletAPI implements IWalletAPI {
     return '';
   };
 
+  // this is a client side secret value for signing login
+  // if you have a backend application
+  // you could get this value from your backend
   private _newUUID = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
       /[xy]/g,
@@ -268,5 +288,23 @@ export class EthersWalletAPI implements IWalletAPI {
         return v.toString(16);
       }
     );
+  };
+
+  // this is a client side verification for login signature
+  // if you have backend, you could verify signature in your backend
+  private _verifyLogingSignature = async (
+    message: string | ethers.utils.Bytes,
+    signature?: SignatureLike,
+    address?: string
+  ) => {
+    if (signature && address) {
+      const signerAddress: string = await ethers.utils.verifyMessage(
+        message,
+        signature
+      );
+      return signerAddress === address;
+    } else {
+      return false;
+    }
   };
 }

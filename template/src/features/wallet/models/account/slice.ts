@@ -42,9 +42,9 @@ const accountSlice = createSlice({
     setAccount: (state, { payload }: PayloadAction<AccountType>) => {
       state.account = payload;
     },
-    setAccountEns: (state, { payload }: PayloadAction<string>) => {
+    setAccountDomainName: (state, { payload }: PayloadAction<string>) => {
       if (state.account) {
-        state.account.ens = payload;
+        state.account.domainName = payload;
       }
     },
   },
@@ -61,7 +61,7 @@ const accountSlice = createSlice({
 export const {
   setAccountLoadState,
   setAccount,
-  setAccountEns,
+  setAccountDomainName,
   setAccountSignState,
   decSignCounter,
   resetSignCounter,

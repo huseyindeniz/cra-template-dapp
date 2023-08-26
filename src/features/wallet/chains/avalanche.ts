@@ -15,4 +15,5 @@ export const AvalancheChain: Network = {
   multicallAddress: '',
   isTestChain: false,
   isLocalChain: false,
+  isDomainNameSupported: true,
 };

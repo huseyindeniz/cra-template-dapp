@@ -2,8 +2,6 @@ import { composeStories } from '@storybook/react';
 import { render } from '@testing-library/react';
 import React from 'react';
 
-import '@testing-library/jest-dom/extend-expect';
-
 import * as stories from './ThemeSwitcher.stories';
 
 describe('Feature: UI', () => {

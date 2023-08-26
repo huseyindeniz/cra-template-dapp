@@ -15,4 +15,5 @@ export const PolygonChain: Network = {
   multicallAddress: '',
   isTestChain: false,
   isLocalChain: false,
+  isDomainNameSupported: false,
 };

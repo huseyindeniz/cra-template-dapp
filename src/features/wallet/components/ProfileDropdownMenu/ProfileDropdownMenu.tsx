@@ -34,12 +34,16 @@ export const ProfileDropdownMenu: React.FC = () => {
 
   useEffect(() => {
     if (account) {
-      const ensOrAddress: string =
-        account.ens && account.ens !== '' ? account.ens : account.shortAddress;
+      const domainNameOrAddress: string =
+        account.domainName && account.domainName !== ''
+          ? account.domainName
+          : account.shortAddress;
       setensOrAddressTruncated(
-        ensOrAddress && ensOrAddress.length > 20
-          ? ensOrAddress?.slice(0, 4) + '...' + ensOrAddress?.slice(-6)
-          : ensOrAddress
+        domainNameOrAddress && domainNameOrAddress.length > 20
+          ? domainNameOrAddress?.slice(0, 4) +
+              '...' +
+              domainNameOrAddress?.slice(-6)
+          : domainNameOrAddress
       );
     }
   }, [account]);

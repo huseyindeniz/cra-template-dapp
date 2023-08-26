@@ -15,4 +15,5 @@ export const BSCTestChain: Network = {
   multicallAddress: '',
   isTestChain: true,
   isLocalChain: false,
+  isDomainNameSupported: false,
 };

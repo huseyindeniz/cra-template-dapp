@@ -8,8 +8,8 @@ export interface IWalletAccountApi {
   isSigned(): Promise<boolean>;
   sign(message: string): Promise<void>;
   getAccount(): Promise<AccountType | null>;
-  isEnsSupported(chainId: number | null): Promise<boolean>;
-  getEns(): Promise<string | null | undefined>;
+  isDomainNameSupported(chainId: number | null): Promise<boolean>;
+  getDomainName(): Promise<string | null | undefined>;
   listenAccountChange(): EventChannel<string[]> | undefined;
   handleAccountChange(): Promise<void>;
   reset(): Promise<void>;
