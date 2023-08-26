@@ -27,6 +27,7 @@ CRA Template: dApp is an easy-to-use foundation for efficiently building high-qu
 ## Features
 
 - Authentication with Metamask Wallet
+- Wallet Domain Name Support ([ENS](https://ens.domains/) and [AVVY Domains](https://avvy.domains/))
 - Internationalization
 - Dark Theme
 - Page load optimizations
