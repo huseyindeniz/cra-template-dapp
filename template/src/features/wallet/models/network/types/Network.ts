@@ -13,4 +13,5 @@ export type Network = {
   multicallAddress: string | null;
   isTestChain: boolean;
   isLocalChain: boolean;
+  isDomainNameSupported: boolean;
 };

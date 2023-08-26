@@ -167,21 +167,23 @@ export function* HandleStateUserAuthenticated(
   walletAuthenticatedApi: IWalletAccountApi
 ) {
   yield spawn(handleEventAccountsChanged, walletAuthenticatedApi);
-  const isEnsSupported: boolean = yield call(
-    walletAuthenticatedApi.isEnsSupported,
+  const isDomainNameSupported: boolean = yield call(
+    walletAuthenticatedApi.isDomainNameSupported,
     null
   );
-  if (isEnsSupported) {
-    yield spawn(updateEnsWithAPI, walletAuthenticatedApi);
+  if (isDomainNameSupported) {
+    yield spawn(updateDomainNameWithAPI, walletAuthenticatedApi);
   }
 }
 
 // Non-blocking functions
-function* updateEnsWithAPI(walletAuthenticatedApi: IWalletAccountApi) {
+function* updateDomainNameWithAPI(walletAuthenticatedApi: IWalletAccountApi) {
   try {
-    const ens: string | null = yield call(walletAuthenticatedApi.getEns);
-    if (ens) {
-      yield put(slicesActions.setAccountEns(ens));
+    const domainName: string | null = yield call(
+      walletAuthenticatedApi.getDomainName
+    );
+    if (domainName) {
+      yield put(slicesActions.setAccountDomainName(domainName));
     }
   } catch (error) {
     yield put(walletStateSliceActions.setError(error as string));

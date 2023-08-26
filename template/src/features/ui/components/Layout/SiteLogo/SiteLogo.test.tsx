@@ -1,8 +1,6 @@
 import { composeStories } from '@storybook/react';
 import { render } from '@testing-library/react';
 
-import '@testing-library/jest-dom/extend-expect';
-
 import * as stories from './SiteLogo.stories';
 
 describe('Feature: UI', () => {
