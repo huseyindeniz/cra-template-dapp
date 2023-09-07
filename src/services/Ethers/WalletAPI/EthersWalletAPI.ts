@@ -3,6 +3,8 @@ import { Contract, ethers } from 'ethers';
 import log from 'loglevel';
 import { eventChannel, EventChannel } from 'redux-saga';
 
+import { AvalancheChain } from '../../../features/wallet/chains/avalanche';
+import { EthereumMainnetChain } from '../../../features/wallet/chains/ethereum';
 import { SUPPORTED_NETWORKS } from '../../../features/wallet/config';
 import { AccountType } from '../../../features/wallet/models/account/types/Account';
 import { IWalletAPI } from '../../../features/wallet/models/IWalletAPI';
@@ -193,9 +195,9 @@ export class EthersWalletAPI implements IWalletAPI {
   public getDomainName = async () => {
     log.debug(this._network?.chainId);
     if (this._provider && this._network && this._signerAddress) {
-      if (this._network.chainId === 1) {
+      if (this._network.chainId === EthereumMainnetChain.chainId) {
         return await this._provider.lookupAddress(this._signerAddress);
-      } else if (this._network.chainId === 43114) {
+      } else if (this._network.chainId === AvalancheChain.chainId) {
         const avvyApi = AvvyAPI.getInstance(this._provider);
         return avvyApi.addressToDomain(this._signerAddress);
       }
