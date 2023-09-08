@@ -24,7 +24,7 @@ const imagesFlag: Record<LangCode, string> = {
 export interface LangModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onChange: (nextValue: string) => void;
+  onChange: (_nextValue: string) => void;
   defaultValue: string;
   supportedLanguages: SupportedLang[];
 }

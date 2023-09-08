@@ -10,6 +10,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AlertMessage } from '../../../../ui/components/AlertMessage/AlertMessage';
+import { DISABLE_WALLET_SIGN } from '../../../config';
 import { AccountSignState } from '../../../models/account/types/AccountSignState';
 
 export interface CheckSignProps {
@@ -92,6 +93,17 @@ export const CheckSign: React.FC<CheckSignProps> = ({
     );
   };
 
+  const WalletAccountLoaded = () => {
+    return (
+      <AlertMessage status="success" title={t('Load Account')}>
+        {t('Your wallet account loaded successfuly.')}
+        <br />
+        {t('Redirecting to app...')}
+        <Progress size="xs" colorScheme="green" isIndeterminate />
+      </AlertMessage>
+    );
+  };
+
   const SignButton = () => {
     return (
       <Box>
@@ -121,7 +133,7 @@ export const CheckSign: React.FC<CheckSignProps> = ({
     case AccountSignState.SIGN_FAILED:
       return <SignFailed />;
     case AccountSignState.SIGNED:
-      return <Signed />;
+      return DISABLE_WALLET_SIGN ? <WalletAccountLoaded /> : <Signed />;
     default:
       return null;
   }

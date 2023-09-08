@@ -1,6 +1,7 @@
 import { END, EventChannel } from 'redux-saga';
 import { put, call, take, spawn } from 'redux-saga/effects';
 
+import { DISABLE_WALLET_SIGN } from '../../../config';
 import { SlowDown } from '../../../utils';
 import * as accountActions from '../../account/actions';
 import * as connectWallet from '../../provider/actions';
@@ -20,7 +21,11 @@ export function* ActionEffectLoadNetwork(walletApi: IWalletNetworkApi) {
     walletApi
   );
   if (isNetworkLoaded) {
-    yield put({ type: accountActions.waitSignIn.type });
+    if (DISABLE_WALLET_SIGN) {
+      yield put({ type: accountActions.signIn.type });
+    } else {
+      yield put({ type: accountActions.waitSignIn.type });
+    }
   } else {
     yield put(walletStateSliceActions.setLoading(LoadingStatusType.IDLE));
   }

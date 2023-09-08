@@ -1,4 +1,5 @@
 import { act, render } from '@testing-library/react';
+import log from 'loglevel';
 
 import { App } from './App';
 
@@ -8,6 +9,6 @@ describe.skip('App', () => {
     act(() => {
       result = render(<App />);
     });
-    console.debug(result);
+    log.debug(result);
   });
 });
