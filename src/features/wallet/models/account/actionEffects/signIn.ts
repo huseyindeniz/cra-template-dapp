@@ -10,7 +10,7 @@ import {
 } from 'redux-saga/effects';
 
 import { RootState } from '../../../../../store/store';
-import { SIGN_TIMEOUT_IN_SEC } from '../../../config';
+import { DISABLE_WALLET_SIGN, SIGN_TIMEOUT_IN_SEC } from '../../../config';
 import { SlowDown } from '../../../utils';
 import { connectWallet } from '../../provider/actions';
 import * as walletStateSliceActions from '../../slice';
@@ -38,14 +38,21 @@ export function* ActionEffectSignIn(
 ) {
   yield put(walletStateSliceActions.setLoading(LoadingStatusType.PENDING));
   yield put(walletStateSliceActions.setState(WalletState.CHECKING_SIGN));
-  const signResult: boolean = yield call(
-    HandleStateSignRequested,
-    walletApi,
-    action.payload
-  );
-  if (signResult) {
+  if (DISABLE_WALLET_SIGN) {
+    yield put({ type: actions.announceWalletLoaded.type });
+    yield call(HandleStateSigned, walletApi);
     yield put(walletStateSliceActions.setState(WalletState.AUTHENTICATED));
     yield call(HandleStateUserAuthenticated, walletApi);
+  } else {
+    const signResult: boolean = yield call(
+      HandleStateSignRequested,
+      walletApi,
+      action.payload
+    );
+    if (signResult) {
+      yield put(walletStateSliceActions.setState(WalletState.AUTHENTICATED));
+      yield call(HandleStateUserAuthenticated, walletApi);
+    }
   }
   yield put(walletStateSliceActions.setLoading(LoadingStatusType.IDLE));
 }
@@ -155,6 +162,9 @@ export function* HandleStateSignFailed(error: string) {
 
 export function* HandleStateSigned(walletSignApi: IWalletAccountApi) {
   yield put(slicesActions.setAccountSignState(AccountSignState.SIGNED));
+  yield call(SlowDown);
+  yield call(SlowDown);
+  yield call(SlowDown);
   yield call(SlowDown);
   // store user info
   const accountData: AccountType | null = yield call(walletSignApi.getAccount);

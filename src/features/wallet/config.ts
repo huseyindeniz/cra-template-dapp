@@ -25,3 +25,4 @@ export const SUPPORTED_NETWORKS: Network[] = [
 export const DEFAULT_NETWORK = AvalancheChain;
 export const SIGN_TIMEOUT_IN_SEC = 60;
 export const SLOW_DOWN_IN_MS = 1000;
+export const DISABLE_WALLET_SIGN = true;

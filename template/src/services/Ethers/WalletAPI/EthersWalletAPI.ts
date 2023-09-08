@@ -3,7 +3,12 @@ import { Contract, ethers } from 'ethers';
 import log from 'loglevel';
 import { eventChannel, EventChannel } from 'redux-saga';
 
-import { SUPPORTED_NETWORKS } from '../../../features/wallet/config';
+import { AvalancheChain } from '../../../features/wallet/chains/avalanche';
+import { EthereumMainnetChain } from '../../../features/wallet/chains/ethereum';
+import {
+  DISABLE_WALLET_SIGN,
+  SUPPORTED_NETWORKS,
+} from '../../../features/wallet/config';
 import { AccountType } from '../../../features/wallet/models/account/types/Account';
 import { IWalletAPI } from '../../../features/wallet/models/IWalletAPI';
 import { AvvyAPI } from '../../Avvy/AvvyAPI';
@@ -131,12 +136,28 @@ export class EthersWalletAPI implements IWalletAPI {
   public isUnlocked = async () => {
     const accounts: string[] = await this._provider?.send('eth_accounts', []);
     this._isUnlocked = accounts.length > 0;
+    if (DISABLE_WALLET_SIGN) {
+      const address = await this._provider?.getSigner()?.getAddress();
+      if (address) {
+        this._signerAddress = address;
+      }
+    }
     return this._isUnlocked;
   };
 
   public unlock = async () => {
-    await this._provider?.send('eth_requestAccounts', []);
+    const accounts: string[] = await this._provider?.send(
+      'eth_requestAccounts',
+      []
+    );
+    this._isUnlocked = accounts.length > 0;
     this._isUnlocked = true;
+    if (DISABLE_WALLET_SIGN) {
+      const address = await this._provider?.getSigner()?.getAddress();
+      if (address) {
+        this._signerAddress = address;
+      }
+    }
   };
 
   public isSigned = async () => {
@@ -193,9 +214,9 @@ export class EthersWalletAPI implements IWalletAPI {
   public getDomainName = async () => {
     log.debug(this._network?.chainId);
     if (this._provider && this._network && this._signerAddress) {
-      if (this._network.chainId === 1) {
+      if (this._network.chainId === EthereumMainnetChain.chainId) {
         return await this._provider.lookupAddress(this._signerAddress);
-      } else if (this._network.chainId === 43114) {
+      } else if (this._network.chainId === AvalancheChain.chainId) {
         const avvyApi = AvvyAPI.getInstance(this._provider);
         return avvyApi.addressToDomain(this._signerAddress);
       }

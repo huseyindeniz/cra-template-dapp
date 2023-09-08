@@ -88,7 +88,7 @@
     "source-map-explorer": "^2.5.3",
     "storybook": "next",
     "storybook-addon-react-router-v6": "2.0.5",
-    "typescript": "4.9.5",
+    "typescript": "5.1.*",
     "webpack": "^5.88.2"
   },
   "scripts": {
@@ -131,6 +131,7 @@
       }
     ],
     "rules": {
+      "no-console": "warn",
       "prettier/prettier": [
         "warn",
         {

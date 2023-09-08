@@ -5,7 +5,10 @@ import { eventChannel, EventChannel } from 'redux-saga';
 
 import { AvalancheChain } from '../../../features/wallet/chains/avalanche';
 import { EthereumMainnetChain } from '../../../features/wallet/chains/ethereum';
-import { SUPPORTED_NETWORKS } from '../../../features/wallet/config';
+import {
+  DISABLE_WALLET_SIGN,
+  SUPPORTED_NETWORKS,
+} from '../../../features/wallet/config';
 import { AccountType } from '../../../features/wallet/models/account/types/Account';
 import { IWalletAPI } from '../../../features/wallet/models/IWalletAPI';
 import { AvvyAPI } from '../../Avvy/AvvyAPI';
@@ -133,12 +136,28 @@ export class EthersWalletAPI implements IWalletAPI {
   public isUnlocked = async () => {
     const accounts: string[] = await this._provider?.send('eth_accounts', []);
     this._isUnlocked = accounts.length > 0;
+    if (DISABLE_WALLET_SIGN) {
+      const address = await this._provider?.getSigner()?.getAddress();
+      if (address) {
+        this._signerAddress = address;
+      }
+    }
     return this._isUnlocked;
   };
 
   public unlock = async () => {
-    await this._provider?.send('eth_requestAccounts', []);
+    const accounts: string[] = await this._provider?.send(
+      'eth_requestAccounts',
+      []
+    );
+    this._isUnlocked = accounts.length > 0;
     this._isUnlocked = true;
+    if (DISABLE_WALLET_SIGN) {
+      const address = await this._provider?.getSigner()?.getAddress();
+      if (address) {
+        this._signerAddress = address;
+      }
+    }
   };
 
   public isSigned = async () => {
