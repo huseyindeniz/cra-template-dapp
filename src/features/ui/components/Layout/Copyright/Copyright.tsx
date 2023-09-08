@@ -5,7 +5,7 @@ import React from 'react';
 // You can remove or change this section
 
 export const Copyright: React.FC = React.memo(() => {
-  const copyrightLabel: string = 'powered by CRA Template: dApp v1.2.1';
+  const copyrightLabel: string = 'powered by CRA Template: dApp v1.2.2';
   const copyrightUrl: string =
     'https://github.com/huseyindeniz/cra-template-dapp';
 
