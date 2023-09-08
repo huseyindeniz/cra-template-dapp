@@ -53,7 +53,7 @@
   "You have successfully signed the login request.": "Giriş isteğini başarıyla imzaladınız.",
   "Redirecting to app...": "Uygulamaya yönlendiriliyorsunuz...",
   "Load Account": "Hesabı Yükle",
-  "Your wallet account loaded successfuly.": "Cüzdan hesabınız başarıyla yüklendi.",
+  "Your wallet account connected successfuly.": "Cüzdan hesabınız başarıyla bağlandı.",
   "Sign In": "Giriş Yap",
   "Cancel": "İptal",
   "Metamask Is Not Detected": "Metamask Tespit Edilemedi",

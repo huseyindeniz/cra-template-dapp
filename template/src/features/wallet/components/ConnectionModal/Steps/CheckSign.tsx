@@ -96,7 +96,7 @@ export const CheckSign: React.FC<CheckSignProps> = ({
   const WalletAccountLoaded = () => {
     return (
       <AlertMessage status="success" title={t('Load Account')}>
-        {t('Your wallet account loaded successfuly.')}
+        {t('Your wallet account connected successfuly.')}
         <br />
         {t('Redirecting to app...')}
         <Progress size="xs" colorScheme="green" isIndeterminate />
