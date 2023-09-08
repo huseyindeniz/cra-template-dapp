@@ -165,7 +165,6 @@ export function* HandleStateSigned(walletSignApi: IWalletAccountApi) {
   yield call(SlowDown);
   yield call(SlowDown);
   yield call(SlowDown);
-  yield call(SlowDown);
   // store user info
   const accountData: AccountType | null = yield call(walletSignApi.getAccount);
   if (accountData) {

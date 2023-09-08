@@ -153,7 +153,13 @@ export const Modal: React.FC<ModalProps> = ({
         <StepIndicator>
           <StepStatus
             complete={<StepIcon />}
-            incomplete={<FaFileSignature />}
+            incomplete={
+              DISABLE_WALLET_SIGN ? (
+                <MdAccountBalanceWallet />
+              ) : (
+                <FaFileSignature />
+              )
+            }
             active={
               stepState !== undefined ? (
                 stepState === 'error' ? (
