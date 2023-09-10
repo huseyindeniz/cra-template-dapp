@@ -1,29 +1,29 @@
-import { Box, Link, Button } from '@chakra-ui/react';
-import { FaExternalLinkAlt } from '@react-icons/all-files/fa/FaExternalLinkAlt';
+import { Box, Link, Button, Image, Tooltip } from '@chakra-ui/react';
 import React from 'react';
 
 // You can remove or change this section
-
 export const Copyright: React.FC = React.memo(() => {
-  const copyrightLabel: string = 'powered by CRA Template: dApp v1.2.2';
-  const copyrightUrl: string =
-    'https://github.com/huseyindeniz/cra-template-dapp';
-
   return (
     <Box>
-      <Button
-        as={Link}
-        href={copyrightUrl}
-        rel="noopener noreferrer"
-        isExternal
-        variant="ghost"
-        size="xs"
-        rightIcon={<FaExternalLinkAlt />}
-        color="gray"
-        fontWeight="normal"
-      >
-        {copyrightLabel}
-      </Button>
+      <Tooltip label="Powered by CRA Template: dApp v1.2.3">
+        <Button
+          as={Link}
+          href="https://github.com/huseyindeniz/cra-template-dapp"
+          isExternal
+          variant="ghost"
+          size="xs"
+          rightIcon={
+            <Image
+              height="20px"
+              src="https://huseyindeniz.github.io/cra-template-dapp-documentation/img/logo.svg"
+            />
+          }
+          color="gray"
+          fontWeight="normal"
+        >
+          powered by
+        </Button>
+      </Tooltip>
     </Box>
   );
 });

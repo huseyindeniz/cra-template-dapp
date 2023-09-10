@@ -1,4 +1,5 @@
-import { extendTheme } from "@chakra-ui/react";
+import type { Preview } from '@storybook/react';
+import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
   fonts: {
@@ -8,9 +9,9 @@ const theme = extendTheme({
   enableColorModeControl: true,
 });
 
-const preview = {
+const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -18,7 +19,7 @@ const preview = {
       },
     },
     chakra: { theme: theme },
-  }
-}
+  },
+};
 
 export default preview;
