@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 16
       - run: npx create-react-app test1 --template file:./dapp
-      - run: npm i
+      - run: npm ci
         working-directory: test1
       - run: npm run lint
         working-directory: test1
