@@ -73,7 +73,7 @@ CRA Template: dApp is an easy-to-use foundation for efficiently building high-qu
 
 ## Getting Started
 
-Please visit the [Official CRA Tamplate: dApp Documentation Page](https://huseyindeniz.github.io/cra-template-dapp-documentation/) to start your dApp frontend development journey.
+Please visit the [Official CRA Tamplate: dApp Documentation Page](https://huseyindeniz.github.io/react-dapp-template-documentation/) to start your dApp frontend development journey.
 
 ## Contributions
 
