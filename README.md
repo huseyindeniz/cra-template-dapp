@@ -5,7 +5,7 @@
 ![build](https://img.shields.io/github/actions/workflow/status/huseyindeniz/cra-template-dapp/ci.yml)
 
 > **Warning**
-> [React dApp Template](https://huseyindeniz.github.io/react-dapp-template-documentation/) has 2 versions and this repository is CRA version of it. There is a [Vite Version](https://github.com/huseyindeniz/vite-react-dapp-template) which performed better in my latest tests. Please read this [post](https://github.com/huseyindeniz/cra-template-dapp/discussions/43) for performance difference details of CRA and Vite version of this template.
+> [React dApp Template](https://huseyindeniz.github.io/react-dapp-template-documentation/) has 2 versions and this repository is CRA version of it. There is a [Vite Version](https://github.com/huseyindeniz/vite-react-dapp-template) which performed better in my latest tests. Please read this [post](https://github.com/huseyindeniz/cra-template-dapp/discussions/43) for performance difference details of CRA and Vite version of this template. Additionally, Vite version uses Typescript 5x and it supports ethers v6. (currently it's not possible with CRA, I'll update this package when it's possible)
 
 A create-react-app template specifically designed for decentralized application (dApp) frontend development.
 
