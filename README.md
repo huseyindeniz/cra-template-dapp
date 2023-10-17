@@ -48,7 +48,7 @@ CRA Template: dApp is an easy-to-use foundation for efficiently building high-qu
 - Unit Tests: jest
 - Component Unit Tests: React Testing Library + Storybook
 - Integration Tests: React Testing Library + Storybook
-- E2E Tests: Cypress + Synpress + Cucumber
+- E2E Tests: Cypress + Synpress + Cucumber (todo)
 
 ### Other Packages
 
