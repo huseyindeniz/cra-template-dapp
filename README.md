@@ -1,6 +1,6 @@
 # CRA Template: dApp
 
-![downloads](https://img.shields.io/npm/dw/@huseyindeniz/cra-template-dapp)
+![downloads](https://img.shields.io/npm/dt/@huseyindeniz/cra-template-dapp)
 ![version](https://img.shields.io/npm/v/@huseyindeniz/cra-template-dapp)
 ![build](https://img.shields.io/github/actions/workflow/status/huseyindeniz/cra-template-dapp/ci.yml)
 
